@@ -9,3 +9,6 @@ local_settings.py
 
 # Ignore the animation file 
 *.gif
+
+# Ignore the Jupyter Notebook checkpoints
+**/.ipynb_checkpoints/
