@@ -12,3 +12,6 @@ local_settings.py
 
 # Ignore the Jupyter Notebook checkpoints
 **/.ipynb_checkpoints/
+
+# Ignore the exec_denss results
+data_name*.*
