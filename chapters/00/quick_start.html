@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Preparation &#8212; Molass Library Tutorial</title>
+    <title>1. Quick Start &#8212; Molass Library Tutorial</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,7 +57,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/00/prepare';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/00/quick_start';</script>
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -181,7 +181,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Preparation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/data_objects.html">2. Data Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03/baselines.html">4. Baselines</a></li>
@@ -191,6 +191,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">8. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">8.1. Trimming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../80/generation.html">8.2. Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/local_settings.html">8.3. Local Settings</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">9. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -269,7 +270,7 @@
       
       
       
-      <li><a href="https://github.com/nshimizu0721/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/00/prepare.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/nshimizu0721/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/00/quick_start.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -299,7 +300,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/00/prepare.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/00/quick_start.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,7 +384,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Preparation</h1>
+    <h1>Quick Start</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -395,9 +396,13 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">1.1. Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-jupyter-notebooks">1.2. Tools for Jupyter Notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-for-this-tutorial">1.3. Download Data for this Tutorial</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-settings">1.4. Local Settings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-settings-check">1.5. Local Settings Check</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-usage">1.3. Standard Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-input-data">1.3.1. Plot the Input Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-correction-and-lrf">1.3.2. Trimming, Correction and LRF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-denss">1.3.3. Running DENSS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-denss-result">1.3.4. Plotting the DENSS result</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -409,98 +414,124 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="preparation">
-<h1><span class="section-number">1. </span>Preparation<a class="headerlink" href="#preparation" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="quick-start">
+<h1><span class="section-number">1. </span>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h1>
 <section id="installation">
 <h2><span class="section-number">1.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
-<p>We assume here that you are familiar with <a class="reference external" href="https://en.wikipedia.org/wiki/Project_Jupyter#Jupyter_Notebook">Jupyter Notebook</a> and have already installed Python and
-relevant packages, e.g., numpy, matplotlib, jupyterlab, etc.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Do not confuse “Jupyter Notebook” and “Jupyter Book”. The former is a file for programming, while the latter is a tool for publishing.</p>
-</div>
-<p>To install the Molass Library package, you can use pip as follows.</p>
+<p>We assume you have already installed Python and you are familiar with <a class="reference external" href="https://en.wikipedia.org/wiki/Project_Jupyter#Jupyter_Notebook">Jupyter Notebook</a>.</p>
+<p>To install the Molass Library package, you can use pip as follows:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install -U molass</span>
-<span class="go">pip install -U molass_legacy</span>
+<span class="go">pip install -U molass_data</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The molass package currently depends on molass_legacy. This dependency is planned to be removed.</p>
+<p>The molass_data package includes a data set for this tutorial.</p>
 </div>
 </section>
 <section id="tools-for-jupyter-notebooks">
 <h2><span class="section-number">1.2. </span>Tools for Jupyter Notebooks<a class="headerlink" href="#tools-for-jupyter-notebooks" title="Link to this heading">#</a></h2>
-<p>As tools for programming in Jupyter Notebooks, we recommend either of the following without excluding other alternatives.</p>
+<p>For programming in Jupyter Notebooks, we recommend either of the following tools (other alternatives are also possible):</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://jupyter.org/">Jupyter Lab</a></p></li>
 <li><p><a class="reference external" href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">Jupyter Extension in VS Code</a></p></li>
 </ul>
 </section>
-<section id="download-data-for-this-tutorial">
-<span id="id1"></span><h2><span class="section-number">1.3. </span>Download Data for this Tutorial<a class="headerlink" href="#download-data-for-this-tutorial" title="Link to this heading">#</a></h2>
-<p>To run and follow this tutorial, download data from the following links.</p>
-<ul class="simple">
-<li><p><a class="reference download internal" download="" href="../../_downloads/6781b482c5a653baea141251854ee598/tutorial_data.zip"><span class="xref download myst">tutorial_data.zip</span></a></p></li>
-<li><p><a class="reference download internal" download="" href="../../_downloads/2d33d46e1518ded14ce1962f4a3dd2b5/simulated_data.zip"><span class="xref download myst">simulated_data.zip</span></a>  (in preparation, currently empty)</p></li>
-</ul>
-<p>You can use one or both of these. They are similar, but not the same. The former is from a real experiment on a few standard proteins, while the latter has been generated using simple, but not realistic, models.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>See <a class="reference internal" href="../80/about_data_sets.html#about-example-data-sets"><span class="std std-ref">About Example Data Sets</span></a> if you are interested in how they are built.</p>
-</div>
-</section>
-<section id="local-settings">
-<h2><span class="section-number">1.4. </span>Local Settings<a class="headerlink" href="#local-settings" title="Link to this heading">#</a></h2>
-<p>Those data sets you have downloaded will be referenced in the tutorial. You are supposed to unzip them and set the unzipped folder locations in a python script named “local_settings.py” placed in one of the upper folders relative to the notebook you run. Copy and modify the code block below to fit to your environment.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LocalSettings</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">TUTORIAL_DATA</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;D:\MolassData\tutorial_data&quot;</span><span class="p">,</span>   <span class="c1"># unzipped data folder</span>
-    <span class="n">SIMULATED_DATA</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;D:\MolassData\simulated_data&quot;</span><span class="p">,</span> <span class="c1"># unzipped data folder, optional</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p>Save the scirpt to any upper folder, e.g, like below.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">any_upper_foler</span><span class="o">/</span>
-        <span class="n">local_settings</span><span class="o">.</span><span class="n">py</span>
-        <span class="o">...</span>
-        <span class="n">parent_folder</span><span class="o">/</span>
-            <span class="o">...</span>
-            <span class="n">current_folder</span><span class="o">/</span>
-                <span class="n">working</span><span class="o">-</span><span class="n">notebook</span><span class="o">.</span><span class="n">ipynb</span>
-</pre></div>
-</div>
-<p>The get_local_settings() function introduced in the next section will search for this script walking upward several levels from the current folder until it finds the filename and import the settings dict you have specified.
-You can check your local settings in the next section.</p>
-</section>
-<section id="local-settings-check">
-<h2><span class="section-number">1.5. </span>Local Settings Check<a class="headerlink" href="#local-settings-check" title="Link to this heading">#</a></h2>
-<p>To check your local settings, download this book by the button at the upper right corner and run it.</p>
+<section id="standard-usage">
+<h2><span class="section-number">1.3. </span>Standard Usage<a class="headerlink" href="#standard-usage" title="Link to this heading">#</a></h2>
+<section id="plot-the-input-data">
+<h3><span class="section-number">1.3.1. </span>Plot the Input Data<a class="headerlink" href="#plot-the-input-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.Local</span> <span class="kn">import</span> <span class="n">get_local_settings</span>
-<span class="n">local_settings</span> <span class="o">=</span> <span class="n">get_local_settings</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">TUTORIAL_DATA</span> <span class="o">=</span> <span class="n">local_settings</span><span class="p">[</span><span class="s1">&#39;TUTORIAL_DATA&#39;</span><span class="p">]</span>
-<span class="n">SIMULATED_DATA</span> <span class="o">=</span> <span class="n">local_settings</span><span class="p">[</span><span class="s1">&#39;SIMULATED_DATA&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">SIMULATED_DATA</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">get_tutorial_data_path</span>
+<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="n">TUTORIAL_DATA</span> <span class="o">=</span> <span class="n">get_tutorial_data_path</span><span class="p">()</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
+<span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] D:\Github\molass-tutorial\chapters\local_settings.py
-[1] D:\Github\molass-tutorial\local_settings.py
-[2] D:\Github\local_settings.py
-D:\MolassData\tutorial_data
-D:\MolassData\simulated_data
+<img alt="../../_images/fa2b2bf588dbf3e91ebe931138a81a1cb1814913eb9d0c6ca1d45ffcce11d645.png" src="../../_images/fa2b2bf588dbf3e91ebe931138a81a1cb1814913eb9d0c6ca1d45ffcce11d645.png" />
+</div>
+</div>
+</section>
+<section id="trimming-correction-and-lrf">
+<h3><span class="section-number">1.3.2. </span>Trimming, Correction and LRF<a class="headerlink" href="#trimming-correction-and-lrf" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<span class="n">lrf_info</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_lowrank_info</span><span class="p">()</span>
+<span class="n">lrf_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developper memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x1f9b97cb830&gt;
+</pre></div>
+</div>
+<img alt="../../_images/4bcd76be5d05b4ebdb9f82385b7ec6c868b415d7ec0e05593ad72382c62e3035.png" src="../../_images/4bcd76be5d05b4ebdb9f82385b7ec6c868b415d7ec0e05593ad72382c62e3035.png" />
+</div>
+</div>
+</section>
+<section id="running-denss">
+<h3><span class="section-number">1.3.3. </span>Running DENSS<a class="headerlink" href="#running-denss" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.SAXS.DenssTools</span> <span class="kn">import</span> <span class="n">exec_denss</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">lrf_info</span><span class="o">.</span><span class="n">get_data_for_denss</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">exec_denss</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 129.43
+Number of experimental Shannon channels: 11
+Number of calculated Shannon channels: 33
+Scanning alphas... 100% complete
+WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 143.72
+Number of experimental Shannon channels: 37
+Number of calculated Shannon channels: 112
+
+q, I, sigq: 1765 1765 1765
+qc, ac, ec: 2766 2766 2766
+
+ Step     Chi2     Rg    Support Volume
+ ----- --------- ------- --------------
+  620   1.21e-01  75.23        1698782            
+switched to shrinkwrap by density threshold = 0.2000
+  999   7.49e-05  36.54        421026          EC: 1 -&gt; 1 
+ 1713   6.70e-05  36.50        358040          
 </pre></div>
 </div>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For the check, be aware that you need only the signle cell just above. Other cells (markdown texts) are irrelevant.</p>
+</section>
+<section id="plotting-the-denss-result">
+<h3><span class="section-number">1.3.4. </span>Plotting the DENSS result<a class="headerlink" href="#plotting-the-denss-result" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">molass.SAXS.MrcViewer</span> <span class="kn">import</span> <span class="n">show_mrc</span>
+<span class="c1"># %matplotlib widget</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">show_mrc</span><span class="p">(</span><span class="s1">&#39;data_name.mrc&#39;</span><span class="p">);</span>
+</pre></div>
 </div>
-<p>If the folder locations are printed as expected, you are ready to continue.</p>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/44831ed149eff9b4c49ce4cb59d8bb34c484c0be071287a07a30d0088e04a704.png" src="../../_images/44831ed149eff9b4c49ce4cb59d8bb34c484c0be071287a07a30d0088e04a704.png" />
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -570,9 +601,13 @@ D:\MolassData\simulated_data
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">1.1. Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-jupyter-notebooks">1.2. Tools for Jupyter Notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-for-this-tutorial">1.3. Download Data for this Tutorial</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-settings">1.4. Local Settings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-settings-check">1.5. Local Settings Check</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-usage">1.3. Standard Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-input-data">1.3.1. Plot the Input Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-correction-and-lrf">1.3.2. Trimming, Correction and LRF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-denss">1.3.3. Running DENSS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-denss-result">1.3.4. Plotting the DENSS result</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

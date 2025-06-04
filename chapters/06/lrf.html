@@ -181,7 +181,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../00/prepare.html">1. Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00/quick_start.html">1. Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/data_objects.html">2. Data Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03/baselines.html">4. Baselines</a></li>
@@ -191,6 +191,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">8. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">8.1. Trimming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../80/generation.html">8.2. Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/local_settings.html">8.3. Local Settings</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">9. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -397,6 +398,92 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="low-rank-factorization">
 <h1><span class="section-number">7. </span>Low Rank Factorization<a class="headerlink" href="#low-rank-factorization" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\GitHub\molass-library&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\GitHub\molass-legacy&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">get_tutorial_data_path</span>
+<span class="n">TUTORIAL_DATA</span> <span class="o">=</span> <span class="n">get_tutorial_data_path</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
+<span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\molass_data\tutorial_data
+</pre></div>
+</div>
+<img alt="../../_images/fa2b2bf588dbf3e91ebe931138a81a1cb1814913eb9d0c6ca1d45ffcce11d645.png" src="../../_images/fa2b2bf588dbf3e91ebe931138a81a1cb1814913eb9d0c6ca1d45ffcce11d645.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.SAXS.DenssTools</span> <span class="kn">import</span> <span class="n">exec_denss</span>
+<span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<span class="n">lrf_info</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_lowrank_info</span><span class="p">()</span>
+<span class="n">lrf_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developper memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x239a595cb60&gt;
+</pre></div>
+</div>
+<img alt="../../_images/4bcd76be5d05b4ebdb9f82385b7ec6c868b415d7ec0e05593ad72382c62e3035.png" src="../../_images/4bcd76be5d05b4ebdb9f82385b7ec6c868b415d7ec0e05593ad72382c62e3035.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">lrf_info</span><span class="o">.</span><span class="n">get_data_for_denss</span><span class="p">()</span>
+<span class="c1"># exec_denss(data)       </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 129.43
+Number of experimental Shannon channels: 11
+Number of calculated Shannon channels: 33
+Scanning alphas... 100% complete
+WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 143.72
+Number of experimental Shannon channels: 37
+Number of calculated Shannon channels: 112
+
+q, I, sigq: 1765 1765 1765
+qc, ac, ec: 2766 2766 2766
+
+ Step     Chi2     Rg    Support Volume
+ ----- --------- ------- --------------
+  620   8.86e-02  71.69        1698782            
+switched to shrinkwrap by density threshold = 0.2000
+  999   3.45e-05  36.39        412771          EC: 1 -&gt; 1 
+ 3889   1.30e-04  36.73        347644          
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">molass.SAXS.MrcViewer</span> <span class="kn">import</span> <span class="n">show_mrc</span>
+<span class="o">%</span><span class="k">matplotlib</span> widget
+<span class="n">show_mrc</span><span class="p">(</span><span class="s1">&#39;data_name.mrc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "05d853c6407d4a6e96aef4fab310d17e", "version_major": 2, "version_minor": 0}</script></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

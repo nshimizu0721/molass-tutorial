@@ -61,7 +61,7 @@
     <link rel="icon" href="../_static/molamola.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Preparation" href="00/prepare.html" />
+    <link rel="next" title="1. Quick Start" href="00/quick_start.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,7 +182,7 @@
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="00/prepare.html">1. Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00/quick_start.html">1. Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01/data_objects.html">2. Data Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02/data_trimming.html">3. Data Trimming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03/baselines.html">4. Baselines</a></li>
@@ -192,6 +192,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="80/about_data_sets.html">8. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="80/trimming.html">8.1. Trimming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="80/generation.html">8.2. Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="80/local_settings.html">8.3. Local Settings</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="81/animation.html">9. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -371,7 +372,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -387,6 +390,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -400,20 +411,20 @@ document.write(`
 <h1>Molass Library Tutorial<a class="headerlink" href="#molass-library-tutorial" title="Link to this heading">#</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This book is in preparation to be publicly available in May, 2025.</p>
+<p>This book is scheduled to be publicly available in June 2025.</p>
 </div>
-<p>Molass Library is a rewrite of <a class="reference external" href="https://www.jstage.jst.go.jp/article/biophysico/20/1/20_e200001/_article">MOLASS</a> which is an analytical tool for SEC-SAXS experiment data currently hosted at <a class="reference external" href="https://pfwww.kek.jp/saxs/MOLASS.html">Photon Factory</a>, Japan. It is designed for scripting in Jupyter Notebooks, thereby attaining greater flexibility compared to the predecessor thanks to the Python ecosystem diversity.</p>
-<p>This tutorial gets you started with how to use the Molass Library. Follow the chapters of the left sidebar in order. Otherwise, glance over the contents or use the search box to find what you are interested in.</p>
-<p>See also as you proceed:</p>
+<p>Molass Library is a rewrite of <a class="reference external" href="https://www.jstage.jst.go.jp/article/biophysico/20/1/20_e200001/_article">MOLASS</a>, an analytical tool for SEC-SAXS experiment data currently hosted at <a class="reference external" href="https://pfwww.kek.jp/saxs/MOLASS.html">Photon Factory</a>, Japan. It is designed for scripting in Jupyter Notebooks, providing greater flexibility than its predecessor thanks to the diversity of the Python ecosystem.</p>
+<p>This tutorial will help you get started with the Molass Library. You can follow the chapters in order using the left sidebar, or browse the contents and use the search box to find topics of interest.</p>
+<p>As you proceed, you may also find the following resources helpful:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nshimizu0721.github.io/molass-essence/">Molass Library Essence</a> for theory,</p></li>
 <li><p><a class="reference external" href="https://nshimizu0721.github.io/molass-library/">Molass Library Reference</a> for function reference,</p></li>
 <li><p><a class="reference external" href="https://github.com/nshimizu0721/molass-library">Molass Library Repository</a> for source code.</p></li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can switch between dark and light modes using the toggle button at the upper right corner of any page.</p>
-</div>
+<section id="acknowledgments">
+<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">#</a></h2>
+<p>Parts of this tutorial were created with the assistance of <a class="reference external" href="https://github.com/features/copilot">GitHub Copilot</a>.</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -449,11 +460,11 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="00/prepare.html"
+       href="00/quick_start.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Preparation</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Quick Start</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -463,6 +474,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
