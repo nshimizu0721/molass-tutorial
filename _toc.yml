@@ -6,8 +6,8 @@ root: chapters/intro
 options:
   numbered: 3
 chapters:
-- file: chapters/00/prepare
-  title: Preparation
+- file: chapters/00/quick_start
+  title: Quick Start
 - file: chapters/01/data_objects
   title: Data Objects
 - file: chapters/02/data_trimming
@@ -27,6 +27,8 @@ chapters:
     title: Trimming
   - file: chapters/80/generation
     title: Generation
+  - file: chapters/80/local_settings
+    title: Local Settings
 - file: chapters/81/animation
   title: Animation
   sections:
