@@ -396,7 +396,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">1.1. Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-jupyter-notebooks">1.2. Tools for Jupyter Notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-usage">1.3. Standard Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#straight-usage">1.3. Straight Usage</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-input-data">1.3.1. Plot the Input Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-correction-and-lrf">1.3.2. Trimming, Correction and LRF</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-denss">1.3.3. Running DENSS</a></li>
@@ -416,6 +416,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="quick-start">
 <h1><span class="section-number">1. </span>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h1>
+<p>Molass Library is designed to achieve the following motto:</p>
+<blockquote>
+<div><p>Easy things should be easy, and hard things should be possible.</p>
+</div></blockquote>
+<p>which is a quote from Larry Wall, the creator of the Perl language, although we will use Python.</p>
+<p>In this chapter, we will show the easy part to give an idea of what it is all about.
+If the input data are well conditioned, this will suffice to get what you expect in an ordinary use.
+However, life is not so easy. That is why the hard part exists, which we provide in the later chapters.</p>
 <section id="installation">
 <h2><span class="section-number">1.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <p>We assume you have already installed Python and you are familiar with <a class="reference external" href="https://en.wikipedia.org/wiki/Project_Jupyter#Jupyter_Notebook">Jupyter Notebook</a>.</p>
@@ -437,15 +445,15 @@ document.write(`
 <li><p><a class="reference external" href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">Jupyter Extension in VS Code</a></p></li>
 </ul>
 </section>
-<section id="standard-usage">
-<h2><span class="section-number">1.3. </span>Standard Usage<a class="headerlink" href="#standard-usage" title="Link to this heading">#</a></h2>
+<section id="straight-usage">
+<h2><span class="section-number">1.3. </span>Straight Usage<a class="headerlink" href="#straight-usage" title="Link to this heading">#</a></h2>
 <section id="plot-the-input-data">
 <h3><span class="section-number">1.3.1. </span>Plot the Input Data<a class="headerlink" href="#plot-the-input-data" title="Link to this heading">#</a></h3>
+<p>We can plot the data set as follows. The format of this data set is specified in the chapter 4 of <a class="reference external" href="https://pfwww.kek.jp/saxs/software/MOLASS-UsersGuide-1_0_13.pdf">MOLASS User’s Guide</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">get_tutorial_data_path</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
-<span class="n">TUTORIAL_DATA</span> <span class="o">=</span> <span class="n">get_tutorial_data_path</span><span class="p">()</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
 <span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
 </pre></div>
@@ -458,6 +466,9 @@ document.write(`
 </section>
 <section id="trimming-correction-and-lrf">
 <h3><span class="section-number">1.3.2. </span>Trimming, Correction and LRF<a class="headerlink" href="#trimming-correction-and-lrf" title="Link to this heading">#</a></h3>
+<p>For simplisity, we assume here the data set contains two components because we observe two chromatographic peaks ignorinig the bump observed in the right side of the first peak.
+To get a set of well-estimated scattering curves of each component, we usually need to apply these three steps, namely, trimming, baseline corection, and LRF - low rank factorization.
+We can execute these steps and show the result as follows. The details of each step will be explained in later chapters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
@@ -471,20 +482,24 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developper memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x1f9b97cb830&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x1cbbfdb39e0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/4bcd76be5d05b4ebdb9f82385b7ec6c868b415d7ec0e05593ad72382c62e3035.png" src="../../_images/4bcd76be5d05b4ebdb9f82385b7ec6c868b415d7ec0e05593ad72382c62e3035.png" />
+<img alt="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" src="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" />
 </div>
 </div>
 </section>
 <section id="running-denss">
 <h3><span class="section-number">1.3.3. </span>Running DENSS<a class="headerlink" href="#running-denss" title="Link to this heading">#</a></h3>
+<p>From the result of LRF, which is expressed as “lrf_info” in the python code, we can obntain scattering curve data of each component.
+Once you have a well-conditioned scattering curve, you can reconstruct the electron density distribution using an appropriate SAXS tool.
+In Molass Library, you can use <a class="reference external" href="https://tdgrant.com/">DENSS</a> derectly as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.SAXS.DenssTools</span> <span class="kn">import</span> <span class="n">exec_denss</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">lrf_info</span><span class="o">.</span><span class="n">get_data_for_denss</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">exec_denss</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.SAXS.DenssTools</span> <span class="kn">import</span> <span class="n">run_denss</span>
+<span class="n">jcurve_array</span> <span class="o">=</span> <span class="n">lrf_info</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_jcurve_array</span><span class="p">()</span>
+<span class="n">output_folder</span> <span class="o">=</span> <span class="s2">&quot;temp&quot;</span>
+<span class="n">run_denss</span><span class="p">(</span><span class="n">jcurve_array</span><span class="p">,</span> <span class="n">output_folder</span><span class="o">=</span><span class="n">output_folder</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -494,22 +509,14 @@ WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
 Dmax = 129.43
 Number of experimental Shannon channels: 11
 Number of calculated Shannon channels: 33
-Scanning alphas... 100% complete
-WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
-WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
-Dmax = 143.72
-Number of experimental Shannon channels: 37
-Number of calculated Shannon channels: 112
 
-q, I, sigq: 1765 1765 1765
-qc, ac, ec: 2766 2766 2766
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   1.21e-01  75.23        1698782            
+  620   1.73e-02  61.57        1240768            
 switched to shrinkwrap by density threshold = 0.2000
-  999   7.49e-05  36.54        421026          EC: 1 -&gt; 1 
- 1713   6.70e-05  36.50        358040          
+  999   6.30e-05  36.15        351729          EC: 1 -&gt; 1 
+ 2095   2.69e-05  36.46        304609          
 </pre></div>
 </div>
 </div>
@@ -517,18 +524,19 @@ switched to shrinkwrap by density threshold = 0.2000
 </section>
 <section id="plotting-the-denss-result">
 <h3><span class="section-number">1.3.4. </span>Plotting the DENSS result<a class="headerlink" href="#plotting-the-denss-result" title="Link to this heading">#</a></h3>
+<p>The DENSS result can be visualized as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">molass.SAXS.MrcViewer</span> <span class="kn">import</span> <span class="n">show_mrc</span>
 <span class="c1"># %matplotlib widget</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="n">show_mrc</span><span class="p">(</span><span class="s1">&#39;data_name.mrc&#39;</span><span class="p">);</span>
+<span class="n">show_mrc</span><span class="p">(</span><span class="n">output_folder</span> <span class="o">+</span> <span class="s1">&#39;/denss_result.mrc&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/44831ed149eff9b4c49ce4cb59d8bb34c484c0be071287a07a30d0088e04a704.png" src="../../_images/44831ed149eff9b4c49ce4cb59d8bb34c484c0be071287a07a30d0088e04a704.png" />
+<img alt="../../_images/d13f2476cfafd3035c586231f1cde5c8d89e45ab9be777813da16efa08bde4d1.png" src="../../_images/d13f2476cfafd3035c586231f1cde5c8d89e45ab9be777813da16efa08bde4d1.png" />
 </div>
 </div>
 </section>
@@ -601,7 +609,7 @@ switched to shrinkwrap by density threshold = 0.2000
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">1.1. Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-jupyter-notebooks">1.2. Tools for Jupyter Notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-usage">1.3. Standard Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#straight-usage">1.3. Straight Usage</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-input-data">1.3.1. Plot the Input Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-correction-and-lrf">1.3.2. Trimming, Correction and LRF</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-denss">1.3.3. Running DENSS</a></li>
