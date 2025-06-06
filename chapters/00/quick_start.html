@@ -480,15 +480,12 @@ We can execute these steps and show the results as follows. The details of each 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
 <span class="n">lrf_info</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_lowrank_info</span><span class="p">()</span>
-<span class="n">lrf_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
+<span class="n">lrf_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developper memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x1cbbfdb39e0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" src="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" />
@@ -519,10 +516,10 @@ Number of calculated Shannon channels: 33
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   1.73e-02  61.57        1240768            
+  620   4.49e-03  53.10        1240768            
 switched to shrinkwrap by density threshold = 0.2000
-  999   6.30e-05  36.15        351729          EC: 1 -&gt; 1 
- 2095   2.69e-05  36.46        304609          
+  999   3.54e-04  35.23        349273          EC: 1 -&gt; 1 
+ 6042   3.95e-05  35.88        308405          
 </pre></div>
 </div>
 </div>
@@ -535,14 +532,14 @@ switched to shrinkwrap by density threshold = 0.2000
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">molass.SAXS.MrcViewer</span> <span class="kn">import</span> <span class="n">show_mrc</span>
+<span class="c1"># Uncomment the following magic command line if you want to use an interactive plot in Jupyter Notebook</span>
 <span class="c1"># %matplotlib widget</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="n">show_mrc</span><span class="p">(</span><span class="n">output_folder</span> <span class="o">+</span> <span class="s1">&#39;/denss_result.mrc&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d13f2476cfafd3035c586231f1cde5c8d89e45ab9be777813da16efa08bde4d1.png" src="../../_images/d13f2476cfafd3035c586231f1cde5c8d89e45ab9be777813da16efa08bde4d1.png" />
+<img alt="../../_images/1f3ec6bedbf27735d7ef03764c555a90a22b0d7813f956537f0426aa0eb2b08e.png" src="../../_images/1f3ec6bedbf27735d7ef03764c555a90a22b0d7813f956537f0426aa0eb2b08e.png" />
 </div>
 </div>
 <hr class="footnotes docutils" />
