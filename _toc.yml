@@ -16,10 +16,14 @@ chapters:
   title: Baselines
 - file: chapters/04/data_correction
   title: Data Correction
-- file: chapters/05/mapping
-  title: Mapping between UV and X-ray
-- file: chapters/06/lrf
+- file: chapters/05/lrf
   title: Low Rank Factorization
+- file: chapters/06/rank_estimation
+  title: Rank Estimation
+- file: chapters/08/mapping
+  title: Mapping between UV and X-ray
+- file: chapters/10/lro
+  title: Low Rank Optimization
 - file: chapters/80/about_data_sets
   title: About Example Data Sets
   sections:
@@ -36,3 +40,5 @@ chapters:
     title: Simple Animation
   - file: chapters/81/sec_simulation
     title: SEC Simulation
+- file: chapters/90/data_survey
+  title: Data Survey
