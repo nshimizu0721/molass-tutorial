@@ -24,6 +24,8 @@ chapters:
   title: Mapping between UV and X-ray
 - file: chapters/10/lro
   title: Low Rank Optimization
+- file: chapters/70/flowchange
+  title: Flow Change Detection
 - file: chapters/80/about_data_sets
   title: About Example Data Sets
   sections:
@@ -42,3 +44,5 @@ chapters:
     title: SEC Simulation
 - file: chapters/90/data_survey
   title: Data Survey
+- file: chapters/95/customization
+  title: Customization
