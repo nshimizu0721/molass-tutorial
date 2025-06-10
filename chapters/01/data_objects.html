@@ -186,19 +186,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03/baselines.html">4. Baselines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">5. Data Correction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/mapping.html">6. Mapping between UV and X-ray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06/lrf.html">7. Low Rank Factorization</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">8. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">8.1. Trimming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../80/generation.html">8.2. Generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../80/local_settings.html">8.3. Local Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">6. Low Rank Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">7. Rank Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/mapping.html">8. Mapping between UV and X-ray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../70/flowchange.html">10. Flow Change Detection</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">11. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">11.1. Trimming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/generation.html">11.2. Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/local_settings.html">11.3. Local Settings</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">9. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">9.1. Simple Animation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">9.2. SEC Simulation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">12. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">12.1. Simple Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">12.2. SEC Simulation</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../90/data_survey.html">13. Data Survey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../95/customization.html">14. Customization</a></li>
+
 </ul>
 
     </div>
@@ -403,7 +409,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scattering-curves">2.5.2. Scattering Curves</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">2.6. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-basics">2.6. Python Basics</a></li>
 </ul>
             </nav>
         </div>
@@ -422,12 +428,10 @@ document.write(`
 <p>In this chapter, you will learn about:</p>
 <ul class="simple">
 <li><p>Importing necessary modules</p></li>
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> (if needed)</p></li>
-<li><p>Plotting with matplotlib</p></li>
 <li><p>SEC-SAXS data objects</p></li>
+<li><p>How to plot data</p></li>
 <li><p>Elution curves</p></li>
-<li><p>Plotting data</p></li>
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">ax.set_yscale()</span></code></p></li>
+<li><p>Scattering curves</p></li>
 </ul>
 </section>
 <section id="sec-saxs-data">
@@ -591,6 +595,10 @@ document.write(`
 <img alt="../../_images/0a714bec72838b6b01e5ffaacd28d01979deb23c05f776995d08d274c6427f37.png" src="../../_images/0a714bec72838b6b01e5ffaacd28d01979deb23c05f776995d08d274c6427f37.png" />
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may have noticed that the curves include negative values which are invalid. The treatment of those values will be discussed in the following chapter.</p>
+</div>
 <p>We use <code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code> here because there is no <code class="docutils literal notranslate"><span class="pre">plt.set_yscale()</span></code> function. Let’s plot the scattering curves on a logarithmic y-scale for better visualization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -612,8 +620,9 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="references">
-<h2><span class="section-number">2.6. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<section id="python-basics">
+<h2><span class="section-number">2.6. </span>Python Basics<a class="headerlink" href="#python-basics" title="Link to this heading">#</a></h2>
+<p>We assume you are already familiar with Python basics. If not, see the following pages for example.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nbviewer.org/urls/qutip.org/qutip-tutorials/tutorials-v5/python-introduction/001_Beginning_Python.ipynb">Introduction to Python - QuTiP Tutorial</a></p></li>
 <li><p><a class="reference external" href="https://nbviewer.org/urls/qutip.org/qutip-tutorials/tutorials-v5/python-introduction/002_NumPy_Array_Basics.ipynb">Introduction to NumPy Arrays - QuTiP Tutorial</a></p></li>
@@ -694,7 +703,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scattering-curves">2.5.2. Scattering Curves</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">2.6. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-basics">2.6. Python Basics</a></li>
 </ul>
   </nav></div>
 

@@ -186,19 +186,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03/baselines.html">4. Baselines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">5. Data Correction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/mapping.html">6. Mapping between UV and X-ray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06/lrf.html">7. Low Rank Factorization</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">8. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">8.1. Trimming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../80/generation.html">8.2. Generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../80/local_settings.html">8.3. Local Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">6. Low Rank Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">7. Rank Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/mapping.html">8. Mapping between UV and X-ray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../70/flowchange.html">10. Flow Change Detection</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">11. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">11.1. Trimming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/generation.html">11.2. Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/local_settings.html">11.3. Local Settings</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">9. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">9.1. Simple Animation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">9.2. SEC Simulation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">12. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">12.1. Simple Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">12.2. SEC Simulation</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../90/data_survey.html">13. Data Survey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../95/customization.html">14. Customization</a></li>
+
 </ul>
 
     </div>
@@ -396,13 +402,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">1.1. Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-jupyter-notebooks">1.2. Tools for Jupyter Notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#straight-usage">1.3. Straight Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#straightforward-usage">1.3. Straightforward Usage</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-input-data">1.3.1. Plot the Input Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-correction-and-lrf">1.3.2. Trimming, Correction and LRF</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-denss">1.3.3. Running DENSS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-denss-result">1.3.4. Plotting the DENSS result</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-denss-result">1.3.4. Plotting the DENSS Result</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-refine">1.4. How to Refine</a></li>
 </ul>
             </nav>
         </div>
@@ -435,7 +442,7 @@ However, life is not so easy and that is why the hard part exists, which we will
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The molass_data package includes a data set for this tutorial.</p>
+<p>The molass_data package includes some data sets for this tutorial.</p>
 </div>
 </section>
 <section id="tools-for-jupyter-notebooks">
@@ -451,8 +458,8 @@ However, life is not so easy and that is why the hard part exists, which we will
 </ul>
 <p>Notebooks let you write and run code in small, manageable cells. You can experiment with different parameters, immediately see the results, and iteratively refine your analysis—most importantly, <strong>all of this without restarting your workflow from scratch</strong>. This makes it easy to test ideas, debug, and learn by doing.</p>
 </section>
-<section id="straight-usage">
-<h2><span class="section-number">1.3. </span>Straight Usage<a class="headerlink" href="#straight-usage" title="Link to this heading">#</a></h2>
+<section id="straightforward-usage">
+<h2><span class="section-number">1.3. </span>Straightforward Usage<a class="headerlink" href="#straightforward-usage" title="Link to this heading">#</a></h2>
 <section id="plot-the-input-data">
 <h3><span class="section-number">1.3.1. </span>Plot the Input Data<a class="headerlink" href="#plot-the-input-data" title="Link to this heading">#</a></h3>
 <p>We can plot the data set as follows. The format of this data set is specified in the chapter 4 of <a class="reference external" href="https://pfwww.kek.jp/saxs/software/MOLASS-UsersGuide-1_0_13.pdf">MOLASS User’s Guide</a>.</p>
@@ -480,7 +487,7 @@ We can execute these steps and show the results as follows. The details of each 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
 <span class="n">lrf_info</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_lowrank_info</span><span class="p">()</span>
-<span class="n">lrf_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span> 
+<span class="n">lrf_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -516,17 +523,17 @@ Number of calculated Shannon channels: 33
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   4.49e-03  53.10        1240768            
+  620   1.31e-02  60.94        1240768            
 switched to shrinkwrap by density threshold = 0.2000
-  999   3.54e-04  35.23        349273          EC: 1 -&gt; 1 
- 6042   3.95e-05  35.88        308405          
+  999   4.67e-05  36.09        367808          EC: 1 -&gt; 1 
+ 1850   2.07e-05  36.33        317785          
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="plotting-the-denss-result">
-<h3><span class="section-number">1.3.4. </span>Plotting the DENSS result<a class="headerlink" href="#plotting-the-denss-result" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.3.4. </span>Plotting the DENSS Result<a class="headerlink" href="#plotting-the-denss-result" title="Link to this heading">#</a></h3>
 <p>The DENSS result can be visualized as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -539,9 +546,37 @@ switched to shrinkwrap by density threshold = 0.2000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1f3ec6bedbf27735d7ef03764c555a90a22b0d7813f956537f0426aa0eb2b08e.png" src="../../_images/1f3ec6bedbf27735d7ef03764c555a90a22b0d7813f956537f0426aa0eb2b08e.png" />
+<img alt="../../_images/3073624eb6c2cab47f033fc5595a9438661987db2d31620f6345c13fadf34e76.png" src="../../_images/3073624eb6c2cab47f033fc5595a9438661987db2d31620f6345c13fadf34e76.png" />
 </div>
 </div>
+</section>
+</section>
+<section id="how-to-refine">
+<h2><span class="section-number">1.4. </span>How to Refine<a class="headerlink" href="#how-to-refine" title="Link to this heading">#</a></h2>
+<p>There are several aspects that can be improved, such as:</p>
+<ol class="arabic simple">
+<li><p>Data Selection (Trimming)</p></li>
+<li><p>Baseline Correction</p></li>
+<li><p>Decomposition of Overlapping Peaks</p></li>
+<li><p>Interparticle Interactions (Concentration Dependence)</p></li>
+</ol>
+<p>In the straightforward usage shown above, the parameters on these factors are determined roughly in favor of simplicity and speed.</p>
+<p>However, if you want to be more precise and decide that the observed bump should be considered as a sign of a separate component, you can specify the number of components as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simply_refined_lrf_info</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_lowrank_info</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">simply_refined_lrf_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developper memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" src="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" />
+</div>
+</div>
+<p>Molass Library provides several other options and methods for better estimation of scattering curves which we will discuss one by one in later chapters.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id2" role="doc-footnote">
@@ -549,7 +584,6 @@ switched to shrinkwrap by density threshold = 0.2000
 <p>For other tools, save the <code class="docutils literal notranslate"><span class="pre">jcurve_array</span></code> as a file with, for example, <code class="docutils literal notranslate"><span class="pre">np.savetxt(&quot;jcurve.dat&quot;,</span> <span class="pre">jcurve_array)</span></code>.</p>
 </aside>
 </aside>
-</section>
 </section>
 </section>
 
@@ -619,13 +653,14 @@ switched to shrinkwrap by density threshold = 0.2000
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">1.1. Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-jupyter-notebooks">1.2. Tools for Jupyter Notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#straight-usage">1.3. Straight Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#straightforward-usage">1.3. Straightforward Usage</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-input-data">1.3.1. Plot the Input Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-correction-and-lrf">1.3.2. Trimming, Correction and LRF</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-denss">1.3.3. Running DENSS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-denss-result">1.3.4. Plotting the DENSS result</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-denss-result">1.3.4. Plotting the DENSS Result</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-refine">1.4. How to Refine</a></li>
 </ul>
   </nav></div>
 

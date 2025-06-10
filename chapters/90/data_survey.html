@@ -1,0 +1,1272 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>13. Data Survey &#8212; Molass Library Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/90/data_survey';</script>
+    <link rel="icon" href="../../_static/molamola.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="14. Customization" href="../95/customization.html" />
+    <link rel="prev" title="12.2. SEC Simulation" href="../81/sec_simulation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/molamola.png" class="logo__image only-light" alt="Molass Library Tutorial - Home"/>
+    <script>document.write(`<img src="../../_static/molamola.png" class="logo__image only-dark" alt="Molass Library Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Molass Library Tutorial
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00/quick_start.html">1. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/data_objects.html">2. Data Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/baselines.html">4. Baselines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">5. Data Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">6. Low Rank Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">7. Rank Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/mapping.html">8. Mapping between UV and X-ray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../70/flowchange.html">10. Flow Change Detection</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">11. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">11.1. Trimming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/generation.html">11.2. Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../80/local_settings.html">11.3. Local Settings</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">12. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">12.1. Simple Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">12.2. SEC Simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Data Survey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../95/customization.html">14. Customization</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/nshimizu0721/molass-tutorial" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nshimizu0721/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/90/data_survey.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/90/data_survey.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Survey</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#folder-walker">13.1. Folder Walker</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-survey">
+<h1><span class="section-number">13. </span>Data Survey<a class="headerlink" href="#data-survey" title="Link to this heading">#</a></h1>
+<section id="folder-walker">
+<h2><span class="section-number">13.1. </span>Folder Walker<a class="headerlink" href="#folder-walker" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;D:\Github\molass-legacy&quot;</span><span class="p">)</span> 
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;D:\Github\molass-library&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">molass.Local</span> <span class="kn">import</span> <span class="n">get_local_settings</span>
+<span class="kn">from</span> <span class="nn">molass.DataUtils.FolderWalker</span> <span class="kn">import</span> <span class="n">walk_folders</span>
+<span class="kn">from</span> <span class="nn">molass.Global.Options</span> <span class="kn">import</span> <span class="n">set_molass_options</span>
+<span class="n">set_molass_options</span><span class="p">(</span><span class="n">flowchange</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">local_settings</span> <span class="o">=</span> <span class="n">get_local_settings</span><span class="p">()</span>
+<span class="n">DATA_ROOT_FOLDER</span> <span class="o">=</span> <span class="n">local_settings</span><span class="p">[</span><span class="s1">&#39;DATA_ROOT_FOLDER&#39;</span><span class="p">]</span>
+<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+
+<span class="n">output_folder</span> <span class="o">=</span> <span class="s2">&quot;figs&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_folder</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_folder</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">walk_folders</span><span class="p">(</span><span class="n">DATA_ROOT_FOLDER</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">([</span><span class="n">k</span><span class="p">],</span> <span class="n">path</span><span class="p">)</span>
+    <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">tinfo</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">make_trimming_info</span><span class="p">()</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Trimming Plot for </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">path</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">plot_trimming_info</span><span class="p">(</span><span class="n">tinfo</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="s2">&quot;plot_</span><span class="si">%03d</span><span class="s2">.png&quot;</span> <span class="o">%</span> <span class="n">k</span><span class="p">))</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] D:\PyTools\Data\20160227\backsub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10919: RuntimeWarning: invalid value encountered in scalar divide
+  slope = ssxym / ssxm
+c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10933: RuntimeWarning: invalid value encountered in sqrt
+  t = r * np.sqrt(df / ((1.0 - r + TINY)*(1.0 + r + TINY)))
+c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10936: RuntimeWarning: invalid value encountered in scalar divide
+  slope_stderr = np.sqrt((1 - r**2) * ssym / ssxm / df)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] D:\PyTools\Data\20160628
+[4] h_ratio= 0.02911284350190842
+[4] h_ratio= 0.02911284350190842
+[4] h_ratio= 0.02911284350190842
+[2] D:\PyTools\Data\20161006\OA01\Backsub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5] h_ratio= 0.029232230413578555
+[5] h_ratio= 0.029232230413578555
+[5] h_ratio= 0.029232230413578555
+[3] D:\PyTools\Data\20161104\BL-10C\Ald
+[4] D:\PyTools\Data\20161104\BL-10C\OA
+[5] D:\PyTools\Data\20161104\BL-10C\OA_Ald
+[6] D:\PyTools\Data\20161104\BL-6A\AhRR
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7] D:\PyTools\Data\20161104\BL-6A\HIF
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8] D:\PyTools\Data\20161104\BL-6A\pH6
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9] D:\PyTools\Data\20161104\BL-6A\pH7
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10] D:\PyTools\Data\20161113\SUB_TRN1
+[11] D:\PyTools\Data\20161113\SUB_TRN1DBB
+[12] D:\PyTools\Data\20161113\SUB_TRN1PY
+[13] D:\PyTools\Data\20161113\SUB_TRN1_2
+[14] D:\PyTools\Data\20161119\Kosugi3a_Backsub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[15] D:\PyTools\Data\20161119\Kosugi8_Backsub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[16] D:\PyTools\Data\20161124\Backsub1
+[17] D:\PyTools\Data\20161202
+[18] D:\PyTools\Data\20161205
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[19] D:\PyTools\Data\20161216\Backsub
+[20] D:\PyTools\Data\20161216\Backsub_101_120
+[21] D:\PyTools\Data\20161217
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning: divide by zero encountered in log10
+  log_ye = np.log10(np.average(error_, axis=1))
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[22] D:\PyTools\Data\20170209\OAGIwyatt_01
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[23] D:\PyTools\Data\20170209\OAGIwyatt_02
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[24] D:\PyTools\Data\20170209\OA_Ald_Fer
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[25] D:\PyTools\Data\20170226\Sugiyama
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:1238: RuntimeWarning: invalid value encountered in subtract
+  out[tuple(slice1)] = (f[tuple(slice4)] - f[tuple(slice2)]) / (2. * ax_dx)
+c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:1266: RuntimeWarning: invalid value encountered in scalar subtract
+  out[tuple(slice1)] = (f[tuple(slice2)] - f[tuple(slice3)]) / dx_n
+D:\Github\molass-legacy\molass_legacy\KekLib\GeometryUtils.py:19: RuntimeWarning: invalid value encountered in divide
+  wy_ = wy/(np.max(wy) - np.min(wy))
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[26] D:\PyTools\Data\20170301\Backsub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[27] D:\PyTools\Data\20170304\Backsub_166_195
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[28] D:\PyTools\Data\20170307\Backsub
+[29] D:\PyTools\Data\20170309\Backsub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[30] D:\PyTools\Data\20170426
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[31] D:\PyTools\Data\20170506\ACTM002\Backsub
+[32] D:\PyTools\Data\20170506\ACTM002\Backsub2
+[33] D:\PyTools\Data\20170511
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34] D:\PyTools\Data\20170512\Backsub
+[35] D:\PyTools\Data\20171112\Backsub_272_281_monoM
+[36] D:\PyTools\Data\20171112\Backsub_ComMR
+[37] D:\PyTools\Data\20171112\Backsub_monoE
+[38] D:\PyTools\Data\20171118\Factin
+[39] D:\PyTools\Data\20171118\Gactin
+[40] D:\PyTools\Data\20171203
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[41] D:\PyTools\Data\20171226\Backsub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+Rg=5.382933139571081 &lt; 10.0 has been replaced by 10.0 to avoid exception.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[42] D:\PyTools\Data\20180204\Close01
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[43] D:\PyTools\Data\20180204\Open01
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[44] D:\PyTools\Data\20180204\TSsome2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[45] D:\PyTools\Data\20180206
+[46] D:\PyTools\Data\20180206_TG
+[47] D:\PyTools\Data\20180219
+[48] D:\PyTools\Data\20180225
+[49] D:\PyTools\Data\20180316\Backsub
+[50] D:\PyTools\Data\20180329_microfluidic
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+D:\Github\molass-legacy\molass_legacy\KekLib\GeometryUtils.py:19: RuntimeWarning: invalid value encountered in scalar subtract
+  wy_ = wy/(np.max(wy) - np.min(wy))
+Rg=0 &lt; 10.0 has been replaced by 10.0 to avoid exception.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[51] D:\PyTools\Data\20180526\GI
+[52] D:\PyTools\Data\20180526\OA
+[53] D:\PyTools\Data\20180526\OAGI
+[54] D:\PyTools\Data\20180602
+[55] D:\PyTools\Data\20180605\Backsub3
+[56] D:\PyTools\Data\20180617
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[57] D:\PyTools\Data\20181117_microfluidic_reduced
+[58] D:\PyTools\Data\20181127
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[59] D:\PyTools\Data\20181203
+[60] D:\PyTools\Data\20181203_no_UV
+[61] D:\PyTools\Data\20181204
+[62] D:\PyTools\Data\20181212\data
+[63] D:\PyTools\Data\20181214\Backsub
+[64] D:\PyTools\Data\20190221
+[65] D:\PyTools\Data\20190221_1_ver2
+[66] D:\PyTools\Data\20190221_2
+[67] D:\PyTools\Data\20190227
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[68] D:\PyTools\Data\20190227_2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[69] D:\PyTools\Data\20190302
+[70] D:\PyTools\Data\20190305_1
+[71] D:\PyTools\Data\20190305_2
+[72] D:\PyTools\Data\20190309_1
+[73] D:\PyTools\Data\20190309_2
+[74] D:\PyTools\Data\20190309_3
+[75] D:\PyTools\Data\20190309_4
+[76] D:\PyTools\Data\20190309_5
+[77] D:\PyTools\Data\20190309_6
+[78] D:\PyTools\Data\20190309_7
+[79] D:\PyTools\Data\20190315_1
+[80] D:\PyTools\Data\20190315_2
+[81] D:\PyTools\Data\20190315_3
+[82] D:\PyTools\Data\20190317
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:520: RuntimeWarning: Mean of empty slice.
+  avg = a.mean(axis, **keepdims_kw)
+c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[83] D:\PyTools\Data\20190319\Backsub1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[84] D:\PyTools\Data\20190423\Sub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[85] D:\PyTools\Data\20190514
+[86] D:\PyTools\Data\20190519
+[87] D:\PyTools\Data\20190524_1
+[88] D:\PyTools\Data\20190524_2
+[89] D:\PyTools\Data\20190527
+[90] D:\PyTools\Data\20190529_1
+[91] D:\PyTools\Data\20190529_2
+[92] D:\PyTools\Data\20190529_3
+[93] D:\PyTools\Data\20190529_4
+[94] D:\PyTools\Data\20190529_5
+[95] D:\PyTools\Data\20190529_6
+[96] D:\PyTools\Data\20190607_1
+[97] D:\PyTools\Data\20190626
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[98] D:\PyTools\Data\20190630_1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[99] D:\PyTools\Data\20190630_2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[100] D:\PyTools\Data\20190630_3
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[101] D:\PyTools\Data\20191003_OA
+[102] D:\PyTools\Data\20191004_OA_Ald_Ferr
+[103] D:\PyTools\Data\20191006_proteins5
+[104] D:\PyTools\Data\20191031
+[105] D:\PyTools\Data\20191109
+[106] D:\PyTools\Data\20191114_1
+[107] D:\PyTools\Data\20191114_2
+[108] D:\PyTools\Data\20191114_3
+[109] D:\PyTools\Data\20191114_4
+[110] D:\PyTools\Data\20191118_1
+[111] D:\PyTools\Data\20191118_2
+[112] D:\PyTools\Data\20191118_3
+[113] D:\PyTools\Data\20191118_4
+[114] D:\PyTools\Data\20191122_1
+[115] D:\PyTools\Data\20191122_2
+[116] D:\PyTools\Data\20191125
+[117] D:\PyTools\Data\20191201_1
+[118] D:\PyTools\Data\20191201_2
+[119] D:\PyTools\Data\20191201_3
+[120] D:\PyTools\Data\20191201_4
+[121] D:\PyTools\Data\20191207
+[122] D:\PyTools\Data\20200121_1
+[123] D:\PyTools\Data\20200121_2
+[124] D:\PyTools\Data\20200121_3
+[125] D:\PyTools\Data\20200123_1
+[126] D:\PyTools\Data\20200123_2
+[127] D:\PyTools\Data\20200123_3
+[128] D:\PyTools\Data\20200123_4
+[129] D:\PyTools\Data\20200124_1
+[130] D:\PyTools\Data\20200124_2
+[131] D:\PyTools\Data\20200125_1
+[132] D:\PyTools\Data\20200125_2
+[133] D:\PyTools\Data\20200211
+[134] D:\PyTools\Data\20200214_1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[135] D:\PyTools\Data\20200214_2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[136] D:\PyTools\Data\20200214_3
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[137] D:\PyTools\Data\20200218
+[138] D:\PyTools\Data\20200226
+[139] D:\PyTools\Data\20200304_1
+[140] D:\PyTools\Data\20200304_2
+[141] D:\PyTools\Data\20200618_1
+[142] D:\PyTools\Data\20200618_2
+[143] D:\PyTools\Data\20200623_1
+[144] D:\PyTools\Data\20200623_2
+[145] D:\PyTools\Data\20200624_1
+[146] D:\PyTools\Data\20200624_2
+[147] D:\PyTools\Data\20200624_3
+[148] D:\PyTools\Data\20200624_4
+[149] D:\PyTools\Data\20200630_1
+[150] D:\PyTools\Data\20200630_10
+[151] D:\PyTools\Data\20200630_11
+[152] D:\PyTools\Data\20200630_12
+[153] D:\PyTools\Data\20200630_13
+[154] D:\PyTools\Data\20200630_14
+[155] D:\PyTools\Data\20200630_2
+[156] D:\PyTools\Data\20200630_3
+[157] D:\PyTools\Data\20200630_4
+[158] D:\PyTools\Data\20200630_5
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
+[159] D:\PyTools\Data\20200630_6
+Try find_peaks with fewer parameters.
+[10] h_ratio= 0.025637481212000806
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
+[10] h_ratio= 0.025637481212000806
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
+[10] h_ratio= 0.025637481212000806
+[160] D:\PyTools\Data\20200630_7
+[161] D:\PyTools\Data\20200630_8
+[162] D:\PyTools\Data\20200630_9
+[163] D:\PyTools\Data\20201005_1
+[164] D:\PyTools\Data\20201005_2
+[165] D:\PyTools\Data\20201005_3
+[166] D:\PyTools\Data\20201005_4
+[167] D:\PyTools\Data\20201006_1
+[168] D:\PyTools\Data\20201006_2
+[169] D:\PyTools\Data\20201007_1
+[170] D:\PyTools\Data\20201007_2
+[171] D:\PyTools\Data\20201007_3
+[172] D:\PyTools\Data\20201007_4
+[173] D:\PyTools\Data\20201009_1
+[174] D:\PyTools\Data\20201009_2
+[175] D:\PyTools\Data\20201030
+[176] D:\PyTools\Data\20201117
+[177] D:\PyTools\Data\20201122
+[178] D:\PyTools\Data\20201127_1
+[179] D:\PyTools\Data\20201127_2
+[180] D:\PyTools\Data\20201127_3
+[181] D:\PyTools\Data\20201127_4
+[182] D:\PyTools\Data\20201127_5
+[183] D:\PyTools\Data\20201208_1
+[184] D:\PyTools\Data\20201208_2
+[185] D:\PyTools\Data\20201208_3
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:206: RuntimeWarning: Degrees of freedom &lt;= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:163: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:198: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[186] D:\PyTools\Data\20201208_4
+[187] D:\PyTools\Data\20201211
+[188] D:\PyTools\Data\20210219
+[189] D:\PyTools\Data\20210323_1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[190] D:\PyTools\Data\20210323_2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[191] D:\PyTools\Data\20210506\BSA_sd200S_sub2
+[192] D:\PyTools\Data\20210506\Backsub_20210501
+[193] D:\PyTools\Data\20210506\Backsub_AR_20210511
+[194] D:\PyTools\Data\20210512
+[195] D:\PyTools\Data\20210527\SiRNA_Backsub_20210501
+[196] D:\PyTools\Data\20210610\Buffer
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rg=2.0945548129329405 &lt; 10.0 has been replaced by 10.0 to avoid exception.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[197] D:\PyTools\Data\20210610\Sample
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rg=3.800773864599062 &lt; 10.0 has been replaced by 10.0 to avoid exception.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Try find_peaks with fewer parameters.
+[27] h_ratio= 0.0279065556103964
+Try find_peaks with fewer parameters.
+[27] h_ratio= 0.0279065556103964
+[198] D:\PyTools\Data\20210628
+[199] D:\PyTools\Data\20210628_2
+[200] D:\PyTools\Data\20210727\data01
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[201] D:\PyTools\Data\20210727\data02
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[202] D:\PyTools\Data\20211021\Backsub_tests001
+[203] D:\PyTools\Data\20211105\Cu_myo10_II
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:121: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+get_limit_impl failed.  File &quot;D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 37, in get_limit
+    self.get_limit_impl(self.e_curve, self.data, self.error, self.logger, debug=debug)
+  File &quot;D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 60, in get_limit_impl
+    if error_[-1,0] == 0:
+       ~~~~~~^^^^^^
+IndexError: index 0 is out of bounds for axis 1 with size 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Try find_peaks with fewer parameters.
+[10] h_ratio= 0.0279702054804688
+Try find_peaks with fewer parameters.
+[10] h_ratio= 0.0279702054804688
+[204] D:\PyTools\Data\20211105\Cu_myo10_II_backsub
+Try find_peaks with fewer parameters.
+[3] h_ratio= 0.02344644149451426
+Try find_peaks with fewer parameters.
+[3] h_ratio= 0.02344644149451426
+[205] D:\PyTools\Data\20211105\apo_myo10
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>get_limit_impl failed.  File &quot;D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 37, in get_limit
+    self.get_limit_impl(self.e_curve, self.data, self.error, self.logger, debug=debug)
+  File &quot;D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 60, in get_limit_impl
+    if error_[-1,0] == 0:
+       ~~~~~~^^^^^^
+IndexError: index 0 is out of bounds for axis 1 with size 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Try find_peaks with fewer parameters.
+[12] h_ratio= 0.0
+Try find_peaks with fewer parameters.
+[12] h_ratio= 0.0
+[206] D:\PyTools\Data\20211105\apo_myo10_backsub
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>get_limit_impl failed.  File &quot;D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 37, in get_limit
+    self.get_limit_impl(self.e_curve, self.data, self.error, self.logger, debug=debug)
+  File &quot;D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py&quot;, line 60, in get_limit_impl
+    if error_[-1,0] == 0:
+       ~~~~~~^^^^^^
+IndexError: index 0 is out of bounds for axis 1 with size 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Try find_peaks with fewer parameters.
+[9] h_ratio= 0.024288500999603665
+Try find_peaks with fewer parameters.
+[9] h_ratio= 0.024288500999603665
+[207] D:\PyTools\Data\20211105\buffer
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rg=7.624375732621663 &lt; 10.0 has been replaced by 10.0 to avoid exception.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Try find_peaks with fewer parameters.
+[10] h_ratio= 0.013755757130491628
+Try find_peaks with fewer parameters.
+[10] h_ratio= 0.013755757130491628
+[208] D:\PyTools\Data\20211209
+[209] D:\PyTools\Data\20211222\HypC
+[210] D:\PyTools\Data\20211222\PKS
+[211] D:\PyTools\Data\20211222\PKS2
+[212] D:\PyTools\Data\20220210
+[213] D:\PyTools\Data\20220311
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[214] D:\PyTools\Data\20220517
+[215] D:\PyTools\Data\20220628
+[216] D:\PyTools\Data\20220716\BSA_201
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[217] D:\PyTools\Data\20220716\BSA_202
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[218] D:\PyTools\Data\20220716\FER_OA_301
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[219] D:\PyTools\Data\20220716\FER_OA_302
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[220] D:\PyTools\Data\20220716\OA_ALD_201
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[221] D:\PyTools\Data\20220716\OA_ALD_202
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[222] D:\PyTools\Data\20220716\lowSN_BSA_01
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[223] D:\PyTools\Data\20221014\CytC002_wavelength800
+[224] D:\PyTools\Data\20221121\ALD002
+[225] D:\PyTools\Data\20221121\ALD003
+[226] D:\PyTools\Data\20221208
+[227] D:\PyTools\Data\20221227
+[228] D:\PyTools\Data\20230303\HasA
+[229] D:\PyTools\Data\20230303\NAC
+[230] D:\PyTools\Data\20230303\NACca
+[231] D:\PyTools\Data\20230304
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[232] D:\PyTools\Data\20230705
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[233] D:\PyTools\Data\20230706\ALD001
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[234] D:\PyTools\Data\20230706\ALD002
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[235] D:\PyTools\Data\20230706\ALD_OA001
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[236] D:\PyTools\Data\20230706\ALD_OA002
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[237] D:\PyTools\Data\20230706\BSA001
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[238] D:\PyTools\Data\20230706\BSA002
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[239] D:\PyTools\Data\20230706\GI001
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[240] D:\PyTools\Data\20230706\GI002
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[241] D:\PyTools\Data\20230706\OA001
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[242] D:\PyTools\Data\20230706\OA002
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[243] D:\PyTools\Data\20230818\Backsub3
+[244] D:\PyTools\Data\20231123
+[245] D:\PyTools\Data\20231214\PgpApo
+[246] D:\PyTools\Data\20231214\PgpEla
+[247] D:\PyTools\Data\20231214\PgpTax
+[248] D:\PyTools\Data\20240730
+[249] D:\PyTools\Data\20250212\REF
+[250] D:\PyTools\Data\20250212\SG
+[251] D:\PyTools\Data\OA_11_cut
+[252] D:\PyTools\Data\sample_data
+[253] D:\PyTools\Data\sample_data_no_UV
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters\90"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../81/sec_simulation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">12.2. </span>SEC Simulation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../95/customization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Customization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#folder-walker">13.1. Folder Walker</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Molass Community powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

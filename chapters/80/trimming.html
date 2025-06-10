@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8.1. Trimming &#8212; Molass Library Tutorial</title>
+    <title>11.1. Trimming &#8212; Molass Library Tutorial</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -61,8 +61,8 @@
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8.2. Generation" href="generation.html" />
-    <link rel="prev" title="8. About Example Data Sets" href="about_data_sets.html" />
+    <link rel="next" title="11.2. Generation" href="generation.html" />
+    <link rel="prev" title="11. About Example Data Sets" href="about_data_sets.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,19 +186,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03/baselines.html">4. Baselines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">5. Data Correction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/mapping.html">6. Mapping between UV and X-ray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06/lrf.html">7. Low Rank Factorization</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="about_data_sets.html">8. About Example Data Sets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.1. Trimming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generation.html">8.2. Generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="local_settings.html">8.3. Local Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">6. Low Rank Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">7. Rank Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/mapping.html">8. Mapping between UV and X-ray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../70/flowchange.html">10. Flow Change Detection</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="about_data_sets.html">11. About Example Data Sets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">11.1. Trimming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generation.html">11.2. Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_settings.html">11.3. Local Settings</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">9. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">9.1. Simple Animation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">9.2. SEC Simulation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../81/animation.html">12. Animation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../81/simple_animation.html">12.1. Simple Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../81/sec_simulation.html">12.2. SEC Simulation</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../90/data_survey.html">13. Data Survey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../95/customization.html">14. Customization</a></li>
+
 </ul>
 
     </div>
@@ -413,7 +419,7 @@ document.write(`
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="trimming">
-<h1><span class="section-number">8.1. </span>Trimming<a class="headerlink" href="#trimming" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">11.1. </span>Trimming<a class="headerlink" href="#trimming" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.Global.Options</span> <span class="kn">import</span> <span class="n">set_molass_options</span>
@@ -536,7 +542,9 @@ document.write(`
 [89] copying from D:\PyTools\Data\sample_data\SAMPLE_00089_sub.dat to SAMPLE_00022_.dat
 [90] copying from D:\PyTools\Data\sample_data\SAMPLE_00090_sub.dat to SAMPLE_00023_.dat
 [91] copying from D:\PyTools\Data\sample_data\SAMPLE_00091_sub.dat to SAMPLE_00024_.dat
-[92] copying from D:\PyTools\Data\sample_data\SAMPLE_00092_sub.dat to SAMPLE_00025_.dat
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[92] copying from D:\PyTools\Data\sample_data\SAMPLE_00092_sub.dat to SAMPLE_00025_.dat
 [93] copying from D:\PyTools\Data\sample_data\SAMPLE_00093_sub.dat to SAMPLE_00026_.dat
 [94] copying from D:\PyTools\Data\sample_data\SAMPLE_00094_sub.dat to SAMPLE_00027_.dat
 [95] copying from D:\PyTools\Data\sample_data\SAMPLE_00095_sub.dat to SAMPLE_00028_.dat
@@ -552,9 +560,7 @@ document.write(`
 [105] copying from D:\PyTools\Data\sample_data\SAMPLE_00105_sub.dat to SAMPLE_00038_.dat
 [106] copying from D:\PyTools\Data\sample_data\SAMPLE_00106_sub.dat to SAMPLE_00039_.dat
 [107] copying from D:\PyTools\Data\sample_data\SAMPLE_00107_sub.dat to SAMPLE_00040_.dat
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[108] copying from D:\PyTools\Data\sample_data\SAMPLE_00108_sub.dat to SAMPLE_00041_.dat
+[108] copying from D:\PyTools\Data\sample_data\SAMPLE_00108_sub.dat to SAMPLE_00041_.dat
 [109] copying from D:\PyTools\Data\sample_data\SAMPLE_00109_sub.dat to SAMPLE_00042_.dat
 [110] copying from D:\PyTools\Data\sample_data\SAMPLE_00110_sub.dat to SAMPLE_00043_.dat
 [111] copying from D:\PyTools\Data\sample_data\SAMPLE_00111_sub.dat to SAMPLE_00044_.dat
@@ -661,9 +667,7 @@ document.write(`
 [212] copying from D:\PyTools\Data\sample_data\SAMPLE_00212_sub.dat to SAMPLE_00145_.dat
 [213] copying from D:\PyTools\Data\sample_data\SAMPLE_00213_sub.dat to SAMPLE_00146_.dat
 [214] copying from D:\PyTools\Data\sample_data\SAMPLE_00214_sub.dat to SAMPLE_00147_.dat
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[215] copying from D:\PyTools\Data\sample_data\SAMPLE_00215_sub.dat to SAMPLE_00148_.dat
+[215] copying from D:\PyTools\Data\sample_data\SAMPLE_00215_sub.dat to SAMPLE_00148_.dat
 [216] copying from D:\PyTools\Data\sample_data\SAMPLE_00216_sub.dat to SAMPLE_00149_.dat
 [217] copying from D:\PyTools\Data\sample_data\SAMPLE_00217_sub.dat to SAMPLE_00150_.dat
 [218] copying from D:\PyTools\Data\sample_data\SAMPLE_00218_sub.dat to SAMPLE_00151_.dat
@@ -671,7 +675,9 @@ document.write(`
 [220] copying from D:\PyTools\Data\sample_data\SAMPLE_00220_sub.dat to SAMPLE_00153_.dat
 [221] copying from D:\PyTools\Data\sample_data\SAMPLE_00221_sub.dat to SAMPLE_00154_.dat
 [222] copying from D:\PyTools\Data\sample_data\SAMPLE_00222_sub.dat to SAMPLE_00155_.dat
-[223] copying from D:\PyTools\Data\sample_data\SAMPLE_00223_sub.dat to SAMPLE_00156_.dat
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[223] copying from D:\PyTools\Data\sample_data\SAMPLE_00223_sub.dat to SAMPLE_00156_.dat
 [224] copying from D:\PyTools\Data\sample_data\SAMPLE_00224_sub.dat to SAMPLE_00157_.dat
 [225] copying from D:\PyTools\Data\sample_data\SAMPLE_00225_sub.dat to SAMPLE_00158_.dat
 [226] copying from D:\PyTools\Data\sample_data\SAMPLE_00226_sub.dat to SAMPLE_00159_.dat
@@ -699,7 +705,9 @@ document.write(`
 [248] copying from D:\PyTools\Data\sample_data\SAMPLE_00248_sub.dat to SAMPLE_00181_.dat
 [249] copying from D:\PyTools\Data\sample_data\SAMPLE_00249_sub.dat to SAMPLE_00182_.dat
 [250] copying from D:\PyTools\Data\sample_data\SAMPLE_00250_sub.dat to SAMPLE_00183_.dat
-[251] copying from D:\PyTools\Data\sample_data\SAMPLE_00251_sub.dat to SAMPLE_00184_.dat
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[251] copying from D:\PyTools\Data\sample_data\SAMPLE_00251_sub.dat to SAMPLE_00184_.dat
 [252] copying from D:\PyTools\Data\sample_data\SAMPLE_00252_sub.dat to SAMPLE_00185_.dat
 [253] copying from D:\PyTools\Data\sample_data\SAMPLE_00253_sub.dat to SAMPLE_00186_.dat
 [254] copying from D:\PyTools\Data\sample_data\SAMPLE_00254_sub.dat to SAMPLE_00187_.dat
@@ -709,9 +717,7 @@ document.write(`
 [258] copying from D:\PyTools\Data\sample_data\SAMPLE_00258_sub.dat to SAMPLE_00191_.dat
 [259] copying from D:\PyTools\Data\sample_data\SAMPLE_00259_sub.dat to SAMPLE_00192_.dat
 [260] copying from D:\PyTools\Data\sample_data\SAMPLE_00260_sub.dat to SAMPLE_00193_.dat
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[261] copying from D:\PyTools\Data\sample_data\SAMPLE_00261_sub.dat to SAMPLE_00194_.dat
+[261] copying from D:\PyTools\Data\sample_data\SAMPLE_00261_sub.dat to SAMPLE_00194_.dat
 [262] copying from D:\PyTools\Data\sample_data\SAMPLE_00262_sub.dat to SAMPLE_00195_.dat
 [263] copying from D:\PyTools\Data\sample_data\SAMPLE_00263_sub.dat to SAMPLE_00196_.dat
 [264] copying from D:\PyTools\Data\sample_data\SAMPLE_00264_sub.dat to SAMPLE_00197_.dat
@@ -833,7 +839,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x2ad92c1de80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x191d2408380&gt;
 </pre></div>
 </div>
 <img alt="../../_images/6fd4d8149ba6580a6118eff642c70606f661054328a9a9c83b6a74fdc2a2290b.png" src="../../_images/6fd4d8149ba6580a6118eff642c70606f661054328a9a9c83b6a74fdc2a2290b.png" />
@@ -927,7 +933,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>About Example Data Sets</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>About Example Data Sets</p>
       </div>
     </a>
     <a class="right-next"
@@ -935,7 +941,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8.2. </span>Generation</p>
+        <p class="prev-next-title"><span class="section-number">11.2. </span>Generation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
