@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -204,7 +204,6 @@
 </details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Data Survey</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../95/customization.html">14. Customization</a></li>
-
 </ul>
 
     </div>
@@ -423,11 +422,9 @@ document.write(`
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;D:\Github\molass-library&quot;</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
 <span class="kn">from</span> <span class="nn">molass.Local</span> <span class="kn">import</span> <span class="n">get_local_settings</span>
 <span class="kn">from</span> <span class="nn">molass.DataUtils.FolderWalker</span> <span class="kn">import</span> <span class="n">walk_folders</span>
 <span class="kn">from</span> <span class="nn">molass.Global.Options</span> <span class="kn">import</span> <span class="n">set_molass_options</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s2">&quot;0.0.11&quot;</span><span class="p">,</span> <span class="s2">&quot;This script requires molass version 0.0.11 or higher.&quot;</span>
 <span class="n">set_molass_options</span><span class="p">(</span><span class="n">flowchange</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">local_settings</span> <span class="o">=</span> <span class="n">get_local_settings</span><span class="p">()</span>
 <span class="n">DATA_ROOT_FOLDER</span> <span class="o">=</span> <span class="n">local_settings</span><span class="p">[</span><span class="s1">&#39;DATA_ROOT_FOLDER&#39;</span><span class="p">]</span>
@@ -441,7 +438,7 @@ document.write(`
     <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">continue</span>
     <span class="nb">print</span><span class="p">([</span><span class="n">k</span><span class="p">],</span> <span class="n">path</span><span class="p">)</span>
-    <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">remove_bubbles</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ssd</span><span class="o">.</span><span class="n">uv</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No UV data found in </span><span class="si">%s</span><span class="s2">, skipping.&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
         <span class="k">continue</span>
@@ -458,69 +455,59 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] D:\PyTools\Data\20160227\backsub
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -1.0 to 2.0
-[1] D:\PyTools\Data\20160628
-[4] h_ratio= 0.02911284350190842
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10919: RuntimeWarning: invalid value encountered in scalar divide
   slope = ssxym / ssxm
 c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10933: RuntimeWarning: invalid value encountered in sqrt
   t = r * np.sqrt(df / ((1.0 - r + TINY)*(1.0 + r + TINY)))
 c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10936: RuntimeWarning: invalid value encountered in scalar divide
   slope_stderr = np.sqrt((1 - r**2) * ssym / ssxm / df)
+zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -51.0 to 339.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] D:\PyTools\Data\20160628
+[4] h_ratio= 0.02911284350190842
+[4] h_ratio= 0.02911284350190842
+[4] h_ratio= 0.02911284350190842
 [2] D:\PyTools\Data\20161006\OA01\Backsub
+[5] h_ratio= 0.029232230413578555
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5] h_ratio= 0.029232230413578555
+[5] h_ratio= 0.029232230413578555
 [3] D:\PyTools\Data\20161104\BL-10C\Ald
 [4] D:\PyTools\Data\20161104\BL-10C\OA
-Extended x range: -17.0 to 238.29296399500663
 [5] D:\PyTools\Data\20161104\BL-10C\OA_Ald
-Extended x range: -99.0 to 254.29268292682923
 [6] D:\PyTools\Data\20161104\BL-6A\AhRR
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -4.453313550839312 to 255.5466864491607
-[7] D:\PyTools\Data\20161104\BL-6A\HIF
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7] D:\PyTools\Data\20161104\BL-6A\HIF
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -8.87438422872458 to 248.12561577127542
-[8] D:\PyTools\Data\20161104\BL-6A\pH6
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8] D:\PyTools\Data\20161104\BL-6A\pH6
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -9.0 to 388.0185420194198
-[9] D:\PyTools\Data\20161104\BL-6A\pH7
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9] D:\PyTools\Data\20161104\BL-6A\pH7
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10] D:\PyTools\Data\20161113\SUB_TRN1
-Extended x range: -1.0 to 275.54166666666663
 [11] D:\PyTools\Data\20161113\SUB_TRN1DBB
 [12] D:\PyTools\Data\20161113\SUB_TRN1PY
-Extended x range: -3.0 to 222.04071668888503
 [13] D:\PyTools\Data\20161113\SUB_TRN1_2
-Extended x range: -59.0 to 87.0
 [14] D:\PyTools\Data\20161119\Kosugi3a_Backsub
 </pre></div>
 </div>
@@ -533,22 +520,16 @@ Extended x range: -59.0 to 87.0
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -20.0 to 434.4585655294071
-[16] D:\PyTools\Data\20161124\Backsub1
-Extended x range: -20.0 to 325.544298511336
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[16] D:\PyTools\Data\20161124\Backsub1
 [17] D:\PyTools\Data\20161202
-Extended x range: -1.0 to 313.74285714285713
 [18] D:\PyTools\Data\20161205
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -22.0 to 306.8448904668306
-[19] D:\PyTools\Data\20161216\Backsub
-Extended x range: -2.0 to 3.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[19] D:\PyTools\Data\20161216\Backsub
 [20] D:\PyTools\Data\20161216\Backsub_101_120
-Extended x range: -2.0 to 4.0
 [21] D:\PyTools\Data\20161217
 </pre></div>
 </div>
@@ -557,15 +538,13 @@ D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning
   log_ye = np.log10(np.average(error_, axis=1))
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -6.0 to 11.0
-[22] D:\PyTools\Data\20170209\OAGIwyatt_01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[22] D:\PyTools\Data\20170209\OAGIwyatt_01
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -1.0 to 2.0
-[23] D:\PyTools\Data\20170209\OAGIwyatt_02
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[23] D:\PyTools\Data\20170209\OAGIwyatt_02
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
@@ -577,64 +556,31 @@ D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -5.744407257354169 to 364.25559274264583
-[25] D:\PyTools\Data\20170226\Sugiyama
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bubbles have been removed at [287 288 289 290]
-zeros at the angular ends of error data have been replaced with the adjacent values.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exclude_bubble_impl:  287 290
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning: divide by zero encountered in log10
-  log_ye = np.log10(np.average(error_, axis=1))
-c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:1238: RuntimeWarning: invalid value encountered in subtract
-  out[tuple(slice1)] = (f[tuple(slice4)] - f[tuple(slice2)]) / (2. * ax_dx)
-c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:1266: RuntimeWarning: invalid value encountered in scalar subtract
-  out[tuple(slice1)] = (f[tuple(slice2)] - f[tuple(slice3)]) / dx_n
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -22.0 to 367.08460217685456
-[26] D:\PyTools\Data\20170301\Backsub
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[25] D:\PyTools\Data\20170226\Sugiyama
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
-D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning: divide by zero encountered in log10
-  log_ye = np.log10(np.average(error_, axis=1))
 c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:1238: RuntimeWarning: invalid value encountered in subtract
   out[tuple(slice1)] = (f[tuple(slice4)] - f[tuple(slice2)]) / (2. * ax_dx)
 c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:1266: RuntimeWarning: invalid value encountered in scalar subtract
   out[tuple(slice1)] = (f[tuple(slice2)] - f[tuple(slice3)]) / dx_n
+D:\Github\molass-legacy\molass_legacy\KekLib\GeometryUtils.py:19: RuntimeWarning: invalid value encountered in divide
+  wy_ = wy/(np.max(wy) - np.min(wy))
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -26.0 to 499.2613636363636
-[27] D:\PyTools\Data\20170304\Backsub_166_195
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[26] D:\PyTools\Data\20170301\Backsub
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
-D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning: divide by zero encountered in log10
-  log_ye = np.log10(np.average(error_, axis=1))
-c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:1238: RuntimeWarning: invalid value encountered in subtract
-  out[tuple(slice1)] = (f[tuple(slice4)] - f[tuple(slice2)]) / (2. * ax_dx)
-c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:1266: RuntimeWarning: invalid value encountered in scalar subtract
-  out[tuple(slice1)] = (f[tuple(slice2)] - f[tuple(slice3)]) / dx_n
-Failed to estimate mapping for matching peaks.  File &quot;D:\Github\molass-library\molass\Mapping\SimpleMapper.py&quot;, line 141, in estimate_mapping_impl
-    return estimate_mapping_for_matching_peaks(xr_curve, xr_peaks, uv_curve, uv_peaks, debug=debug)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;D:\Github\molass-library\molass\Mapping\SimpleMapper.py&quot;, line 103, in estimate_mapping_for_matching_peaks
-    return estimate_mapping_for_matching_peaks(xr_curve_, xr_peaks, uv_curve_, uv_peaks, retry=False, debug=debug)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;D:\Github\molass-library\molass\Mapping\SimpleMapper.py&quot;, line 100, in estimate_mapping_for_matching_peaks
-    assert retry, &quot;Mapping coverage is not acceptable after retry.&quot;
-           ^^^^^
-AssertionError: Mapping coverage is not acceptable after retry.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -0.13158414013901165 to 389.868415859861
-[28] D:\PyTools\Data\20170307\Backsub
-Extended x range: -22.0 to 431.6984126984127
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[27] D:\PyTools\Data\20170304\Backsub_166_195
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[28] D:\PyTools\Data\20170307\Backsub
 [29] D:\PyTools\Data\20170309\Backsub
 </pre></div>
 </div>
@@ -647,11 +593,8 @@ Extended x range: -22.0 to 431.6984126984127
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -107.0 to 362.0048611888545
-[31] D:\PyTools\Data\20170506\ACTM002\Backsub
-Extended x range: -72.0 to 157.74824225120483
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[31] D:\PyTools\Data\20170506\ACTM002\Backsub
 [32] D:\PyTools\Data\20170506\ACTM002\Backsub2
-Extended x range: -20.0 to 154.28109222352003
 [33] D:\PyTools\Data\20170511
 </pre></div>
 </div>
@@ -663,43 +606,27 @@ Extended x range: -20.0 to 154.28109222352003
 [36] D:\PyTools\Data\20171112\Backsub_ComMR
 [37] D:\PyTools\Data\20171112\Backsub_monoE
 [38] D:\PyTools\Data\20171118\Factin
-Extended x range: -124.0 to 285.7538242916496
 [39] D:\PyTools\Data\20171118\Gactin
-Extended x range: -61.0 to 261.14202900869043
 [40] D:\PyTools\Data\20171203
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -130.0 to 453.1988610604685
-[41] D:\PyTools\Data\20171226\Backsub
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[41] D:\PyTools\Data\20171226\Backsub
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bubbles have been removed at [ 7  8  9 10]
-zeros at the angular ends of error data have been replaced with the adjacent values.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+Rg=5.382933139571081 &lt; 10.0 has been replaced by 10.0 to avoid exception.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exclude_bubble_impl:  7 10
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D:\Github\molass-legacy\molass_legacy\Trimming\FlangeLimit.py:71: RuntimeWarning: divide by zero encountered in log10
-  log_ye = np.log10(np.average(error_, axis=1))
-c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:1238: RuntimeWarning: invalid value encountered in subtract
-  out[tuple(slice1)] = (f[tuple(slice4)] - f[tuple(slice2)]) / (2. * ax_dx)
-c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:1266: RuntimeWarning: invalid value encountered in scalar subtract
-  out[tuple(slice1)] = (f[tuple(slice2)] - f[tuple(slice3)]) / dx_n
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -25.0 to 638.3423423423424
-[42] D:\PyTools\Data\20180204\Close01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[42] D:\PyTools\Data\20180204\Close01
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -2.0 to 4.0
-[43] D:\PyTools\Data\20180204\Open01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[43] D:\PyTools\Data\20180204\Open01
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
@@ -712,32 +639,24 @@ c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:1266: Ru
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[45] D:\PyTools\Data\20180206
-Extended x range: -0.749847962700187 to 359.2501520372998
 [46] D:\PyTools\Data\20180206_TG
 [47] D:\PyTools\Data\20180219
 [48] D:\PyTools\Data\20180225
-Extended x range: 0.0 to 0.0
 [49] D:\PyTools\Data\20180316\Backsub
 [50] D:\PyTools\Data\20180329_microfluidic
 No UV data found in D:\PyTools\Data\20180329_microfluidic, skipping.
 [51] D:\PyTools\Data\20180526\GI
-Extended x range: -3.0 to 5.0
 [52] D:\PyTools\Data\20180526\OA
-Extended x range: -7.0 to 12.0
 [53] D:\PyTools\Data\20180526\OAGI
-Extended x range: -5.0 to 375.3478260869565
 [54] D:\PyTools\Data\20180602
-Extended x range: -1.0 to 1.0
 [55] D:\PyTools\Data\20180605\Backsub3
-Extended x range: -7.0 to 398.5806451612903
 [56] D:\PyTools\Data\20180617
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -30.0 to 457.2162768574644
-[57] D:\PyTools\Data\20181117_microfluidic_reduced
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[57] D:\PyTools\Data\20181117_microfluidic_reduced
 No UV data found in D:\PyTools\Data\20181117_microfluidic_reduced, skipping.
 [58] D:\PyTools\Data\20181127
 </pre></div>
@@ -750,13 +669,10 @@ No UV data found in D:\PyTools\Data\20181117_microfluidic_reduced, skipping.
 No UV data found in D:\PyTools\Data\20181203_no_UV, skipping.
 [61] D:\PyTools\Data\20181204
 [62] D:\PyTools\Data\20181212\data
-Extended x range: -59.0 to 439.4672242303433
 [63] D:\PyTools\Data\20181214\Backsub
 No UV data found in D:\PyTools\Data\20181214\Backsub, skipping.
 [64] D:\PyTools\Data\20190221
-Extended x range: -1.0 to 1.0
 [65] D:\PyTools\Data\20190221_1_ver2
-Extended x range: -27.0 to 305.7241379310345
 [66] D:\PyTools\Data\20190221_2
 [67] D:\PyTools\Data\20190227
 </pre></div>
@@ -773,10 +689,8 @@ Extended x range: -27.0 to 305.7241379310345
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[69] D:\PyTools\Data\20190302
 [70] D:\PyTools\Data\20190305_1
 [71] D:\PyTools\Data\20190305_2
-Extended x range: -87.0 to 499.83753741632125
 [72] D:\PyTools\Data\20190309_1
 [73] D:\PyTools\Data\20190309_2
-Extended x range: -66.0 to 836.502992257723
 [74] D:\PyTools\Data\20190309_3
 [75] D:\PyTools\Data\20190309_4
 [76] D:\PyTools\Data\20190309_5
@@ -794,51 +708,37 @@ c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:129: Runtime
   ret = ret.dtype.type(ret / rcount)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -230.0 to 1073.3062576893376
-[83] D:\PyTools\Data\20190319\Backsub1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[83] D:\PyTools\Data\20190319\Backsub1
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -7.0 to 12.0
-[84] D:\PyTools\Data\20190423\Sub
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[84] D:\PyTools\Data\20190423\Sub
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -1.0 to 2.0
-[85] D:\PyTools\Data\20190514
-Extended x range: -10.0 to 501.61764705882354
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[85] D:\PyTools\Data\20190514
 [86] D:\PyTools\Data\20190519
 [87] D:\PyTools\Data\20190524_1
 [88] D:\PyTools\Data\20190524_2
-Extended x range: -3.0 to 5.0
 [89] D:\PyTools\Data\20190527
 [90] D:\PyTools\Data\20190529_1
 [91] D:\PyTools\Data\20190529_2
 [92] D:\PyTools\Data\20190529_3
-Extended x range: -5.0 to 10.0
 [93] D:\PyTools\Data\20190529_4
 [94] D:\PyTools\Data\20190529_5
-Extended x range: -6.0 to 12.0
 [95] D:\PyTools\Data\20190529_6
-Extended x range: -39.0 to 417.13681882210403
 [96] D:\PyTools\Data\20190607_1
-Extended x range: -16.0 to 453.00121159595056
 [97] D:\PyTools\Data\20190626
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
-c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:520: RuntimeWarning: Mean of empty slice.
-  avg = a.mean(axis, **keepdims_kw)
-c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
-  ret = ret.dtype.type(ret / rcount)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -35.0 to 635.1545454545454
-[98] D:\PyTools\Data\20190630_1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[98] D:\PyTools\Data\20190630_1
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
@@ -848,83 +748,55 @@ c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:129: Runtime
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
-c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:520: RuntimeWarning: Mean of empty slice.
-  avg = a.mean(axis, **keepdims_kw)
-c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
-  ret = ret.dtype.type(ret / rcount)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -7.0 to 575.5157894736842
-[100] D:\PyTools\Data\20190630_3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[100] D:\PyTools\Data\20190630_3
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[101] D:\PyTools\Data\20191003_OA
-Extended x range: -19.0 to 19.0
 [102] D:\PyTools\Data\20191004_OA_Ald_Ferr
-Extended x range: -6.0 to 6.0
 [103] D:\PyTools\Data\20191006_proteins5
-Extended x range: -6.0 to 6.0
 [104] D:\PyTools\Data\20191031
 No UV data found in D:\PyTools\Data\20191031, skipping.
 [105] D:\PyTools\Data\20191109
-Extended x range: -8.0 to 571.1813811002851
 [106] D:\PyTools\Data\20191114_1
 [107] D:\PyTools\Data\20191114_2
-Extended x range: -13.0 to 292.1658992019489
 [108] D:\PyTools\Data\20191114_3
-Extended x range: -21.0 to 655.2606837606838
 [109] D:\PyTools\Data\20191114_4
-[1] h_ratio= 0.0219775262324296
-Extended x range: -24.0 to 649.1580915778442
 [110] D:\PyTools\Data\20191118_1
-Extended x range: -2.0 to 412.20588235294116
 [111] D:\PyTools\Data\20191118_2
-Extended x range: -49.0 to 427.45977229330265
 [112] D:\PyTools\Data\20191118_3
-Extended x range: -12.0 to 410.6923076923077
 [113] D:\PyTools\Data\20191118_4
 [114] D:\PyTools\Data\20191122_1
 [115] D:\PyTools\Data\20191122_2
-Extended x range: -3.0 to 408.71843586353833
 [116] D:\PyTools\Data\20191125
 [117] D:\PyTools\Data\20191201_1
 [118] D:\PyTools\Data\20191201_2
-Extended x range: -22.0 to 595.6585365853659
 [119] D:\PyTools\Data\20191201_3
-Extended x range: -1.0 to 0.0
 [120] D:\PyTools\Data\20191201_4
-Extended x range: -9.0 to 588.6551724137931
 [121] D:\PyTools\Data\20191207
 [122] D:\PyTools\Data\20200121_1
-Extended x range: -353.0 to 1169.467391304348
 [123] D:\PyTools\Data\20200121_2
-Extended x range: -9.0 to 11.0
 [124] D:\PyTools\Data\20200121_3
-Extended x range: -148.0 to 152.0
 [125] D:\PyTools\Data\20200123_1
-Extended x range: -25.0 to 812.8807310979892
 [126] D:\PyTools\Data\20200123_2
-Extended x range: -38.0 to 904.1884083498113
 [127] D:\PyTools\Data\20200123_3
 [128] D:\PyTools\Data\20200123_4
-Extended x range: -21.0 to 22.0
 [129] D:\PyTools\Data\20200124_1
 [130] D:\PyTools\Data\20200124_2
 [131] D:\PyTools\Data\20200125_1
 [132] D:\PyTools\Data\20200125_2
 [133] D:\PyTools\Data\20200211
-Extended x range: -3.0 to 326.2095688995328
 [134] D:\PyTools\Data\20200214_1
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -5.0 to 9.0
-[135] D:\PyTools\Data\20200214_2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[135] D:\PyTools\Data\20200214_2
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
@@ -942,128 +814,65 @@ Extended x range: -3.0 to 326.2095688995328
 [140] D:\PyTools\Data\20200304_2
 [141] D:\PyTools\Data\20200618_1
 [142] D:\PyTools\Data\20200618_2
-Extended x range: -17.0 to 385.63917525773195
 [143] D:\PyTools\Data\20200623_1
-Extended x range: -39.0 to 833.2044525774514
 [144] D:\PyTools\Data\20200623_2
-Extended x range: -65.0 to 860.5513612148821
 [145] D:\PyTools\Data\20200624_1
 [146] D:\PyTools\Data\20200624_2
-Extended x range: -68.0 to 1283.0
 [147] D:\PyTools\Data\20200624_3
 [148] D:\PyTools\Data\20200624_4
 [149] D:\PyTools\Data\20200630_1
-Extended x range: -30.0 to 2020.6060375601483
 [150] D:\PyTools\Data\20200630_10
-Extended x range: -2.0 to 2.0
 [151] D:\PyTools\Data\20200630_11
 [152] D:\PyTools\Data\20200630_12
-Extended x range: -41.0 to 1381.340909090909
 [153] D:\PyTools\Data\20200630_13
-Extended x range: -93.0 to 1879.18125
 [154] D:\PyTools\Data\20200630_14
 [155] D:\PyTools\Data\20200630_2
-Extended x range: -4.0 to 100.40056340430901
 [156] D:\PyTools\Data\20200630_3
-Extended x range: -3.0 to 2.0
 [157] D:\PyTools\Data\20200630_4
 [158] D:\PyTools\Data\20200630_5
 Try find_peaks with fewer parameters.
 Try find_peaks with fewer parameters.
-Extended x range: -2.0 to 114.7616602222854
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
 [159] D:\PyTools\Data\20200630_6
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
+Try find_peaks with fewer parameters.
+[10] h_ratio= 0.025637481212000806
+Try find_peaks with fewer parameters.
 Try find_peaks with fewer parameters.
 [10] h_ratio= 0.025637481212000806
 Try find_peaks with fewer parameters.
 Try find_peaks with fewer parameters.
 Try find_peaks with fewer parameters.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10919: RuntimeWarning: invalid value encountered in scalar divide
-  slope = ssxym / ssxm
-c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10933: RuntimeWarning: invalid value encountered in sqrt
-  t = r * np.sqrt(df / ((1.0 - r + TINY)*(1.0 + r + TINY)))
-c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10936: RuntimeWarning: invalid value encountered in scalar divide
-  slope_stderr = np.sqrt((1 - r**2) * ssym / ssxm / df)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -1.0 to 100.11755207469793
+Try find_peaks with fewer parameters.
+[10] h_ratio= 0.025637481212000806
+Try find_peaks with fewer parameters.
 [160] D:\PyTools\Data\20200630_7
-Extended x range: -211.0 to 1496.6304239598987
 [161] D:\PyTools\Data\20200630_8
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10919: RuntimeWarning: invalid value encountered in scalar divide
-  slope = ssxym / ssxm
-c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10933: RuntimeWarning: invalid value encountered in sqrt
-  t = r * np.sqrt(df / ((1.0 - r + TINY)*(1.0 + r + TINY)))
-c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10936: RuntimeWarning: invalid value encountered in scalar divide
-  slope_stderr = np.sqrt((1 - r**2) * ssym / ssxm / df)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -106.0 to 1431.5269497320621
 [162] D:\PyTools\Data\20200630_9
 [163] D:\PyTools\Data\20201005_1
-Extended x range: -804.0 to 1068.0
 [164] D:\PyTools\Data\20201005_2
-Extended x range: -211.0 to 287.0
 [165] D:\PyTools\Data\20201005_3
-Extended x range: -732.0 to 1028.0
 [166] D:\PyTools\Data\20201005_4
-Extended x range: -24.0 to 34.0
 [167] D:\PyTools\Data\20201006_1
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10919: RuntimeWarning: invalid value encountered in scalar divide
-  slope = ssxym / ssxm
-c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10933: RuntimeWarning: invalid value encountered in sqrt
-  t = r * np.sqrt(df / ((1.0 - r + TINY)*(1.0 + r + TINY)))
-c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10936: RuntimeWarning: invalid value encountered in scalar divide
-  slope_stderr = np.sqrt((1 - r**2) * ssym / ssxm / df)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[168] D:\PyTools\Data\20201006_2
+[168] D:\PyTools\Data\20201006_2
 [169] D:\PyTools\Data\20201007_1
-Extended x range: -81.0 to 98.0
 [170] D:\PyTools\Data\20201007_2
 [171] D:\PyTools\Data\20201007_3
-Extended x range: -154.0 to 180.0
 [172] D:\PyTools\Data\20201007_4
-Extended x range: -132.0 to 130.0
 [173] D:\PyTools\Data\20201009_1
-Extended x range: -434.0 to 700.4163702200183
 [174] D:\PyTools\Data\20201009_2
-Warning: The number of selected peaks does not match between XR and UV curves.
-Extended x range: -490.0 to 696.0
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10919: RuntimeWarning: invalid value encountered in scalar divide
-  slope = ssxym / ssxm
-c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10933: RuntimeWarning: invalid value encountered in sqrt
-  t = r * np.sqrt(df / ((1.0 - r + TINY)*(1.0 + r + TINY)))
-c:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10936: RuntimeWarning: invalid value encountered in scalar divide
-  slope_stderr = np.sqrt((1 - r**2) * ssym / ssxm / df)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[175] D:\PyTools\Data\20201030
+[175] D:\PyTools\Data\20201030
 [176] D:\PyTools\Data\20201117
-Extended x range: -8.0 to 549.7907071073814
 [177] D:\PyTools\Data\20201122
 [178] D:\PyTools\Data\20201127_1
 [179] D:\PyTools\Data\20201127_2
 [180] D:\PyTools\Data\20201127_3
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:520: RuntimeWarning: Mean of empty slice.
-  avg = a.mean(axis, **keepdims_kw)
-c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
-  ret = ret.dtype.type(ret / rcount)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[181] D:\PyTools\Data\20201127_4
+[181] D:\PyTools\Data\20201127_4
 [182] D:\PyTools\Data\20201127_5
 [183] D:\PyTools\Data\20201208_1
-Extended x range: -2.0 to 3.0
 [184] D:\PyTools\Data\20201208_2
 [185] D:\PyTools\Data\20201208_3
 </pre></div>
@@ -1076,39 +885,25 @@ c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:198: Runtime
   ret = ret.dtype.type(ret / rcount)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -1.0 to 360.80731077339004
-[186] D:\PyTools\Data\20201208_4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[186] D:\PyTools\Data\20201208_4
 [187] D:\PyTools\Data\20201211
 [188] D:\PyTools\Data\20210219
-Extended x range: -12.0 to 338.0289855072464
 [189] D:\PyTools\Data\20210323_1
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -69.0 to 196.79825214014244
-[190] D:\PyTools\Data\20210323_2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[190] D:\PyTools\Data\20210323_2
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -81.0 to 208.45497146455332
-[191] D:\PyTools\Data\20210506\BSA_sd200S_sub2
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\numpy\lib\function_base.py:520: RuntimeWarning: Mean of empty slice.
-  avg = a.mean(axis, **keepdims_kw)
-c:\Program Files\Python312\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
-  ret = ret.dtype.type(ret / rcount)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[192] D:\PyTools\Data\20210506\Backsub_20210501
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[191] D:\PyTools\Data\20210506\BSA_sd200S_sub2
+[192] D:\PyTools\Data\20210506\Backsub_20210501
 [193] D:\PyTools\Data\20210506\Backsub_AR_20210511
-Extended x range: -1.0 to 365.60493827160496
 [194] D:\PyTools\Data\20210512
-Extended x range: -9.0 to 354.68744949562335
 [195] D:\PyTools\Data\20210527\SiRNA_Backsub_20210501
 [196] D:\PyTools\Data\20210610\Buffer
 No UV data found in D:\PyTools\Data\20210610\Buffer, skipping.
@@ -1122,16 +917,13 @@ No UV data found in D:\PyTools\Data\20210610\Sample, skipping.
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -22.0 to 788.7178693277062
-[201] D:\PyTools\Data\20210727\data02
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[201] D:\PyTools\Data\20210727\data02
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -7.222896022738382 to 771.7771039772616
-[202] D:\PyTools\Data\20211021\Backsub_tests001
-Extended x range: -6.0 to 367.29009558493385
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[202] D:\PyTools\Data\20211021\Backsub_tests001
 [203] D:\PyTools\Data\20211105\Cu_myo10_II
 No UV data found in D:\PyTools\Data\20211105\Cu_myo10_II, skipping.
 [204] D:\PyTools\Data\20211105\Cu_myo10_II_backsub
@@ -1143,8 +935,6 @@ No UV data found in D:\PyTools\Data\20211105\apo_myo10_backsub, skipping.
 [207] D:\PyTools\Data\20211105\buffer
 No UV data found in D:\PyTools\Data\20211105\buffer, skipping.
 [208] D:\PyTools\Data\20211209
-[2] h_ratio= 0.01503366141322137
-Extended x range: -74.0 to 1646.167822622463
 [209] D:\PyTools\Data\20211222\HypC
 [210] D:\PyTools\Data\20211222\PKS
 [211] D:\PyTools\Data\20211222\PKS2
@@ -1163,29 +953,25 @@ Extended x range: -74.0 to 1646.167822622463
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -12.0 to 1603.5233884861686
-[217] D:\PyTools\Data\20220716\BSA_202
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[217] D:\PyTools\Data\20220716\BSA_202
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -14.0 to 13.0
-[218] D:\PyTools\Data\20220716\FER_OA_301
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[218] D:\PyTools\Data\20220716\FER_OA_301
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -9.0 to 1600.130677691491
-[219] D:\PyTools\Data\20220716\FER_OA_302
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[219] D:\PyTools\Data\20220716\FER_OA_302
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -8.0 to 7.0
-[220] D:\PyTools\Data\20220716\OA_ALD_201
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[220] D:\PyTools\Data\20220716\OA_ALD_201
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
@@ -1197,35 +983,27 @@ Extended x range: -74.0 to 1646.167822622463
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -90.0 to 1619.5611510791368
-[222] D:\PyTools\Data\20220716\lowSN_BSA_01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[222] D:\PyTools\Data\20220716\lowSN_BSA_01
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -7.0 to 6.0
-[223] D:\PyTools\Data\20221014\CytC002_wavelength800
-Extended x range: -2.0 to 316.96667275318873
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[223] D:\PyTools\Data\20221014\CytC002_wavelength800
 [224] D:\PyTools\Data\20221121\ALD002
 [225] D:\PyTools\Data\20221121\ALD003
-Extended x range: -15.34301656023655 to 235.65698343976345
 [226] D:\PyTools\Data\20221208
-Extended x range: -30.0 to 2020.6060375601483
 [227] D:\PyTools\Data\20221227
 [228] D:\PyTools\Data\20230303\HasA
 [229] D:\PyTools\Data\20230303\NAC
-Extended x range: -9.0 to 9.0
 [230] D:\PyTools\Data\20230303\NACca
-Extended x range: -14.0 to 1601.899209371925
 [231] D:\PyTools\Data\20230304
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -24.0 to 443.1714269940438
-[232] D:\PyTools\Data\20230705
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[232] D:\PyTools\Data\20230705
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
@@ -1249,15 +1027,13 @@ Extended x range: -14.0 to 1601.899209371925
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -22.0 to 1367.1858407079646
-[236] D:\PyTools\Data\20230706\ALD_OA002
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[236] D:\PyTools\Data\20230706\ALD_OA002
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -49.0 to 72.0
-[237] D:\PyTools\Data\20230706\BSA001
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[237] D:\PyTools\Data\20230706\BSA001
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
@@ -1269,15 +1045,13 @@ Extended x range: -14.0 to 1601.899209371925
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -9.054429686430126 to 837.9455703135699
-[239] D:\PyTools\Data\20230706\GI001
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[239] D:\PyTools\Data\20230706\GI001
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -1.1315793129917893 to 1563.8684206870082
-[240] D:\PyTools\Data\20230706\GI002
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[240] D:\PyTools\Data\20230706\GI002
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
@@ -1289,29 +1063,22 @@ Extended x range: -14.0 to 1601.899209371925
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -31.0 to 1466.6907555960079
-[242] D:\PyTools\Data\20230706\OA002
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[242] D:\PyTools\Data\20230706\OA002
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extended x range: -36.0 to 856.1578947368421
-[243] D:\PyTools\Data\20230818\Backsub3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[243] D:\PyTools\Data\20230818\Backsub3
 [244] D:\PyTools\Data\20231123
 [245] D:\PyTools\Data\20231214\PgpApo
-Extended x range: -114.0 to 1710.6759730090414
 [246] D:\PyTools\Data\20231214\PgpEla
-Extended x range: -18.0 to 1618.3158010952957
 [247] D:\PyTools\Data\20231214\PgpTax
-Extended x range: -2.0 to 1604.374484767898
 [248] D:\PyTools\Data\20240730
 [249] D:\PyTools\Data\20250212\REF
-Extended x range: -289.0 to 1805.0144225254503
 [250] D:\PyTools\Data\20250212\SG
 [251] D:\PyTools\Data\OA_11_cut
 [252] D:\PyTools\Data\sample_data
-Extended x range: -1.5203252032520709 to 354.47967479674793
 [253] D:\PyTools\Data\sample_data_no_UV
 No UV data found in D:\PyTools\Data\sample_data_no_UV, skipping.
 </pre></div>
