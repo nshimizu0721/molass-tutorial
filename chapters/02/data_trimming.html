@@ -399,15 +399,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#study-points">3.1. Study Points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-elution-axis">3.2. Trimming in Elution Axis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-moment">3.2.1. Trimming by Moment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-flow-change">3.2.2. Trimming by Flow Change</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">3.1. Learning Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-data">3.2. Overview of the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-trimming-ranges">3.3. Plotting Trimming Ranges</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-elution-axis">3.4. Trimming in Elution Axis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-moment">3.4.1. Trimming by Moment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-flow-change">3.4.2. Trimming by Flow Change</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-spectral-axis">3.3. Trimming in Spectral Axis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-utility">3.4. Trimming Utility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimmed-copy">3.5. Trimmed Copy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-spectral-axis">3.5. Trimming in Spectral Axis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimmed-copy">3.6. Trimmed Copy</a></li>
 </ul>
             </nav>
         </div>
@@ -421,16 +422,20 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-trimming">
 <h1><span class="section-number">3. </span>Data Trimming<a class="headerlink" href="#data-trimming" title="Link to this heading">#</a></h1>
-<section id="study-points">
-<h2><span class="section-number">3.1. </span>Study Points<a class="headerlink" href="#study-points" title="Link to this heading">#</a></h2>
+<p>Measured data sets often contain unnecessary or undesirable values. Therefore, it is good practice to pre-process data sets so that they contain only well-conditioned data for analysis. We call this process “trimming.”</p>
+<section id="learning-points">
+<h2><span class="section-number">3.1. </span>Learning Points<a class="headerlink" href="#learning-points" title="Link to this heading">#</a></h2>
+<p>In this chapter, you will learn about:</p>
 <ul class="simple">
+<li><p>ssd.plot_trimming_info()</p></li>
+<li><p>ssd.plot_compact()</p></li>
 <li><p>Moment</p></li>
-<li><p>ssd.get_flowchange_points()</p></li>
-<li><p>ssd.get_usable_wrange()</p></li>
-<li><p>ssd.get_usable_qrange()</p></li>
-<li><p>ssd.get_trimming_info()</p></li>
-<li><p>ssd.copy()</p></li>
+<li><p>ssd.trimmed_copy()</p></li>
 </ul>
+</section>
+<section id="overview-of-the-data">
+<h2><span class="section-number">3.2. </span>Overview of the Data<a class="headerlink" href="#overview-of-the-data" title="Link to this heading">#</a></h2>
+<p>The data set used here for explanation looks like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -438,16 +443,20 @@ document.write(`
 <span class="kn">from</span> <span class="nn">molass.Local</span> <span class="kn">import</span> <span class="n">get_local_settings</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">local_settings</span> <span class="o">=</span> <span class="n">get_local_settings</span><span class="p">()</span>
-<span class="n">BSA_DATA</span> <span class="o">=</span> <span class="n">local_settings</span><span class="p">[</span><span class="s1">&#39;BSA_DATA&#39;</span><span class="p">]</span>
-<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">BSA_DATA</span><span class="p">)</span>
+<span class="n">PKS_DATA</span> <span class="o">=</span> <span class="n">local_settings</span><span class="p">[</span><span class="s1">&#39;PKS_DATA&#39;</span><span class="p">]</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">PKS_DATA</span><span class="p">)</span>
 <span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/edc6a8d5ac5692882502430afc5614ad26749aea89778dfac778698019015e05.png" src="../../_images/edc6a8d5ac5692882502430afc5614ad26749aea89778dfac778698019015e05.png" />
+<img alt="../../_images/d6056d71d56c649da243077dfd0a52cc4ebca38e5873693c4f93d7bf11069c18.png" src="../../_images/d6056d71d56c649da243077dfd0a52cc4ebca38e5873693c4f93d7bf11069c18.png" />
 </div>
 </div>
+</section>
+<section id="plotting-trimming-ranges">
+<h2><span class="section-number">3.3. </span>Plotting Trimming Ranges<a class="headerlink" href="#plotting-trimming-ranges" title="Link to this heading">#</a></h2>
+<p>You can plot the default trimming ranges as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_trimming_info</span><span class="p">();</span>
@@ -455,27 +464,32 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10919: RuntimeWarning: invalid value encountered in scalar divide
+  slope = ssxym / ssxm
+C:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10933: RuntimeWarning: invalid value encountered in sqrt
+  t = r * np.sqrt(df / ((1.0 - r + TINY)*(1.0 + r + TINY)))
+C:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10936: RuntimeWarning: invalid value encountered in scalar divide
+  slope_stderr = np.sqrt((1 - r**2) * ssym / ssxm / df)
 </pre></div>
 </div>
-<img alt="../../_images/79a7e7025281bc2054b7ab147c5e0bdd6c18bd87302971a030042f1e429f3103.png" src="../../_images/79a7e7025281bc2054b7ab147c5e0bdd6c18bd87302971a030042f1e429f3103.png" />
+<img alt="../../_images/e7d7731c0e86c859d01039a38aa12d9cccea93ce0e74cb6ceb2e5ab95eae3af9.png" src="../../_images/e7d7731c0e86c859d01039a38aa12d9cccea93ce0e74cb6ceb2e5ab95eae3af9.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;BSA Data&quot;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;PKS Data&quot;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d46453ec079b298e96d3905c9ad31b4225d307cd535e2426a816452ceef37d87.png" src="../../_images/d46453ec079b298e96d3905c9ad31b4225d307cd535e2426a816452ceef37d87.png" />
+<img alt="../../_images/f67274449257f76a21147ddcdde1ea9dfab54d7cff0bf38142004e3a475e63d0.png" src="../../_images/f67274449257f76a21147ddcdde1ea9dfab54d7cff0bf38142004e3a475e63d0.png" />
 </div>
 </div>
 </section>
 <section id="trimming-in-elution-axis">
-<h2><span class="section-number">3.2. </span>Trimming in Elution Axis<a class="headerlink" href="#trimming-in-elution-axis" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>Trimming in Elution Axis<a class="headerlink" href="#trimming-in-elution-axis" title="Link to this heading">#</a></h2>
 <section id="trimming-by-moment">
-<h3><span class="section-number">3.2.1. </span>Trimming by Moment<a class="headerlink" href="#trimming-by-moment" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.4.1. </span>Trimming by Moment<a class="headerlink" href="#trimming-by-moment" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.Stats</span> <span class="kn">import</span> <span class="n">Moment</span>
@@ -498,7 +512,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d0b3dfafe5b6d26946f3310ead14730949cbb19cd35c1a92a3c52d1c426d8b7c.png" src="../../_images/d0b3dfafe5b6d26946f3310ead14730949cbb19cd35c1a92a3c52d1c426d8b7c.png" />
+<img alt="../../_images/70a276bcb4f697a241a49d4bbc87a9dc45520ba280b32fcadb52eb82032bef3d.png" src="../../_images/70a276bcb4f697a241a49d4bbc87a9dc45520ba280b32fcadb52eb82032bef3d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -508,20 +522,20 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(365, 715)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(199, 1157)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="trimming-by-flow-change">
-<h3><span class="section-number">3.2.2. </span>Trimming by Flow Change<a class="headerlink" href="#trimming-by-flow-change" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.4.2. </span>Trimming by Flow Change<a class="headerlink" href="#trimming-by-flow-change" title="Link to this heading">#</a></h3>
 <p>This type of trimmming is required only for those data from special experiments where flow change operation is in practice.
 See <a class="reference internal" href="../70/flowchange.html#flowchange-detection"><span class="std std-ref">Flow Change Detection</span></a> if necessary.</p>
 </section>
 </section>
 <section id="trimming-in-spectral-axis">
-<h2><span class="section-number">3.3. </span>Trimming in Spectral Axis<a class="headerlink" href="#trimming-in-spectral-axis" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.5. </span>Trimming in Spectral Axis<a class="headerlink" href="#trimming-in-spectral-axis" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ssd from sample_data</span>
@@ -551,34 +565,12 @@ See <a class="reference internal" href="../70/flowchange.html#flowchange-detecti
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
-</pre></div>
-</div>
-<img alt="../../_images/8f71edfa8bbe30d431da0759a8a2d471f9bbe83778b1f08d71fb3f4aa1706b85.png" src="../../_images/8f71edfa8bbe30d431da0759a8a2d471f9bbe83778b1f08d71fb3f4aa1706b85.png" />
-</div>
-</div>
-</section>
-<section id="trimming-utility">
-<h2><span class="section-number">3.4. </span>Trimming Utility<a class="headerlink" href="#trimming-utility" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.Global.Options</span> <span class="kn">import</span> <span class="n">set_molass_options</span>
-<span class="n">set_molass_options</span><span class="p">(</span><span class="n">flowchange</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">tinfo</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">make_trimming_info</span><span class="p">()</span>
-<span class="n">ssd</span><span class="o">.</span><span class="n">plot_trimming_info</span><span class="p">(</span><span class="n">tinfo</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x280a50c1820&gt;
-</pre></div>
-</div>
-<img alt="../../_images/79a7e7025281bc2054b7ab147c5e0bdd6c18bd87302971a030042f1e429f3103.png" src="../../_images/79a7e7025281bc2054b7ab147c5e0bdd6c18bd87302971a030042f1e429f3103.png" />
+<img alt="../../_images/76f4e47161e6a0dad5e20c4073e25296ed24547d571a4a3dce4b8786a2f6a682.png" src="../../_images/76f4e47161e6a0dad5e20c4073e25296ed24547d571a4a3dce4b8786a2f6a682.png" />
 </div>
 </div>
 </section>
 <section id="trimmed-copy">
-<h2><span class="section-number">3.5. </span>Trimmed Copy<a class="headerlink" href="#trimmed-copy" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.6. </span>Trimmed Copy<a class="headerlink" href="#trimmed-copy" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>making deep copies</p></li>
 </ul>
@@ -591,7 +583,7 @@ See <a class="reference internal" href="../70/flowchange.html#flowchange-detecti
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xr_slices</span><span class="o">=</span><span class="n">tinfo</span><span class="o">.</span><span class="n">xr_slices</span><span class="p">,</span> <span class="n">uv_slices</span><span class="o">=</span><span class="n">tinfo</span><span class="o">.</span><span class="n">uv_slices</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -663,15 +655,16 @@ See <a class="reference internal" href="../70/flowchange.html#flowchange-detecti
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#study-points">3.1. Study Points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-elution-axis">3.2. Trimming in Elution Axis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-moment">3.2.1. Trimming by Moment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-flow-change">3.2.2. Trimming by Flow Change</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">3.1. Learning Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-data">3.2. Overview of the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-trimming-ranges">3.3. Plotting Trimming Ranges</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-elution-axis">3.4. Trimming in Elution Axis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-moment">3.4.1. Trimming by Moment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-flow-change">3.4.2. Trimming by Flow Change</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-spectral-axis">3.3. Trimming in Spectral Axis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-utility">3.4. Trimming Utility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimmed-copy">3.5. Trimmed Copy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-spectral-axis">3.5. Trimming in Spectral Axis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimmed-copy">3.6. Trimmed Copy</a></li>
 </ul>
   </nav></div>
 
