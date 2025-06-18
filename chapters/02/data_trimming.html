@@ -464,27 +464,26 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10919: RuntimeWarning: invalid value encountered in scalar divide
-  slope = ssxym / ssxm
-C:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10933: RuntimeWarning: invalid value encountered in sqrt
-  t = r * np.sqrt(df / ((1.0 - r + TINY)*(1.0 + r + TINY)))
-C:\Program Files\Python312\Lib\site-packages\scipy\stats\_stats_py.py:10936: RuntimeWarning: invalid value encountered in scalar divide
-  slope_stderr = np.sqrt((1 - r**2) * ssym / ssxm / df)
-</pre></div>
-</div>
 <img alt="../../_images/e7d7731c0e86c859d01039a38aa12d9cccea93ce0e74cb6ceb2e5ab95eae3af9.png" src="../../_images/e7d7731c0e86c859d01039a38aa12d9cccea93ce0e74cb6ceb2e5ab95eae3af9.png" />
 </div>
 </div>
+<p>The above figures show the trimming ranges in three distinct flavors. On the left, as rectangles suggesting rows and columns in matrices, in the center as vertical bands against elution curves and on the right as vertical bands against spectral curves (an absorbance curve or a scattering curve).</p>
+<p>The elution range has been chosen so that you can focus on the peak region with sufficient baseline regions.</p>
+<p>The wavelength range shorter than 250nm in UV absorbance has been cut off due to unstable measurement often observed there.</p>
+<p>Both ends in X-ray scatttering angles have been cut off due to irregular values.</p>
+<p>The center figures also show baselines in red lines, which will be explained in the following chapters.</p>
+<p>More compact plots are availabe as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;PKS Data&quot;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;PKS Data&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f67274449257f76a21147ddcdde1ea9dfab54d7cff0bf38142004e3a475e63d0.png" src="../../_images/f67274449257f76a21147ddcdde1ea9dfab54d7cff0bf38142004e3a475e63d0.png" />
+<img alt="../../_images/699c2c61ada534ff1587f22ec8aaa628808df1cff7fcd4f05e1bd972919bf044.png" src="../../_images/699c2c61ada534ff1587f22ec8aaa628808df1cff7fcd4f05e1bd972919bf044.png" />
 </div>
 </div>
+<p>In this compact form, the mapping between UV and X-ray elution points is more apparent. We will discuss this mapping in a later chapter.</p>
 </section>
 <section id="trimming-in-elution-axis">
 <h2><span class="section-number">3.4. </span>Trimming in Elution Axis<a class="headerlink" href="#trimming-in-elution-axis" title="Link to this heading">#</a></h2>
