@@ -1,7 +1,7 @@
 # Molass Library Tutorial
 
 ```{warning}
-This book is scheduled to be publicly available in June 2025.
+This book is scheduled to be publicly available in July 2025.
 ```
 
 Molass Library is a rewrite of [MOLASS](https://www.jstage.jst.go.jp/article/biophysico/20/1/20_e200001/_article), an analytical tool for SEC-SAXS experiment data currently hosted at [Photon Factory](https://pfwww.kek.jp/saxs/MOLASS.html), Japan. It is designed for scripting in Jupyter Notebooks, providing greater flexibility than its predecessor thanks to the diversity of the Python ecosystem.
