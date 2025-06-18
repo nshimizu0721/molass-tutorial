@@ -190,7 +190,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">7. Rank Estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/mapping.html">8. Mapping between UV and X-ray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../70/flowchange.html">10. Flow Change Detection</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../70/technical_details.html">10. Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../70/customization.html">10.1. Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../70/elution_range.html">10.2. Elution Range</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../70/spectral_range.html">10.4. Elution Range</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../70/flowchange.html">10.6. Flow Change Detection</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">11. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">11.1. Trimming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../80/generation.html">11.2. Generation</a></li>
@@ -203,7 +211,6 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../90/data_survey.html">13. Data Survey</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../95/customization.html">14. Customization</a></li>
 </ul>
 
     </div>
@@ -402,13 +409,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">3.1. Learning Points</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-data">3.2. Overview of the Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-trimming-ranges">3.3. Plotting Trimming Ranges</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-elution-axis">3.4. Trimming in Elution Axis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-moment">3.4.1. Trimming by Moment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-flow-change">3.4.2. Trimming by Flow Change</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-spectral-axis">3.5. Trimming in Spectral Axis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimmed-copy">3.6. Trimmed Copy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimmed-copy">3.4. Trimmed Copy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-manually-trim">3.5. How to Manually Trim</a></li>
 </ul>
             </nav>
         </div>
@@ -438,7 +440,10 @@ document.write(`
 <p>The data set used here for explanation looks like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-legacy&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-library&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">molass.Local</span> <span class="kn">import</span> <span class="n">get_local_settings</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
@@ -467,12 +472,12 @@ document.write(`
 <img alt="../../_images/e7d7731c0e86c859d01039a38aa12d9cccea93ce0e74cb6ceb2e5ab95eae3af9.png" src="../../_images/e7d7731c0e86c859d01039a38aa12d9cccea93ce0e74cb6ceb2e5ab95eae3af9.png" />
 </div>
 </div>
-<p>The above figures show the trimming ranges in three distinct flavors. On the left, as rectangles suggesting rows and columns in matrices, in the center as vertical bands against elution curves and on the right as vertical bands against spectral curves (an absorbance curve or a scattering curve).</p>
-<p>The elution range has been chosen so that you can focus on the peak region with sufficient baseline regions.</p>
-<p>The wavelength range shorter than 250nm in UV absorbance has been cut off due to unstable measurement often observed there.</p>
-<p>Both ends in X-ray scatttering angles have been cut off due to irregular values.</p>
-<p>The center figures also show baselines in red lines, which will be explained in the following chapters.</p>
-<p>More compact plots are availabe as follows.</p>
+<p>The figures above show the trimming ranges in three distinct ways: on the left, as rectangles suggesting rows and columns in matrices; in the center, as vertical bands on elution curves; and on the right, as vertical bands on spectral curves (such as absorbance or scattering curves).</p>
+<p>The elution range has been chosen to focus on the peak region, including enough baseline regions to be useful but excluding unnecessary portions. How to choose this range will be explained in the next section.</p>
+<p>The wavelength range below 250 nm in UV absorbance has been cut off due to unstable measurements often observed in that region.</p>
+<p>Both ends of the X-ray scattering angle range have been cut off due to irregular values.</p>
+<p>The center figures also show baselines as red lines, which will be explained in the following chapters.</p>
+<p>More compact plots are available below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;PKS Data&quot;</span><span class="p">);</span>
@@ -483,108 +488,71 @@ document.write(`
 <img alt="../../_images/699c2c61ada534ff1587f22ec8aaa628808df1cff7fcd4f05e1bd972919bf044.png" src="../../_images/699c2c61ada534ff1587f22ec8aaa628808df1cff7fcd4f05e1bd972919bf044.png" />
 </div>
 </div>
-<p>In this compact form, the mapping between UV and X-ray elution points is more apparent. We will discuss this mapping in a later chapter.</p>
-</section>
-<section id="trimming-in-elution-axis">
-<h2><span class="section-number">3.4. </span>Trimming in Elution Axis<a class="headerlink" href="#trimming-in-elution-axis" title="Link to this heading">#</a></h2>
-<section id="trimming-by-moment">
-<h3><span class="section-number">3.4.1. </span>Trimming by Moment<a class="headerlink" href="#trimming-by-moment" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.Stats</span> <span class="kn">import</span> <span class="n">Moment</span>
-<span class="n">xr_icurve</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">get_icurve</span><span class="p">()</span>
-<span class="n">uv_icurve</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">uv</span><span class="o">.</span><span class="n">get_icurve</span><span class="p">()</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">xr_icurve</span><span class="o">.</span><span class="n">x</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">xr_icurve</span><span class="o">.</span><span class="n">y</span>
-<span class="n">mt</span> <span class="o">=</span> <span class="n">Moment</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">mt</span><span class="o">.</span><span class="n">get_meanstd</span><span class="p">()</span>
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Original Data&quot;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;2$\sigma$-Trimmed Data&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">wanted_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">mean</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">std</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">mean</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">std</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">wanted_range</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">wanted_range</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="n">mean</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">std</span><span class="p">,</span> <span class="n">mean</span><span class="o">-</span><span class="n">std</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">mean</span><span class="o">+</span><span class="n">std</span><span class="p">,</span> <span class="n">mean</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">std</span><span class="p">]:</span>
-    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">:</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/70a276bcb4f697a241a49d4bbc87a9dc45520ba280b32fcadb52eb82032bef3d.png" src="../../_images/70a276bcb4f697a241a49d4bbc87a9dc45520ba280b32fcadb52eb82032bef3d.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mt</span><span class="o">.</span><span class="n">get_nsigma_points</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(199, 1157)
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="trimming-by-flow-change">
-<h3><span class="section-number">3.4.2. </span>Trimming by Flow Change<a class="headerlink" href="#trimming-by-flow-change" title="Link to this heading">#</a></h3>
-<p>This type of trimmming is required only for those data from special experiments where flow change operation is in practice.
-See <a class="reference internal" href="../70/flowchange.html#flowchange-detection"><span class="std std-ref">Flow Change Detection</span></a> if necessary.</p>
-</section>
-</section>
-<section id="trimming-in-spectral-axis">
-<h2><span class="section-number">3.5. </span>Trimming in Spectral Axis<a class="headerlink" href="#trimming-in-spectral-axis" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ssd from sample_data</span>
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">,</span><span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Usable UV Wavelength Range&quot;</span><span class="p">)</span>
-<span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">uv</span><span class="o">.</span><span class="n">get_usable_wrange</span><span class="p">()</span>
-<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">uv_icurve</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-<span class="n">uv_jcurve</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">uv</span><span class="o">.</span><span class="n">get_jcurve</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">uv_jcurve</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">uv_jcurve</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">uv_jcurve</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
-
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Usable XR Angular Range (Linear)&quot;</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Usable XR Angular Range (Log)&quot;</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">get_usable_qrange</span><span class="p">()</span>
-<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">xr_icurve</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-<span class="n">xr_jcurve</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">get_jcurve</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">ax2</span><span class="p">,</span><span class="n">ax3</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr_jcurve</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">xr_jcurve</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">xr_jcurve</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/76f4e47161e6a0dad5e20c4073e25296ed24547d571a4a3dce4b8786a2f6a682.png" src="../../_images/76f4e47161e6a0dad5e20c4073e25296ed24547d571a4a3dce4b8786a2f6a682.png" />
-</div>
-</div>
+<p>In this compact form, the mapping between UV and X-ray elution points becomes more apparent. We will discuss this mapping in <a class="reference internal" href="../08/mapping.html#mapping-between-uv-and-xray"><span class="std std-ref">a later chapter</span></a>.</p>
 </section>
 <section id="trimmed-copy">
-<h2><span class="section-number">3.6. </span>Trimmed Copy<a class="headerlink" href="#trimmed-copy" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>making deep copies</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">entire_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
+<h2><span class="section-number">3.4. </span>Trimmed Copy<a class="headerlink" href="#trimmed-copy" title="Link to this heading">#</a></h2>
+<p>If these trimming ranges look appropriate, we can make a trimmed copy of SSD object and use it for desired analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_trimming_info</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;PKS Data - Trimmed&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5b4d73f5e5a98805970e503446a462000b2de5ccd0ddc012959a42e9759467ce.png" src="../../_images/5b4d73f5e5a98805970e503446a462000b2de5ccd0ddc012959a42e9759467ce.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;PKS Data - Trimmed&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3041f324fd15ca355879a3897b52b6938b8a9b633c1d920f1e546340c5192288.png" src="../../_images/3041f324fd15ca355879a3897b52b6938b8a9b633c1d920f1e546340c5192288.png" />
+</div>
+</div>
+</section>
+<section id="how-to-manually-trim">
+<h2><span class="section-number">3.5. </span>How to Manually Trim<a class="headerlink" href="#how-to-manually-trim" title="Link to this heading">#</a></h2>
+<p>How the default trimming ranges are chosen will be explained later in <a class="reference internal" href="../70/technical_details.html#technical-details"><span class="std std-ref">Technical Details</span></a>.</p>
+<p>What if the default ranges do not seem appropriate? Then, you have to trim manually. Here is how you can do it.</p>
+<p>First, print the default trimming info.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trim</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">get_trimming_info</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trimming info:&quot;</span><span class="p">,</span> <span class="n">trim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trimming info: TrimmingInfo(xr_slices=(slice(12, 765, None), slice(435, 843, None)), uv_slices=(slice(62, None, None), slice(417, 863, None)), mapping=MappingInfo(slope=1.09, intercept=-58.3, xr_peaks=..., uv_peaks=..., xr_moment=..., uv_moment=...))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, using and modifying the printed slices, make a new TrimmingInfo object as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">manual_trim</span> <span class="o">=</span> <span class="n">trim</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xr_slices</span><span class="o">=</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">765</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">435</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">843</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span>
+                        <span class="n">uv_slices</span><span class="o">=</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">62</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">417</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">863</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span>
+                        <span class="p">)</span>
+<span class="n">manually_trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">(</span><span class="n">trim</span><span class="o">=</span><span class="n">manual_trim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, the renewed elution range gets slightly (100 points to each side) wider as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">manually_trimmed_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;PKS Data - Manually Trimmed&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b76baff55632f5ce54348beeda14289869bee05a28b1dae603fb76c2b395d39c.png" src="../../_images/b76baff55632f5ce54348beeda14289869bee05a28b1dae603fb76c2b395d39c.png" />
 </div>
 </div>
 </section>
@@ -657,13 +625,8 @@ See <a class="reference internal" href="../70/flowchange.html#flowchange-detecti
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">3.1. Learning Points</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-data">3.2. Overview of the Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-trimming-ranges">3.3. Plotting Trimming Ranges</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-elution-axis">3.4. Trimming in Elution Axis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-moment">3.4.1. Trimming by Moment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-by-flow-change">3.4.2. Trimming by Flow Change</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimming-in-spectral-axis">3.5. Trimming in Spectral Axis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimmed-copy">3.6. Trimmed Copy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimmed-copy">3.4. Trimmed Copy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-manually-trim">3.5. How to Manually Trim</a></li>
 </ul>
   </nav></div>
 

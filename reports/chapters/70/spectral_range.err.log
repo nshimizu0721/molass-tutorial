@@ -18,14 +18,40 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-trimmed_ssd = ssd.copy(xr_slices=tinfo.xr_slices, uv_slices=tinfo.uv_slices)
+# ssd from sample_data
+fig, (ax1,ax2,ax3) = plt.subplots(ncols=3, figsize=(15,4))
+
+ax1.set_title("Usable UV Wavelength Range")
+i, j = ssd.uv.get_usable_wrange()
+k = np.argmax(uv_icurve.y)
+uv_jcurve = ssd.uv.get_jcurve(j=k)
+ax1.plot(uv_jcurve.x, uv_jcurve.y)
+for n in i, j:
+    if n is not None:
+        ax1.axvline(uv_jcurve.x[n], ls=":", color='gray')
+
+ax2.set_title("Usable XR Angular Range (Linear)")
+ax3.set_title("Usable XR Angular Range (Log)")
+ax3.set_yscale('log')
+i, j = ssd.xr.get_usable_qrange()
+k = np.argmax(xr_icurve.y)
+xr_jcurve = ssd.xr.get_jcurve(j=k)
+for ax in ax2,ax3:
+    ax.plot(xr_jcurve.x, xr_jcurve.y)
+    for n in i, j:
+        if n is not None:
+            ax.axvline(xr_jcurve.x[n], ls=":", color='gray')
 ------------------
 
 
 [1;31m---------------------------------------------------------------------------[0m
 [1;31mNameError[0m                                 Traceback (most recent call last)
-Cell [1;32mIn[8], line 1[0m
-[1;32m----> 1[0m trimmed_ssd [38;5;241m=[39m ssd[38;5;241m.[39mcopy(xr_slices[38;5;241m=[39m[43mtinfo[49m[38;5;241m.[39mxr_slices, uv_slices[38;5;241m=[39mtinfo[38;5;241m.[39muv_slices)
+Cell [1;32mIn[2], line 6[0m
+[0;32m      4[0m ax1[38;5;241m.[39mset_title([38;5;124m"[39m[38;5;124mUsable UV Wavelength Range[39m[38;5;124m"[39m)
+[0;32m      5[0m i, j [38;5;241m=[39m ssd[38;5;241m.[39muv[38;5;241m.[39mget_usable_wrange()
+[1;32m----> 6[0m k [38;5;241m=[39m np[38;5;241m.[39margmax([43muv_icurve[49m[38;5;241m.[39my)
+[0;32m      7[0m uv_jcurve [38;5;241m=[39m ssd[38;5;241m.[39muv[38;5;241m.[39mget_jcurve(j[38;5;241m=[39mk)
+[0;32m      8[0m ax1[38;5;241m.[39mplot(uv_jcurve[38;5;241m.[39mx, uv_jcurve[38;5;241m.[39my)
 
-[1;31mNameError[0m: name 'tinfo' is not defined
+[1;31mNameError[0m: name 'uv_icurve' is not defined
 

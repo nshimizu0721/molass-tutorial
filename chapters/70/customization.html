@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>14. Customization &#8212; Molass Library Tutorial</title>
+    <title>10.1. Customization &#8212; Molass Library Tutorial</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,11 +57,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/95/customization';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/70/customization';</script>
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="13. Data Survey" href="../90/data_survey.html" />
+    <link rel="next" title="10.2. Elution Range" href="elution_range.html" />
+    <link rel="prev" title="10. Technical Details" href="technical_details.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,7 +190,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">7. Rank Estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/mapping.html">8. Mapping between UV and X-ray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../70/flowchange.html">10. Flow Change Detection</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="technical_details.html">10. Technical Details</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.1. Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elution_range.html">10.2. Elution Range</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="spectral_range.html">10.4. Elution Range</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="flowchange.html">10.6. Flow Change Detection</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">11. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">11.1. Trimming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../80/generation.html">11.2. Generation</a></li>
@@ -202,7 +211,6 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../90/data_survey.html">13. Data Survey</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Customization</a></li>
 </ul>
 
     </div>
@@ -274,7 +282,7 @@
       
       
       
-      <li><a href="https://github.com/nshimizu0721/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/95/customization.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/nshimizu0721/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/70/customization.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +312,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/95/customization.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/70/customization.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -398,11 +406,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumption-on-data-location">14.1. Assumption on Data Location</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-data">14.2. Test Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">14.3. Source Code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-data-input">14.4. UV Data Input</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x-ray-data-input">14.5. X-ray Data Input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumption-on-data-location">10.1.1. Assumption on Data Location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-data">10.1.2. Test Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">10.1.3. Source Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-data-input">10.1.4. UV Data Input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x-ray-data-input">10.1.5. X-ray Data Input</a></li>
 </ul>
             </nav>
         </div>
@@ -415,11 +423,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="customization">
-<span id="id1"></span><h1><span class="section-number">14. </span>Customization<a class="headerlink" href="#customization" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">10.1. </span>Customization<a class="headerlink" href="#customization" title="Link to this heading">#</a></h1>
 <p>Since there are no standard formats for SEC-SAXS data, users need to customize to adapt to their data formats. This chapter will explain briefly how to achieve it. Alternatively, you can join us by opening an issue to support your data formats at <a class="reference external" href="https://github.com/nshimizu0721/molass-library">the library’s repository</a>.</p>
 <p>We suspect that there is a high chance that you may need to customize only for UV data because the formats for X-ray scattering profiles are better unified thanks to ATSAS suite’s popularity while there is no such defacto standard for UV absorbance data.</p>
 <section id="assumption-on-data-location">
-<h2><span class="section-number">14.1. </span>Assumption on Data Location<a class="headerlink" href="#assumption-on-data-location" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1.1. </span>Assumption on Data Location<a class="headerlink" href="#assumption-on-data-location" title="Link to this heading">#</a></h2>
 <p>We assume here that the data sets for UV and X-ray are located in a single folder so that they can be loaded by a unique folder path specification.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -427,7 +435,7 @@ document.write(`
 </div>
 </section>
 <section id="test-data">
-<h2><span class="section-number">14.2. </span>Test Data<a class="headerlink" href="#test-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1.2. </span>Test Data<a class="headerlink" href="#test-data" title="Link to this heading">#</a></h2>
 <p>Use the data for this tutorial, which can be download data from the following links:</p>
 <ul class="simple">
 <li><p><a class="reference download internal" download="" href="../../_downloads/6781b482c5a653baea141251854ee598/tutorial_data.zip"><span class="xref download myst">tutorial_data.zip</span></a></p></li>
@@ -436,11 +444,11 @@ document.write(`
 Compare your data to this data set and follow the instructions below.</p>
 </section>
 <section id="source-code">
-<h2><span class="section-number">14.3. </span>Source Code<a class="headerlink" href="#source-code" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1.3. </span>Source Code<a class="headerlink" href="#source-code" title="Link to this heading">#</a></h2>
 <p>Download or git clone the <a class="reference external" href="https://github.com/nshimizu0721/molass-library">the library’s repository</a>.</p>
 </section>
 <section id="uv-data-input">
-<h2><span class="section-number">14.4. </span>UV Data Input<a class="headerlink" href="#uv-data-input" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1.4. </span>UV Data Input<a class="headerlink" href="#uv-data-input" title="Link to this heading">#</a></h2>
 <p>Replace the following function in the <code class="docutils literal notranslate"><span class="pre">molass/DataUtils/UvLoader.py</span></code> Python file to adapt to your data.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_uv</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -475,7 +483,7 @@ pytest test_010_Custom.py -s -k test_010_load_uv
 </div>
 </section>
 <section id="x-ray-data-input">
-<h2><span class="section-number">14.5. </span>X-ray Data Input<a class="headerlink" href="#x-ray-data-input" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1.5. </span>X-ray Data Input<a class="headerlink" href="#x-ray-data-input" title="Link to this heading">#</a></h2>
 <p>Replace the following function in the <code class="docutils literal notranslate"><span class="pre">molass/DataUtils/XrLoader.py</span></code> Python file to adapt to your data.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_xr</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -521,7 +529,7 @@ pytest test_010_Custom.py -s -k test_020_load_xr
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters\95"
+            path: "./chapters\70"
         },
         predefinedOutput: true
     }
@@ -539,13 +547,22 @@ pytest test_010_Custom.py -s -k test_020_load_xr
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../90/data_survey.html"
+       href="technical_details.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Data Survey</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Technical Details</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="elution_range.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10.2. </span>Elution Range</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -563,11 +580,11 @@ pytest test_010_Custom.py -s -k test_020_load_xr
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumption-on-data-location">14.1. Assumption on Data Location</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-data">14.2. Test Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">14.3. Source Code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-data-input">14.4. UV Data Input</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x-ray-data-input">14.5. X-ray Data Input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumption-on-data-location">10.1.1. Assumption on Data Location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-data">10.1.2. Test Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">10.1.3. Source Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-data-input">10.1.4. UV Data Input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x-ray-data-input">10.1.5. X-ray Data Input</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10. Flow Changed Detection &#8212; Molass Library Tutorial</title>
+    <title>10.6. Flow Changed Detection &#8212; Molass Library Tutorial</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="11. About Example Data Sets" href="../80/about_data_sets.html" />
-    <link rel="prev" title="9. Low Rank Optimization" href="../10/lro.html" />
+    <link rel="prev" title="10.4. Elution Range" href="spectral_range.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,7 +190,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">7. Rank Estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/mapping.html">8. Mapping between UV and X-ray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Flow Change Detection</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="technical_details.html">10. Technical Details</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="customization.html">10.1. Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elution_range.html">10.2. Elution Range</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="spectral_range.html">10.4. Elution Range</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.6. Flow Change Detection</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">11. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../80/trimming.html">11.1. Trimming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../80/generation.html">11.2. Generation</a></li>
@@ -203,7 +211,6 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../90/data_survey.html">13. Data Survey</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../95/customization.html">14. Customization</a></li>
 </ul>
 
     </div>
@@ -402,7 +409,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flow-changed-detection">
-<span id="flowchange-detection"></span><h1><span class="section-number">10. </span>Flow Changed Detection<a class="headerlink" href="#flow-changed-detection" title="Link to this heading">#</a></h1>
+<span id="flowchange-detection"></span><h1><span class="section-number">10.6. </span>Flow Changed Detection<a class="headerlink" href="#flow-changed-detection" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.Global.Options</span> <span class="kn">import</span> <span class="n">set_molass_options</span>
@@ -427,7 +434,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x17331a3f1d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x2e0b620f1d0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/55284ae8fcb87ea1910370357e8f4323f6a92294dffacc739685eab961731151.png" src="../../_images/55284ae8fcb87ea1910370357e8f4323f6a92294dffacc739685eab961731151.png" />
@@ -467,12 +474,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../10/lro.html"
+       href="spectral_range.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Low Rank Optimization</p>
+        <p class="prev-next-title"><span class="section-number">10.4. </span>Elution Range</p>
       </div>
     </a>
     <a class="right-next"
