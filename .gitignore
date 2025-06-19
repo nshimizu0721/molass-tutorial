@@ -7,8 +7,9 @@ _build/
 # Ignore the local settings for each user
 local_settings.py
 
-# Ignore the animation file 
+# Ignore the animation and figure files
 *.gif
+**/figs/**
 
 # Ignore the Jupyter Notebook checkpoints
 **/.ipynb_checkpoints/
