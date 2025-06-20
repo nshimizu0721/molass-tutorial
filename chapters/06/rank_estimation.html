@@ -61,7 +61,7 @@
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8. Mapping between UV and X-ray Data" href="../08/mapping.html" />
+    <link rel="next" title="8. Backward Compatibility" href="../07/backward.html" />
     <link rel="prev" title="6. Low Rank Factorization" href="../05/lrf.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,7 +188,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">5. Data Correction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">6. Low Rank Factorization</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Rank Estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/mapping.html">8. Mapping between UV and X-ray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/backward.html">8. Backward Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../70/technical_details.html">10. Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../70/customization.html">10.1. Customization</a></li>
@@ -197,6 +197,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../70/spectral_range.html">10.4. Elution Range</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../70/flowchange.html">10.6. Flow Change Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../70/mapping.html">10.7. Mapping between UV and X-ray</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">11. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -407,7 +408,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-observation">7.1. Human Observation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-intensity-ratio">7.2. Absorbance / Intensity Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-scattering-ratio">7.2. Absorbance / Scattering Ratio</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">7.3. Concentration Dependence</a></li>
 </ul>
             </nav>
@@ -425,8 +426,36 @@ document.write(`
 <section id="human-observation">
 <h2><span class="section-number">7.1. </span>Human Observation<a class="headerlink" href="#human-observation" title="Link to this heading">#</a></h2>
 </section>
-<section id="absorbance-intensity-ratio">
-<h2><span class="section-number">7.2. </span>Absorbance / Intensity Ratio<a class="headerlink" href="#absorbance-intensity-ratio" title="Link to this heading">#</a></h2>
+<section id="absorbance-scattering-ratio">
+<h2><span class="section-number">7.2. </span>Absorbance / Scattering Ratio<a class="headerlink" href="#absorbance-scattering-ratio" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-legacy&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-library&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
+<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
+<span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_trimming_info</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/4ea829a41ee63038d00fe3141677759f509413bda139ad4ee5b2444c4959fa7c.png" src="../../_images/4ea829a41ee63038d00fe3141677759f509413bda139ad4ee5b2444c4959fa7c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">uvxr_ratio</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tutorial Data - Compact Plot with Ratio Curve&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9600e646a8c1744f67f712eb0cbcc2669472c607523922d714a875723153c7d8.png" src="../../_images/9600e646a8c1744f67f712eb0cbcc2669472c607523922d714a875723153c7d8.png" />
+</div>
+</div>
 </section>
 <section id="concentration-dependence">
 <h2><span class="section-number">7.3. </span>Concentration Dependence<a class="headerlink" href="#concentration-dependence" title="Link to this heading">#</a></h2>
@@ -473,11 +502,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../08/mapping.html"
+       href="../07/backward.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Mapping between UV and X-ray Data</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Backward Compatibility</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -498,7 +527,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-observation">7.1. Human Observation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-intensity-ratio">7.2. Absorbance / Intensity Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-scattering-ratio">7.2. Absorbance / Scattering Ratio</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">7.3. Concentration Dependence</a></li>
 </ul>
   </nav></div>

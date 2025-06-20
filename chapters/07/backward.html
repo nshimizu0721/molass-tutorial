@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Backward Compatibility &#8212; Molass Library Tutorial</title>
+    <title>8. Backward Compatibility &#8212; Molass Library Tutorial</title>
   
   
   
@@ -61,6 +61,8 @@
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9. Low Rank Optimization" href="../10/lro.html" />
+    <link rel="prev" title="7. Rank Estimation" href="../06/rank_estimation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,7 +180,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00/quick_start.html">1. Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/data_objects.html">2. Data Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
@@ -188,7 +188,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">5. Data Correction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">6. Low Rank Factorization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">7. Rank Estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/mapping.html">8. Mapping between UV and X-ray</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Backward Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../70/technical_details.html">10. Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../70/customization.html">10.1. Customization</a></li>
@@ -197,6 +197,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../70/spectral_range.html">10.4. Elution Range</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../70/flowchange.html">10.6. Flow Change Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../70/mapping.html">10.7. Mapping between UV and X-ray</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">11. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -409,7 +410,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="backward-compatibility">
-<span id="id1"></span><h1>Backward Compatibility<a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">8. </span>Backward Compatibility<a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
@@ -426,10 +427,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developper memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/8a2e78aefa307cbb58fcc0db866e56fbafca936b1991236708e896449f8e3480.png" src="../../_images/8a2e78aefa307cbb58fcc0db866e56fbafca936b1991236708e896449f8e3480.png" />
+<img alt="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" src="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -440,10 +441,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [00:04&lt;00:00, 60.17it/s] 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/286 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<img alt="../../_images/27dc6a01d3fe366138fb906369cfd3b5d947d619c0beac84e0b9ecb97ea1de65.png" src="../../_images/27dc6a01d3fe366138fb906369cfd3b5d947d619c0beac84e0b9ecb97ea1de65.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [01:21&lt;00:00,  3.52it/s]
+</pre></div>
+</div>
+<img alt="../../_images/3c7b1eb1a59aae491f3b28d75853b6ad2c5221dce65dbf01672e249f00503227.png" src="../../_images/3c7b1eb1a59aae491f3b28d75853b6ad2c5221dce65dbf01672e249f00503227.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -454,7 +458,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8b63f5e37567d5ecd01ecf4a2e03159023846b4b3557ea1b1137e2b99e1ef6eb.png" src="../../_images/8b63f5e37567d5ecd01ecf4a2e03159023846b4b3557ea1b1137e2b99e1ef6eb.png" />
+<img alt="../../_images/3a467624154d1d570e6de5e7d5cf72ada674f5dbd2980a4fa441b4714754ac5d.png" src="../../_images/3a467624154d1d570e6de5e7d5cf72ada674f5dbd2980a4fa441b4714754ac5d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -464,7 +468,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [00:15&lt;00:00, 18.27it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [01:20&lt;00:00,  3.57it/s]
 </pre></div>
 </div>
 </div>
@@ -484,19 +488,22 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_v1report_impl: ranges= [(104, 118), (118, 135), (138, 167), (226, 243), (243, 258)]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/10 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([8], (1, 9, False)):  90%|█████████ | 9/10 [00:26&lt;00:02,  2.90s/it]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_v1report_impl: ranges= [(104, 118), (118, 134), (138, 166), (226, 243), (243, 258)]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([8], (1, 9, False)):  90%|█████████ | 9/10 [00:28&lt;00:03,  3.11s/it]
 excessive step_done call!
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saving Guinier Analysis Report to e:\GitHub\molass-tutorial\chapters\07\book1.xlsx
-add_guinier_annonations: sheet_path= e:\GitHub\molass-tutorial\chapters\07\book1.xlsx(Guinier Analysis)
-add_guinier_annonations: ranges= [(104, 118), (118, 135), (138, 167), (226, 243), (243, 258)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saving Guinier Analysis Report to d:\Github\molass-tutorial\chapters\07\book1.xlsx
+add_guinier_annonations: sheet_path= d:\Github\molass-tutorial\chapters\07\book1.xlsx(Guinier Analysis)
+add_guinier_annonations: ranges= [(104, 118), (118, 134), (138, 166), (226, 243), (243, 258)]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Killed the remaining process pid=21096
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Killed the remaining process pid=35720
 </pre></div>
 </div>
 </div>
@@ -533,6 +540,24 @@ add_guinier_annonations: ranges= [(104, 118), (118, 135), (138, 167), (226, 243)
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../06/rank_estimation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Rank Estimation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../10/lro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Low Rank Optimization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

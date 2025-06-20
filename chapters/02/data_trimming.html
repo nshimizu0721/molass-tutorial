@@ -188,7 +188,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">5. Data Correction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">6. Low Rank Factorization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">7. Rank Estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08/mapping.html">8. Mapping between UV and X-ray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/backward.html">8. Backward Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../70/technical_details.html">10. Technical Details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../70/customization.html">10.1. Customization</a></li>
@@ -197,6 +197,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../70/spectral_range.html">10.4. Elution Range</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../70/flowchange.html">10.6. Flow Change Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../70/mapping.html">10.7. Mapping between UV and X-ray</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../80/about_data_sets.html">11. About Example Data Sets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -455,18 +456,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">local_settings</span> <span class="o">=</span> <span class="n">get_local_settings</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">PKS_DATA</span> <span class="o">=</span> <span class="n">local_settings</span><span class="p">[</span><span class="s1">&#39;PKS_DATA&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">PKS_DATA</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
-
-<span class="ne">KeyError</span>: &#39;PKS_DATA&#39;
-</pre></div>
-</div>
+<img alt="../../_images/d6056d71d56c649da243077dfd0a52cc4ebca38e5873693c4f93d7bf11069c18.png" src="../../_images/d6056d71d56c649da243077dfd0a52cc4ebca38e5873693c4f93d7bf11069c18.png" />
 </div>
 </div>
 </section>
@@ -499,7 +489,7 @@ document.write(`
 <img alt="../../_images/699c2c61ada534ff1587f22ec8aaa628808df1cff7fcd4f05e1bd972919bf044.png" src="../../_images/699c2c61ada534ff1587f22ec8aaa628808df1cff7fcd4f05e1bd972919bf044.png" />
 </div>
 </div>
-<p>In this compact form, the mapping between UV and X-ray elution points becomes more apparent. We will discuss this mapping in <a class="reference internal" href="../08/mapping.html#mapping-between-uv-and-xray"><span class="std std-ref">a later chapter</span></a>.</p>
+<p>In this compact form, the mapping between UV and X-ray elution points becomes more apparent. We will discuss this mapping in <a class="reference internal" href="../70/mapping.html#mapping-between-uv-and-xray"><span class="std std-ref">a later chapter</span></a>.</p>
 </section>
 <section id="trimmed-copy">
 <h2><span class="section-number">3.4. </span>Trimmed Copy<a class="headerlink" href="#trimmed-copy" title="Link to this heading">#</a></h2>
