@@ -20,8 +20,8 @@ chapters:
   title: Low Rank Factorization
 - file: chapters/06/rank_estimation
   title: Rank Estimation
-- file: chapters/08/mapping
-  title: Mapping between UV and X-ray
+- file: chapters/07/backward
+  title: Backward Compatibility
 - file: chapters/10/lro
   title: Low Rank Optimization
 - file: chapters/70/technical_details
@@ -35,6 +35,8 @@ chapters:
     title: Spetral Range
   - file: chapters/70/flowchange
     title: Flow Change Detection
+  - file: chapters/70/mapping
+    title: Mapping between UV and X-ray
 - file: chapters/80/about_data_sets
   title: About Example Data Sets
   sections:
