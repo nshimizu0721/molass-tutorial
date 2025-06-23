@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Rank Estimation &#8212; Molass Library Tutorial</title>
+    <title>6. Rank Estimation &#8212; Molass Library Tutorial</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -61,8 +61,8 @@
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8. Backward Compatibility" href="../07/backward.html" />
-    <link rel="prev" title="6. Low Rank Factorization" href="../05/lrf.html" />
+    <link rel="next" title="7. Backward Compatibility" href="../07/backward.html" />
+    <link rel="prev" title="5. Low Rank Factorization" href="../05/lrf.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,12 +184,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../00/quick_start.html">1. Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/data_objects.html">2. Data Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../03/baselines.html">4. Baselines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">5. Data Correction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">6. Low Rank Factorization</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Rank Estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07/backward.html">8. Backward Compatibility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">4. Data Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">5. Low Rank Factorization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Rank Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/backward.html">7. Backward Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">8. Low Rank Optimization</a></li>
 </ul>
 
     </div>
@@ -385,9 +384,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-observation">7.1. Human Observation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-scattering-ratio">7.2. Absorbance / Scattering Ratio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">7.3. Concentration Dependence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-observation">6.1. Human Observation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-scattering-ratio">6.2. Absorbance / Scattering Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">6.3. Concentration Dependence</a></li>
 </ul>
             </nav>
         </div>
@@ -400,12 +399,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="rank-estimation">
-<h1><span class="section-number">7. </span>Rank Estimation<a class="headerlink" href="#rank-estimation" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">6. </span>Rank Estimation<a class="headerlink" href="#rank-estimation" title="Link to this heading">#</a></h1>
 <section id="human-observation">
-<h2><span class="section-number">7.1. </span>Human Observation<a class="headerlink" href="#human-observation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.1. </span>Human Observation<a class="headerlink" href="#human-observation" title="Link to this heading">#</a></h2>
 </section>
 <section id="absorbance-scattering-ratio">
-<h2><span class="section-number">7.2. </span>Absorbance / Scattering Ratio<a class="headerlink" href="#absorbance-scattering-ratio" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.2. </span>Absorbance / Scattering Ratio<a class="headerlink" href="#absorbance-scattering-ratio" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
@@ -436,7 +435,7 @@ document.write(`
 </div>
 </section>
 <section id="concentration-dependence">
-<h2><span class="section-number">7.3. </span>Concentration Dependence<a class="headerlink" href="#concentration-dependence" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.3. </span>Concentration Dependence<a class="headerlink" href="#concentration-dependence" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -476,7 +475,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Low Rank Factorization</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Low Rank Factorization</p>
       </div>
     </a>
     <a class="right-next"
@@ -484,7 +483,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Backward Compatibility</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Backward Compatibility</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -504,9 +503,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-observation">7.1. Human Observation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-scattering-ratio">7.2. Absorbance / Scattering Ratio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">7.3. Concentration Dependence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-observation">6.1. Human Observation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-scattering-ratio">6.2. Absorbance / Scattering Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">6.3. Concentration Dependence</a></li>
 </ul>
   </nav></div>
 
