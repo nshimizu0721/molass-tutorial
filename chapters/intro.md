@@ -11,7 +11,7 @@ This tutorial will help you get started with the Molass Library. You can follow 
 As you proceed, you may also find the following resources helpful:
 
 * [Molass Library Essence](https://nshimizu0721.github.io/molass-essence/) for theory,
-* [Molass Technical Report](https://freesemt.github.io/molass-technical/) for techincal details,
+* [Molass Technical Report](https://freesemt.github.io/molass-technical/) for technical details,
 * [Molass Library Reference](https://nshimizu0721.github.io/molass-library/) for function reference,
 * [Molass Library Repository](https://github.com/nshimizu0721/molass-library) for source code.
 
