@@ -12,10 +12,8 @@ chapters:
   title: Data Objects
 - file: chapters/02/data_trimming
   title: Data Trimming
-- file: chapters/03/baselines
-  title: Baselines
 - file: chapters/04/data_correction
-  title: Data Correction
+  title: Baseline Correction
 - file: chapters/05/lrf
   title: Low Rank Factorization
 - file: chapters/06/rank_estimation

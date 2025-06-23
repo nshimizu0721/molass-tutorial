@@ -5,7 +5,7 @@ title: Molass Library Tutorial
 author: Molass Community powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 copyright: "2025"
 logo: images/molamola.png
-exclude_patterns: ["README.md"]
+exclude_patterns: ["README.md", "COPILOT_CONTEXT.md"]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
