@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -61,7 +61,7 @@
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4. Baselines" href="../03/baselines.html" />
+    <link rel="next" title="4. Baseline Correction" href="../04/data_correction.html" />
     <link rel="prev" title="2. Data Objects" href="../01/data_objects.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,12 +184,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../00/quick_start.html">1. Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/data_objects.html">2. Data Objects</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Data Trimming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../03/baselines.html">4. Baselines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">5. Data Correction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">6. Low Rank Factorization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">7. Rank Estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07/backward.html">8. Backward Compatibility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">4. Baseline Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">5. Low Rank Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">6. Rank Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/backward.html">7. Backward Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">8. Low Rank Optimization</a></li>
 </ul>
 
     </div>
@@ -467,7 +466,7 @@ document.write(`
 <img alt="../../_images/699c2c61ada534ff1587f22ec8aaa628808df1cff7fcd4f05e1bd972919bf044.png" src="../../_images/699c2c61ada534ff1587f22ec8aaa628808df1cff7fcd4f05e1bd972919bf044.png" />
 </div>
 </div>
-<p>In this compact form, the mapping between UV and X-ray elution points becomes more apparent. We will discuss this mapping in <a class="reference internal" href="#mapping_between_uv_and_xray"><span class="xref myst">a later chapter</span></a>.</p>
+<p>In this compact form, the mapping between UV and X-ray elution points becomes more apparent. How tThis “mapping” is determined is explained a separate book <a class="reference external" href="https://freesemt.github.io/molass-technical/">Molass Technical Report</a>.</p>
 </section>
 <section id="trimmed-copy">
 <h2><span class="section-number">3.4. </span>Trimmed Copy<a class="headerlink" href="#trimmed-copy" title="Link to this heading">#</a></h2>
@@ -496,7 +495,7 @@ document.write(`
 </section>
 <section id="how-to-manually-trim">
 <h2><span class="section-number">3.5. </span>How to Manually Trim<a class="headerlink" href="#how-to-manually-trim" title="Link to this heading">#</a></h2>
-<p>How the default trimming ranges are chosen will be explained later in <a class="reference internal" href="#technical_details"><span class="xref myst">Technical Details</span></a>.</p>
+<p>How the default trimming ranges are chosen is explained in a separate book <a class="reference external" href="https://freesemt.github.io/molass-technical/">Molass Technical Report</a>.</p>
 <p>What if the default ranges do not seem appropriate? Then, you have to trim manually. Here is how you can do it.</p>
 <p>First, print the default trimming info.</p>
 <div class="cell docutils container">
@@ -577,11 +576,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../03/baselines.html"
+       href="../04/data_correction.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Baselines</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Baseline Correction</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

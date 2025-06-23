@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. Data Correction &#8212; Molass Library Tutorial</title>
+    <title>4. Baseline Correction &#8212; Molass Library Tutorial</title>
   
   
   
@@ -184,7 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../00/quick_start.html">1. Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/data_objects.html">2. Data Objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Data Correction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Baseline Correction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">5. Low Rank Factorization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">6. Rank Estimation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07/backward.html">7. Backward Compatibility</a></li>
@@ -374,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Correction</h1>
+    <h1>Baseline Correction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -396,17 +396,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
-<span class="kn">from</span> <span class="nn">molass.Global.Options</span> <span class="kn">import</span> <span class="n">set_molass_options</span>
-<span class="n">set_molass_options</span><span class="p">(</span><span class="n">flowchange</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="data-correction">
-<h1><span class="section-number">4. </span>Data Correction<a class="headerlink" href="#data-correction" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="baseline-correction">
+<h1><span class="section-number">4. </span>Baseline Correction<a class="headerlink" href="#baseline-correction" title="Link to this heading">#</a></h1>
 <section id="study-points">
 <h2><span class="section-number">4.1. </span>Study Points<a class="headerlink" href="#study-points" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -414,7 +405,8 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
+<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
 <span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
 </pre></div>
