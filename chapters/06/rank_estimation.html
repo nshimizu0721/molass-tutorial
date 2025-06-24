@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -402,14 +402,10 @@ document.write(`
 <h1><span class="section-number">6. </span>Rank Estimation<a class="headerlink" href="#rank-estimation" title="Link to this heading">#</a></h1>
 <section id="human-observation">
 <h2><span class="section-number">6.1. </span>Human Observation<a class="headerlink" href="#human-observation" title="Link to this heading">#</a></h2>
-</section>
-<section id="absorbance-scattering-ratio">
-<h2><span class="section-number">6.2. </span>Absorbance / Scattering Ratio<a class="headerlink" href="#absorbance-scattering-ratio" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-legacy&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-library&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
@@ -425,6 +421,23 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" src="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" />
+</div>
+</div>
+</section>
+<section id="absorbance-scattering-ratio">
+<h2><span class="section-number">6.2. </span>Absorbance / Scattering Ratio<a class="headerlink" href="#absorbance-scattering-ratio" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">ratio_curve</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tutorial Data - Compact Plot with Ratio Curve&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -436,6 +449,51 @@ document.write(`
 </section>
 <section id="concentration-dependence">
 <h2><span class="section-number">6.3. </span>Concentration Dependence<a class="headerlink" href="#concentration-dependence" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scds</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">compute_scds</span><span class="p">()</span>
+<span class="n">scds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.LowRank.RankEstimator</span> <span class="kn">import</span> <span class="n">scd_to_rank</span>
+<span class="n">ranks</span> <span class="o">=</span> <span class="p">[</span><span class="n">scd_to_rank</span><span class="p">(</span><span class="n">scd</span><span class="p">)</span> <span class="k">for</span> <span class="n">scd</span> <span class="ow">in</span> <span class="n">scds</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">scd</span><span class="p">,</span> <span class="n">rank</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scds</span><span class="p">,</span> <span class="n">ranks</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SCD: </span><span class="si">{</span><span class="n">scd</span><span class="si">}</span><span class="s2">, Rank: </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SCD: 1, Rank: 1
+SCD: 1, Rank: 1
+SCD: 1, Rank: 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition</span><span class="o">.</span><span class="n">update_xr_ranks</span><span class="p">(</span><span class="n">ranks</span><span class="p">)</span>
+<span class="n">decomposition</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;molass.LowRank.Component.XrComponent at 0x1a8dae5f380&gt;,
+ &lt;molass.LowRank.Component.XrComponent at 0x1a8da1572c0&gt;,
+ &lt;molass.LowRank.Component.XrComponent at 0x1a8da6e29f0&gt;]
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 

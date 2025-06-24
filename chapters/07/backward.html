@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -391,15 +391,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-legacy&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-library&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
-<span class="n">lr_info</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_lowrank_info</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plot5</span> <span class="o">=</span> <span class="n">lr_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plot5</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -413,12 +412,12 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgcurve</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">compute_rgcurve</span><span class="p">()</span>
-<span class="n">plot6</span> <span class="o">=</span> <span class="n">lr_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">)</span>
+<span class="n">plot6</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [01:25&lt;00:00,  3.33it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [01:27&lt;00:00,  3.28it/s]
 </pre></div>
 </div>
 <img alt="../../_images/3c7b1eb1a59aae491f3b28d75853b6ad2c5221dce65dbf01672e249f00503227.png" src="../../_images/3c7b1eb1a59aae491f3b28d75853b6ad2c5221dce65dbf01672e249f00503227.png" />
@@ -426,8 +425,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ranges</span> <span class="o">=</span> <span class="n">lr_info</span><span class="o">.</span><span class="n">make_v1report_ranges</span><span class="p">()</span>
-<span class="n">plot8</span> <span class="o">=</span> <span class="n">lr_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ranges</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">make_v1report_ranges</span><span class="p">()</span>
+<span class="n">plot8</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">rgcurve</span><span class="o">=</span><span class="n">rgcurve</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -445,7 +444,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/286 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [01:20&lt;00:00,  3.53it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [01:18&lt;00:00,  3.62it/s]
 </pre></div>
 </div>
 </div>
@@ -460,7 +459,7 @@ document.write(`
 <span class="n">mapping</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">estimate_mapping</span><span class="p">()</span>
 <span class="n">conc_info</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">make_conc_info</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
 <span class="n">rg_info</span> <span class="o">=</span> <span class="n">rgcurve</span><span class="p">,</span> <span class="n">rgcurve_atsas</span>
-<span class="n">make_v1report</span><span class="p">(</span><span class="n">corrected_ssd</span><span class="p">,</span> <span class="n">conc_info</span><span class="o">=</span><span class="n">conc_info</span><span class="p">,</span> <span class="n">rg_info</span><span class="o">=</span><span class="n">rg_info</span><span class="p">,</span> <span class="n">lr_info</span><span class="o">=</span><span class="n">lr_info</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">make_v1report</span><span class="p">(</span><span class="n">corrected_ssd</span><span class="p">,</span> <span class="n">conc_info</span><span class="o">=</span><span class="n">conc_info</span><span class="p">,</span> <span class="n">rg_info</span><span class="o">=</span><span class="n">rg_info</span><span class="p">,</span> <span class="n">lr_info</span><span class="o">=</span><span class="n">decomposition</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -468,10 +467,13 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/10 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_v1report_impl: ranges= [(104, 118), (118, 134), (138, 166), (226, 243), (243, 258)]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([8], (1, 9, False)):  90%|█████████ | 9/10 [00:27&lt;00:03,  3.09s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([8], (1, 9, False)):  90%|█████████ | 9/10 [00:29&lt;00:03,  3.24s/it]
 excessive step_done call!
 </pre></div>
 </div>
@@ -480,7 +482,7 @@ add_guinier_annonations: sheet_path= d:\Github\molass-tutorial\chapters\07\book1
 add_guinier_annonations: ranges= [(104, 118), (118, 134), (138, 166), (226, 243), (243, 258)]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Killed the remaining process pid=38640
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Killed the remaining process pid=26116
 </pre></div>
 </div>
 </div>

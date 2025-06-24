@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -450,7 +450,9 @@ However, life is not so easy and that is why the hard part exists, which we will
 <p>We can plot the data set as follows. The format of this data set is specified in the chapter 4 of <a class="reference external" href="https://pfwww.kek.jp/saxs/software/MOLASS-UsersGuide-1_0_13.pdf">MOLASS User’s Guide</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
 <span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
@@ -471,13 +473,13 @@ We can execute these steps and show the results as follows. The details of each 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
-<span class="n">lrf_info</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_lowrank_info</span><span class="p">()</span>
-<span class="n">lrf_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
+<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developper memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
 <img alt="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" src="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" />
@@ -492,7 +494,7 @@ In Molass Library, you can use <a class="reference external" href="https://tdgra
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.SAXS.DenssTools</span> <span class="kn">import</span> <span class="n">run_denss</span>
-<span class="n">jcurve_array</span> <span class="o">=</span> <span class="n">lrf_info</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_jcurve_array</span><span class="p">()</span>
+<span class="n">jcurve_array</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_jcurve_array</span><span class="p">()</span>
 <span class="n">output_folder</span> <span class="o">=</span> <span class="s2">&quot;temp&quot;</span>
 <span class="n">run_denss</span><span class="p">(</span><span class="n">jcurve_array</span><span class="p">,</span> <span class="n">output_folder</span><span class="o">=</span><span class="n">output_folder</span><span class="p">)</span>
 </pre></div>
@@ -508,10 +510,10 @@ Number of calculated Shannon channels: 33
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   1.31e-02  60.94        1240768            
+  620   7.86e-02  77.98        1240768            
 switched to shrinkwrap by density threshold = 0.2000
-  999   4.67e-05  36.09        367808          EC: 1 -&gt; 1 
- 1850   2.07e-05  36.33        317785          
+  999   2.16e-02  66.20        570360          EC: 2 -&gt; 1 
+ 6894   1.99e-05  36.35        324708          
 </pre></div>
 </div>
 </div>
@@ -531,7 +533,7 @@ switched to shrinkwrap by density threshold = 0.2000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3073624eb6c2cab47f033fc5595a9438661987db2d31620f6345c13fadf34e76.png" src="../../_images/3073624eb6c2cab47f033fc5595a9438661987db2d31620f6345c13fadf34e76.png" />
+<img alt="../../_images/ff4fe69f7f398b1e314156b731e897d4d964b53f91a2b1483c6bb57c8e8997a1.png" src="../../_images/ff4fe69f7f398b1e314156b731e897d4d964b53f91a2b1483c6bb57c8e8997a1.png" />
 </div>
 </div>
 </section>
@@ -549,13 +551,13 @@ switched to shrinkwrap by density threshold = 0.2000
 <p>However, if you want to be more precise and decide that the observed bump should be considered as a sign of a separate component, you can specify the number of components as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simply_refined_lrf_info</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_lowrank_info</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">simply_refined_lrf_info</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simply_refined_decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">simply_refined_decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developper memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
 <img alt="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" src="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" />
