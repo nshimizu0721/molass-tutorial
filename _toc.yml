@@ -18,7 +18,9 @@ chapters:
   title: Low Rank Factorization
 - file: chapters/06/rank_estimation
   title: Rank Estimation
-- file: chapters/07/backward
+- file: chapters/07/denss
+  title: Electron Density Retrieval
+- file: chapters/08/backward
   title: Backward Compatibility
 - file: chapters/10/lro
   title: Low Rank Optimization

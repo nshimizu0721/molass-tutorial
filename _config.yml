@@ -11,7 +11,7 @@ exclude_patterns: ["README.md", "COPILOT_CONTEXT.md"]
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
-  exclude_patterns: ["quick_start.ipynb", "lrf.ipynb", "backward.ipynb"]
+  exclude_patterns: ["quick_start.ipynb", "denss.ipynb", "backward.ipynb"]
 
 # Define the name of the latex output file for PDF builds
 latex:
