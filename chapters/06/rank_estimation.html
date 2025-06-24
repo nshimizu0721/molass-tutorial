@@ -61,7 +61,7 @@
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7. Backward Compatibility" href="../07/backward.html" />
+    <link rel="next" title="7. Electron Density Retrieval" href="../07/denss.html" />
     <link rel="prev" title="5. Low Rank Factorization" href="../05/lrf.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -187,8 +187,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">4. Baseline Correction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">5. Low Rank Factorization</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Rank Estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07/backward.html">7. Backward Compatibility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">8. Low Rank Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07/denss.html">7. Electron Density Retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/backward.html">8. Backward Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
 </ul>
 
     </div>
@@ -406,6 +407,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.0.15&#39;</span><span class="p">,</span> <span class="s2">&quot;This script requires molass version 0.0.15 or higher.&quot;</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
@@ -451,20 +454,46 @@ document.write(`
 <h2><span class="section-number">6.3. </span>Concentration Dependence<a class="headerlink" href="#concentration-dependence" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scds</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">compute_scds</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scds</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">compute_scds</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">scds</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] [(104, 118), (118, 134)]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] [(138, 166)]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2] [(226, 243), (243, 258)]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] [[35.98240006 35.90652147]
+ [35.96737699 35.18557036]] 0.0021109953862327893
+[2] [[23.6881619  23.61811745]
+ [23.50268995 23.29401515]] 0.0029613172226612343
+[0] [104, 118, 134]
+s[0:2]= [1.8895093 0.0174665]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] (138, 152, 166)
+s[0:2]= [0.43123751 0.02252421]
+[2] [226, 243, 258]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s[0:2]= [1.29261889 0.01745182]
+cds_list: [(118, 0.26928798616254507), (152, 4.585861810801831), (243, 0.17449563088903883)]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.26928798616254507, 4.585861810801831, 0.17449563088903883]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.LowRank.RankEstimator</span> <span class="kn">import</span> <span class="n">scd_to_rank</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.Backward.RankEstimator</span> <span class="kn">import</span> <span class="n">scd_to_rank</span>
 <span class="n">ranks</span> <span class="o">=</span> <span class="p">[</span><span class="n">scd_to_rank</span><span class="p">(</span><span class="n">scd</span><span class="p">)</span> <span class="k">for</span> <span class="n">scd</span> <span class="ow">in</span> <span class="n">scds</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">scd</span><span class="p">,</span> <span class="n">rank</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scds</span><span class="p">,</span> <span class="n">ranks</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SCD: </span><span class="si">{</span><span class="n">scd</span><span class="si">}</span><span class="s2">, Rank: </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -472,9 +501,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SCD: 1, Rank: 1
-SCD: 1, Rank: 1
-SCD: 1, Rank: 1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SCD: 0.26928798616254507, Rank: 1
+SCD: 4.585861810801831, Rank: 1
+SCD: 0.17449563088903883, Rank: 1
 </pre></div>
 </div>
 </div>
@@ -487,9 +516,9 @@ SCD: 1, Rank: 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;molass.LowRank.Component.XrComponent at 0x1a8dae5f380&gt;,
- &lt;molass.LowRank.Component.XrComponent at 0x1a8da1572c0&gt;,
- &lt;molass.LowRank.Component.XrComponent at 0x1a8da6e29f0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;molass.LowRank.Component.XrComponent at 0x25f74d1d7c0&gt;,
+ &lt;molass.LowRank.Component.XrComponent at 0x25f731f2510&gt;,
+ &lt;molass.LowRank.Component.XrComponent at 0x25f731f27b0&gt;]
 </pre></div>
 </div>
 </div>
@@ -537,11 +566,11 @@ SCD: 1, Rank: 1
       </div>
     </a>
     <a class="right-next"
-       href="../07/backward.html"
+       href="../07/denss.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Backward Compatibility</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Electron Density Retrieval</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

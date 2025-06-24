@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Data Trimming &#8212; Molass Library Tutorial</title>
+    <title>7. Electron Density Retrieval &#8212; Molass Library Tutorial</title>
   
   
   
@@ -57,12 +57,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/02/data_trimming';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/07/denss';</script>
     <link rel="icon" href="../../_static/molamola.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4. Baseline Correction" href="../04/data_correction.html" />
-    <link rel="prev" title="2. Data Objects" href="../01/data_objects.html" />
+    <link rel="next" title="8. Backward Compatibility" href="../08/backward.html" />
+    <link rel="prev" title="6. Rank Estimation" href="../06/rank_estimation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,11 +183,11 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00/quick_start.html">1. Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01/data_objects.html">2. Data Objects</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Data Trimming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/data_trimming.html">3. Data Trimming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04/data_correction.html">4. Baseline Correction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05/lrf.html">5. Low Rank Factorization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06/rank_estimation.html">6. Rank Estimation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07/denss.html">7. Electron Density Retrieval</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Electron Density Retrieval</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08/backward.html">8. Backward Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10/lro.html">9. Low Rank Optimization</a></li>
 </ul>
@@ -261,7 +261,7 @@
       
       
       
-      <li><a href="https://github.com/nshimizu0721/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/02/data_trimming.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/nshimizu0721/molass-tutorial/issues/new?title=Issue%20on%20page%20%2Fchapters/07/denss.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +291,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/02/data_trimming.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/07/denss.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -362,9 +362,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -375,23 +373,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Trimming</h1>
+    <h1>Electron Density Retrieval</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">3.1. Learning Points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-data">3.2. Overview of the Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-trimming-ranges">3.3. Plotting Trimming Ranges</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimmed-copy">3.4. Trimmed Copy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-manually-trim">3.5. How to Manually Trim</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -401,140 +387,77 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-trimming">
-<h1><span class="section-number">3. </span>Data Trimming<a class="headerlink" href="#data-trimming" title="Link to this heading">#</a></h1>
-<p>Measured data sets often contain unnecessary or undesirable values. Therefore, it is good practice to pre-process data sets so that they contain only well-conditioned data for analysis. We call this process “trimming.”</p>
-<section id="learning-points">
-<h2><span class="section-number">3.1. </span>Learning Points<a class="headerlink" href="#learning-points" title="Link to this heading">#</a></h2>
-<p>In this chapter, you will learn about:</p>
-<ul class="simple">
-<li><p>ssd.plot_trimming_info()</p></li>
-<li><p>ssd.plot_compact()</p></li>
-<li><p>Moment</p></li>
-<li><p>ssd.trimmed_copy()</p></li>
-</ul>
-</section>
-<section id="overview-of-the-data">
-<h2><span class="section-number">3.2. </span>Overview of the Data<a class="headerlink" href="#overview-of-the-data" title="Link to this heading">#</a></h2>
-<p>The data set used here for explanation looks like this.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="electron-density-retrieval">
+<h1><span class="section-number">7. </span>Electron Density Retrieval<a class="headerlink" href="#electron-density-retrieval" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-legacy&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-library&#39;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">molass.Local</span> <span class="kn">import</span> <span class="n">get_local_settings</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
-<span class="n">local_settings</span> <span class="o">=</span> <span class="n">get_local_settings</span><span class="p">()</span>
-<span class="n">PKS_DATA</span> <span class="o">=</span> <span class="n">local_settings</span><span class="p">[</span><span class="s1">&#39;PKS_DATA&#39;</span><span class="p">]</span>
-<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">PKS_DATA</span><span class="p">)</span>
-<span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
+<span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
+<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d6056d71d56c649da243077dfd0a52cc4ebca38e5873693c4f93d7bf11069c18.png" src="../../_images/d6056d71d56c649da243077dfd0a52cc4ebca38e5873693c4f93d7bf11069c18.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Program Files\Python312\Lib\site-packages\molass_data\tutorial_data
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x200c20b9b20&gt;
+</pre></div>
+</div>
+<img alt="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" src="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" />
 </div>
 </div>
-</section>
-<section id="plotting-trimming-ranges">
-<h2><span class="section-number">3.3. </span>Plotting Trimming Ranges<a class="headerlink" href="#plotting-trimming-ranges" title="Link to this heading">#</a></h2>
-<p>You can plot the default trimming ranges as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_trimming_info</span><span class="p">();</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.SAXS.DenssTools</span> <span class="kn">import</span> <span class="n">run_denss</span>
+<span class="n">jcurve_array</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_jcurve_array</span><span class="p">()</span>
+<span class="n">output_folder</span> <span class="o">=</span> <span class="s2">&quot;temp&quot;</span>
+<span class="n">run_denss</span><span class="p">(</span><span class="n">jcurve_array</span><span class="p">,</span> <span class="n">output_folder</span><span class="o">=</span><span class="n">output_folder</span><span class="p">)</span>    
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e7d7731c0e86c859d01039a38aa12d9cccea93ce0e74cb6ceb2e5ab95eae3af9.png" src="../../_images/e7d7731c0e86c859d01039a38aa12d9cccea93ce0e74cb6ceb2e5ab95eae3af9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
+WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
+Dmax = 129.43
+Number of experimental Shannon channels: 11
+Number of calculated Shannon channels: 33
+
+
+ Step     Chi2     Rg    Support Volume
+ ----- --------- ------- --------------
+  620   1.59e-02  61.70        1240768            
+switched to shrinkwrap by density threshold = 0.2000
+  999   2.29e-04  35.46        334757          EC: 1 -&gt; 1 
+ 5847   3.03e-05  35.94        298356          
+</pre></div>
 </div>
 </div>
-<p>The figures above show the trimming ranges in three distinct ways: on the left, as rectangles suggesting rows and columns in matrices; in the center, as vertical bands on elution curves; and on the right, as vertical bands on spectral curves (such as absorbance or scattering curves).</p>
-<p>The elution range has been chosen to focus on the peak region, including enough baseline regions to be useful but excluding unnecessary portions. How to choose this range will be explained in the next section.</p>
-<p>The wavelength range below 250 nm in UV absorbance has been cut off due to unstable measurements often observed in that region.</p>
-<p>Both ends of the X-ray scattering angle range have been cut off due to irregular values.</p>
-<p>The center figures also show baselines as red lines, which will be explained in the following chapters.</p>
-<p>More compact plots are available below.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;PKS Data&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">molass.SAXS.MrcViewer</span> <span class="kn">import</span> <span class="n">show_mrc</span>
+<span class="c1"># %matplotlib widget</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">show_mrc</span><span class="p">(</span><span class="n">output_folder</span> <span class="o">+</span> <span class="s1">&#39;/denss_result.mrc&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/699c2c61ada534ff1587f22ec8aaa628808df1cff7fcd4f05e1bd972919bf044.png" src="../../_images/699c2c61ada534ff1587f22ec8aaa628808df1cff7fcd4f05e1bd972919bf044.png" />
+<img alt="../../_images/ce9a1f59a043cd48fb5d621008168fc4a85bfe2a1d5abfb5d0c7fc7f3469c61d.png" src="../../_images/ce9a1f59a043cd48fb5d621008168fc4a85bfe2a1d5abfb5d0c7fc7f3469c61d.png" />
 </div>
 </div>
-<p>In this compact form, the mapping between UV and X-ray elution points becomes more apparent. How tThis “mapping” is determined is explained a separate book <a class="reference external" href="https://freesemt.github.io/molass-technical/">Molass Technical Report</a>.</p>
-</section>
-<section id="trimmed-copy">
-<h2><span class="section-number">3.4. </span>Trimmed Copy<a class="headerlink" href="#trimmed-copy" title="Link to this heading">#</a></h2>
-<p>If these trimming ranges look appropriate, we can make a trimmed copy of the SSD object and use it for desired analysis.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
-<span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_trimming_info</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;PKS Data - Trimmed&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/5b4d73f5e5a98805970e503446a462000b2de5ccd0ddc012959a42e9759467ce.png" src="../../_images/5b4d73f5e5a98805970e503446a462000b2de5ccd0ddc012959a42e9759467ce.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;PKS Data - Trimmed&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/3041f324fd15ca355879a3897b52b6938b8a9b633c1d920f1e546340c5192288.png" src="../../_images/3041f324fd15ca355879a3897b52b6938b8a9b633c1d920f1e546340c5192288.png" />
-</div>
-</div>
-</section>
-<section id="how-to-manually-trim">
-<h2><span class="section-number">3.5. </span>How to Manually Trim<a class="headerlink" href="#how-to-manually-trim" title="Link to this heading">#</a></h2>
-<p>How the default trimming ranges are chosen is explained in a separate book <a class="reference external" href="https://freesemt.github.io/molass-technical/">Molass Technical Report</a>.</p>
-<p>What if the default ranges do not seem appropriate? Then, you have to trim manually. Here is how you can do it.</p>
-<p>First, print the default trimming info.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trim</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">get_trimming_info</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trimming info:&quot;</span><span class="p">,</span> <span class="n">trim</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trimming info: TrimmingInfo(xr_slices=(slice(12, 765, None), slice(435, 843, None)), uv_slices=(slice(62, None, None), slice(417, 863, None)), mapping=MappingInfo(slope=1.09, intercept=-58.3, xr_peaks=..., uv_peaks=..., xr_moment=..., uv_moment=...))
-</pre></div>
-</div>
-</div>
-</div>
-<p>Then, using and modifying the printed slices, make a new TrimmingInfo object as follows.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">manual_trim</span> <span class="o">=</span> <span class="n">trim</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xr_slices</span><span class="o">=</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">765</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">435</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">843</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span>
-                        <span class="n">uv_slices</span><span class="o">=</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">62</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">417</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">863</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span>
-                        <span class="p">)</span>
-<span class="n">manually_trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">(</span><span class="n">trim</span><span class="o">=</span><span class="n">manual_trim</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>In this example, the renewed elution range gets slightly (100 points to each side) wider as shown below.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">manually_trimmed_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;PKS Data - Manually Trimmed&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/b76baff55632f5ce54348beeda14289869bee05a28b1dae603fb76c2b395d39c.png" src="../../_images/b76baff55632f5ce54348beeda14289869bee05a28b1dae603fb76c2b395d39c.png" />
-</div>
-</div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -550,7 +473,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters\02"
+            path: "./chapters\07"
         },
         predefinedOutput: true
     }
@@ -568,20 +491,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../01/data_objects.html"
+       href="../06/rank_estimation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Data Objects</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Rank Estimation</p>
       </div>
     </a>
     <a class="right-next"
-       href="../04/data_correction.html"
+       href="../08/backward.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Baseline Correction</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Backward Compatibility</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -591,25 +514,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">3.1. Learning Points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-data">3.2. Overview of the Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-trimming-ranges">3.3. Plotting Trimming Ranges</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trimmed-copy">3.4. Trimmed Copy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-manually-trim">3.5. How to Manually Trim</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
