@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -392,20 +392,18 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;D:\Github\molass-library&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.1&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.1 or higher.&quot;</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
-<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
 <span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Program Files\Python312\Lib\site-packages\molass_data\tutorial_data
-</pre></div>
-</div>
-<img alt="../../_images/fa2b2bf588dbf3e91ebe931138a81a1cb1814913eb9d0c6ca1d45ffcce11d645.png" src="../../_images/fa2b2bf588dbf3e91ebe931138a81a1cb1814913eb9d0c6ca1d45ffcce11d645.png" />
+<img alt="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" src="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -413,7 +411,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
 <span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
-<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
+<span class="n">plot1</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
 </pre></div>
 </div>
 </div>
@@ -421,10 +419,123 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x27d59706f30&gt;
+<img alt="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" src="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition3</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plot2</span> <span class="o">=</span> <span class="n">decomposition3</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
 </pre></div>
 </div>
-<img alt="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" src="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" />
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" src="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proportions</span> <span class="o">=</span> <span class="n">decomposition3</span><span class="o">.</span><span class="n">get_proportions</span><span class="p">()</span>
+<span class="n">proportions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.59852696, 0.06986106, 0.33161198])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition3</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">proportions</span><span class="o">=</span><span class="p">[</span><span class="mf">0.57</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">])</span>
+<span class="n">plot2</span> <span class="o">=</span> <span class="n">decomposition3</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/0bf9164a1f5fa3af03bd080f05969629147883ef7979002a86b1e564daa8f36a.png" src="../../_images/0bf9164a1f5fa3af03bd080f05969629147883ef7979002a86b1e564daa8f36a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE2</span>
+<span class="n">ssd2</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE2</span><span class="p">)</span>
+<span class="n">trimmed_ssd2</span> <span class="o">=</span> <span class="n">ssd2</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd2</span> <span class="o">=</span> <span class="n">trimmed_ssd2</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition23</span> <span class="o">=</span> <span class="n">corrected_ssd2</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plot4</span> <span class="o">=</span> <span class="n">decomposition23</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decomposition of SAMPLE2 (num_components=3)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/ca54c7aa0afa93434fb34a278b4b563b4fcec9d79b3e9922bf0d01e7ff586809.png" src="../../_images/ca54c7aa0afa93434fb34a278b4b563b4fcec9d79b3e9922bf0d01e7ff586809.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition23n</span> <span class="o">=</span> <span class="n">corrected_ssd2</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">num_plates</span><span class="o">=</span><span class="mi">14400</span><span class="p">)</span>   <span class="c1"># 14400 = 48000 * 30cm/100cm</span>
+<span class="n">plot5</span> <span class="o">=</span> <span class="n">decomposition23n</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decomposition of SAMPLE2 (num_components=3, num_plates=14400)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/acda7aabe48f334c06c1a09dfecf1f9b3a6a7dd6505dc1fb582c40e795d03507.png" src="../../_images/acda7aabe48f334c06c1a09dfecf1f9b3a6a7dd6505dc1fb582c40e795d03507.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE3</span>
+<span class="n">ssd3</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition31</span> <span class="o">=</span> <span class="n">ssd3</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
+<span class="n">plot6</span> <span class="o">=</span> <span class="n">decomposition31</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;SAMPLE3 as rank 1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/22382d0aff91323f2c3b181d0a72f075ff43de026ea980546694fc4f975a7f0c.png" src="../../_images/22382d0aff91323f2c3b181d0a72f075ff43de026ea980546694fc4f975a7f0c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition31</span> <span class="o">=</span> <span class="n">ssd3</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
+<span class="n">decomposition31</span><span class="o">.</span><span class="n">update_xr_ranks</span><span class="p">(</span><span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> 
+<span class="n">plot6</span> <span class="o">=</span> <span class="n">decomposition31</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;SAMPLE3 as rank 2&quot;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/b7a5acc7ac2af291c67ed539857416a1fa7a5831998d0bb1b2d9f5c46323bdbd.png" src="../../_images/b7a5acc7ac2af291c67ed539857416a1fa7a5831998d0bb1b2d9f5c46323bdbd.png" />
 </div>
 </div>
 </section>

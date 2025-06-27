@@ -424,8 +424,10 @@ document.write(`
 <h2><span class="section-number">2.2. </span>SEC-SAXS Data<a class="headerlink" href="#sec-saxs-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.0 or higher.&quot;</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
 </pre></div>
 </div>
 </div>
@@ -434,13 +436,13 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
-<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
 <span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fa2b2bf588dbf3e91ebe931138a81a1cb1814913eb9d0c6ca1d45ffcce11d645.png" src="../../_images/fa2b2bf588dbf3e91ebe931138a81a1cb1814913eb9d0c6ca1d45ffcce11d645.png" />
+<img alt="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" src="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" />
 </div>
 </div>
 <p>You should see a 3D plot representing the SEC-SAXS data. This visualization helps you understand the structure of the data and how it changes over time.</p>
@@ -558,7 +560,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/04e3204d043d6db4289c1f8d7759e62331aebb6d78baad19e879bd263eb6123b.png" src="../../_images/04e3204d043d6db4289c1f8d7759e62331aebb6d78baad19e879bd263eb6123b.png" />
+<img alt="../../_images/c70526373522460885fced5947928b5fe61f87e49fea023c6ce064d8dce5c6b5.png" src="../../_images/c70526373522460885fced5947928b5fe61f87e49fea023c6ce064d8dce5c6b5.png" />
 </div>
 </div>
 </section>
@@ -578,7 +580,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0a714bec72838b6b01e5ffaacd28d01979deb23c05f776995d08d274c6427f37.png" src="../../_images/0a714bec72838b6b01e5ffaacd28d01979deb23c05f776995d08d274c6427f37.png" />
+<img alt="../../_images/fad35f3a1401062c51629b9beade2e7d311ff2a53e7cd9c48e3e91cc68af8917.png" src="../../_images/fad35f3a1401062c51629b9beade2e7d311ff2a53e7cd9c48e3e91cc68af8917.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -601,7 +603,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ed7f64d492c36e169598ccb5d9950e1c17bcb8478f35d3a1784d2e8964b2363b.png" src="../../_images/ed7f64d492c36e169598ccb5d9950e1c17bcb8478f35d3a1784d2e8964b2363b.png" />
+<img alt="../../_images/747a3780dfcebe2fa34777569377948678f8d5ede2a8ab5d85497ecb37b1c36d.png" src="../../_images/747a3780dfcebe2fa34777569377948678f8d5ede2a8ab5d85497ecb37b1c36d.png" />
 </div>
 </div>
 </section>

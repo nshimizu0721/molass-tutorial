@@ -451,17 +451,17 @@ However, life is not so easy and that is why the hard part exists, which we will
 <p>We can plot the data set as follows. The format of this data set is specified in the chapter 4 of <a class="reference external" href="https://pfwww.kek.jp/saxs/software/MOLASS-UsersGuide-1_0_13.pdf">MOLASS User’s Guide</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.0 or higher.&quot;</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
-<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
 <span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fa2b2bf588dbf3e91ebe931138a81a1cb1814913eb9d0c6ca1d45ffcce11d645.png" src="../../_images/fa2b2bf588dbf3e91ebe931138a81a1cb1814913eb9d0c6ca1d45ffcce11d645.png" />
+<img alt="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" src="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" />
 </div>
 </div>
 </section>
@@ -483,7 +483,7 @@ We can execute these steps and show the results as follows. The details of each 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" src="../../_images/3405a0d921b8c8b3eddade24b28666f5ae85150306308aeb7004afabf861ebcc.png" />
+<img alt="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" src="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" />
 </div>
 </div>
 </section>
@@ -504,17 +504,17 @@ In Molass Library, you can use <a class="reference external" href="https://tdgra
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
 WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
-Dmax = 129.43
-Number of experimental Shannon channels: 11
-Number of calculated Shannon channels: 33
+Dmax = 128.06
+Number of experimental Shannon channels: 10
+Number of calculated Shannon channels: 32
 
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   7.86e-02  77.98        1240768            
+  620   1.34e-02  59.39        1201784            
 switched to shrinkwrap by density threshold = 0.2000
-  999   2.16e-02  66.20        570360          EC: 2 -&gt; 1 
- 6894   1.99e-05  36.35        324708          
+  999   1.55e-05  36.37        367716          EC: 1 -&gt; 1 
+ 2371   1.40e-05  36.30        307584          
 </pre></div>
 </div>
 </div>
@@ -534,7 +534,7 @@ switched to shrinkwrap by density threshold = 0.2000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ff4fe69f7f398b1e314156b731e897d4d964b53f91a2b1483c6bb57c8e8997a1.png" src="../../_images/ff4fe69f7f398b1e314156b731e897d4d964b53f91a2b1483c6bb57c8e8997a1.png" />
+<img alt="../../_images/90deea3f5ed9b95af2f6a04aa63d6b68c4b6b41bb4952f831e62abafe7dcb6c6.png" src="../../_images/90deea3f5ed9b95af2f6a04aa63d6b68c4b6b41bb4952f831e62abafe7dcb6c6.png" />
 </div>
 </div>
 </section>
@@ -561,7 +561,7 @@ switched to shrinkwrap by density threshold = 0.2000
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" src="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" />
+<img alt="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" src="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" />
 </div>
 </div>
 <p>Molass Library provides several other options and methods for better estimation of scattering curves which we will discuss one by one in later chapters.</p>

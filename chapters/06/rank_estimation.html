@@ -408,10 +408,11 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.0.15&#39;</span><span class="p">,</span> <span class="s2">&quot;This script requires molass version 0.0.15 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">TUTORIAL_DATA</span>
+<span class="c1"># molass 0.1.2 is not uploaded to PyPI yet. Donwload it from GitHub.</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.2&#39;</span><span class="p">,</span> <span class="s2">&quot;This script requires molass version 0.1.2 or higher.&quot;</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
-<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">TUTORIAL_DATA</span><span class="p">)</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_trimming_info</span><span class="p">();</span>
@@ -419,7 +420,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4ea829a41ee63038d00fe3141677759f509413bda139ad4ee5b2444c4959fa7c.png" src="../../_images/4ea829a41ee63038d00fe3141677759f509413bda139ad4ee5b2444c4959fa7c.png" />
+<img alt="../../_images/941e6da01843583969e0734a2e32b8d82851032a4166b55665d768531c0264d2.png" src="../../_images/941e6da01843583969e0734a2e32b8d82851032a4166b55665d768531c0264d2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -433,7 +434,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" src="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" />
+<img alt="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" src="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" />
 </div>
 </div>
 </section>
@@ -446,7 +447,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9600e646a8c1744f67f712eb0cbcc2669472c607523922d714a875723153c7d8.png" src="../../_images/9600e646a8c1744f67f712eb0cbcc2669472c607523922d714a875723153c7d8.png" />
+<img alt="../../_images/7121bfcaad3e0718ffc2ac50ab9cad9527adecd427bb85cb26e38e218e26e4c0.png" src="../../_images/7121bfcaad3e0718ffc2ac50ab9cad9527adecd427bb85cb26e38e218e26e4c0.png" />
 </div>
 </div>
 </section>
@@ -469,24 +470,24 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2] [(226, 243), (243, 258)]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] [[35.98240006 35.90652147]
- [35.96737699 35.18557036]] 0.0021109953862327893
-[2] [[23.6881619  23.61811745]
- [23.50268995 23.29401515]] 0.0029613172226612343
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] [[35.89479541 35.86967745]
+ [35.84669649 35.23413751]] 0.0007000109771497765
+[2] [[23.68821716 23.65293418]
+ [23.62066584 23.45551684]] 0.0014905838464534396
 [0] [104, 118, 134]
-s[0:2]= [1.8895093 0.0174665]
+s[0:2]= [1.82019908 0.01689492]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] (138, 152, 166)
-s[0:2]= [0.43123751 0.02252421]
+s[0:2]= [0.41600213 0.02187921]
 [2] [226, 243, 258]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s[0:2]= [1.29261889 0.01745182]
-cds_list: [(118, 0.26928798616254507), (152, 4.585861810801831), (243, 0.17449563088903883)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s[0:2]= [1.26471661 0.01679839]
+cds_list: [(118, 0.237627986382854), (152, 4.642764861594007), (243, 1.5212556670108408)]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.26928798616254507, 4.585861810801831, 0.17449563088903883]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.237627986382854, 4.642764861594007, 1.5212556670108408]
 </pre></div>
 </div>
 </div>
@@ -501,9 +502,9 @@ cds_list: [(118, 0.26928798616254507), (152, 4.585861810801831), (243, 0.1744956
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SCD: 0.26928798616254507, Rank: 1
-SCD: 4.585861810801831, Rank: 1
-SCD: 0.17449563088903883, Rank: 1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SCD: 0.237627986382854, Rank: 1
+SCD: 4.642764861594007, Rank: 1
+SCD: 1.5212556670108408, Rank: 1
 </pre></div>
 </div>
 </div>
@@ -516,9 +517,67 @@ SCD: 0.17449563088903883, Rank: 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;molass.LowRank.Component.XrComponent at 0x25f74d1d7c0&gt;,
- &lt;molass.LowRank.Component.XrComponent at 0x25f731f2510&gt;,
- &lt;molass.LowRank.Component.XrComponent at 0x25f731f27b0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;molass.LowRank.Component.XrComponent at 0x2a239f432c0&gt;,
+ &lt;molass.LowRank.Component.XrComponent at 0x2a239ab6960&gt;,
+ &lt;molass.LowRank.Component.XrComponent at 0x2a23a581580&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE3</span>
+<span class="n">ssd3</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE3</span><span class="p">)</span>
+<span class="n">ssd3</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x2a239a9f0b0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/e384fd0a8b4c328c180ac7566fa23688464a07d2b4616e7f6a17a27526e23dee.png" src="../../_images/e384fd0a8b4c328c180ac7566fa23688464a07d2b4616e7f6a17a27526e23dee.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition3</span> <span class="o">=</span> <span class="n">ssd3</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
+<span class="n">scds</span> <span class="o">=</span> <span class="n">decomposition3</span><span class="o">.</span><span class="n">compute_scds</span><span class="p">()</span>
+<span class="n">scds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] [(163, 196), (196, 224)]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] [[35.19829792 35.30132337]
+ [33.7723204  33.41936602]] -0.0029227236447218613
+[0] [163, 196, 224]
+s[0:2]= [13.22854134  0.28325752]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cds_list: [(196, 5.246897979988885)]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.246897979988885]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ranks</span> <span class="o">=</span> <span class="p">[</span><span class="n">scd_to_rank</span><span class="p">(</span><span class="n">scd</span><span class="p">)</span> <span class="k">for</span> <span class="n">scd</span> <span class="ow">in</span> <span class="n">scds</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">scd</span><span class="p">,</span> <span class="n">rank</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scds</span><span class="p">,</span> <span class="n">ranks</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SCD: </span><span class="si">{</span><span class="n">scd</span><span class="si">}</span><span class="s2">, Rank: </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SCD: 5.246897979988885, Rank: 2
 </pre></div>
 </div>
 </div>
