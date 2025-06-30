@@ -479,7 +479,7 @@ document.write(`
 <h2><span class="section-number">2.3. </span>Elution Curves<a class="headerlink" href="#elution-curves" title="Link to this heading">#</a></h2>
 <p>An <strong>elution curve</strong> shows how the signal (such as absorbance or scattering intensity) changes as a function of elution time or eluted volume during a chromatography experiment. In SEC-SAXS, you often look at both UV absorbance and X-ray scattering elution curves.</p>
 <p>Let’s extract and plot the elution curves for both X-ray scattering and UV absorbance.</p>
-<p>For X-ray data, elution curves are picked at Q=0.02 [Å⁻¹].</p>
+<p>For X-ray data, elution curves are picked, by default, at Q=0.02 [Å⁻¹].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xr_icurve</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">get_icurve</span><span class="p">()</span>
@@ -495,7 +495,7 @@ document.write(`
 <img alt="../../_images/e088372886c0746d6dd1b8e8e866aaba6361d31f147cb66b9c056d8354d04322.png" src="../../_images/e088372886c0746d6dd1b8e8e866aaba6361d31f147cb66b9c056d8354d04322.png" />
 </div>
 </div>
-<p>For UV data, elution curves are picked at wavelength=280 [nm].</p>
+<p>For UV data, elution curves are picked, by default, at wavelength=280 [nm].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uv_icurve</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">uv</span><span class="o">.</span><span class="n">get_icurve</span><span class="p">()</span>
@@ -511,7 +511,7 @@ document.write(`
 <img alt="../../_images/e76c1d97dd8a1fa4c8be2d2c9e94d5f13c2075241848e54b30b05007c51b62a4.png" src="../../_images/e76c1d97dd8a1fa4c8be2d2c9e94d5f13c2075241848e54b30b05007c51b62a4.png" />
 </div>
 </div>
-<p>You should see two plots: one for the X-ray scattering elution curve and one for the UV absorbance elution curve.</p>
+<p>Another plot example with two subplots: one for the X-ray scattering elution curve and one for the UV absorbance elution curve.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
