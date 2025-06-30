@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -409,6 +409,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="data-objects">
 <h1><span class="section-number">2. </span>Data Objects<a class="headerlink" href="#data-objects" title="Link to this heading">#</a></h1>
 <p>To begin with, as we have seen in the prvious chapter, we have to express what to analyze, the data. We will introduce some basic data objects here.</p>
+<p>If you need to know more about the data, see also <a class="reference external" href="https://nshimizu0721.github.io/molass-essence/chapters/01/data-illust.html">Data Illustration</a>.</p>
 <section id="learning-points">
 <h2><span class="section-number">2.1. </span>Learning Points<a class="headerlink" href="#learning-points" title="Link to this heading">#</a></h2>
 <p>In this chapter, you will learn about:</p>
@@ -424,15 +425,17 @@ document.write(`
 <h2><span class="section-number">2.2. </span>SEC-SAXS Data<a class="headerlink" href="#sec-saxs-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.0 or higher.&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.2&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.2 or higher.&quot;</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The following code loads the SEC-SAXS data and displays a 3D plot of the dataset. This helps visualize the relationship between elution time, scattering angle, and intensity.</p>
+<p>The following code loads a data set from a SEC-SAXS experiment and displays a 3D plot of the dataset. This helps visualize the relationship between elution time, scattering angle, and intensity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
@@ -442,15 +445,41 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" src="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" />
+<img alt="../../_images/5f0dfd13f1d1547a3a1917fb93f8e9f31c366a27584052b118487cef3dfeb379.png" src="../../_images/5f0dfd13f1d1547a3a1917fb93f8e9f31c366a27584052b118487cef3dfeb379.png" />
 </div>
 </div>
-<p>You should see a 3D plot representing the SEC-SAXS data. This visualization helps you understand the structure of the data and how it changes over time.</p>
+<p>In the 3D plot, you understand the whole structure of the data set and how it changes over time. Note that <code class="docutils literal notranslate"><span class="pre">SAMPLE1</span></code> variable has the folder path where the tutorial data set is located.</p>
+<p>It is often more handy if you see it in a compact 2D plot as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1abb91aacf56ab1364796307eccd9bece679f796444f23ba1a78e04e34cb2f6e.png" src="../../_images/1abb91aacf56ab1364796307eccd9bece679f796444f23ba1a78e04e34cb2f6e.png" />
+</div>
+</div>
+<p>Note that the yellow vertical lines indicate the positions where other 2D plots have picked the data to draw.</p>
+<p>Note also that this compact plot is possible only after the temporal mapping<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> between UV and XR (X-ray) data has been established, which can be easily understood when you remind the fact that frame indecies for UV ranged between 0 and 600.</p>
+<p>Observing the following plot, confirm the ralation between the 3D and 2D plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Section Lines where the 2D Plots Intersect&quot;</span><span class="p">,</span> <span class="n">with_2d_section_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cb9242d5ed10da72365948f6028584d4b49ffd3eb3c1d747bb10e26151137c9d.png" src="../../_images/cb9242d5ed10da72365948f6028584d4b49ffd3eb3c1d747bb10e26151137c9d.png" />
+</div>
+</div>
+<p>To summarize, SSD (SEC-SAXS Data Set) objects provide basic utilities to grasp the data set as a whole and serve as the starting point of your analysis, from where you can derive subsequent objects required for further analysis. We will explore some of such derivations in the following sections.</p>
 </section>
 <section id="elution-curves">
 <h2><span class="section-number">2.3. </span>Elution Curves<a class="headerlink" href="#elution-curves" title="Link to this heading">#</a></h2>
-<p>An <strong>elution curve</strong> shows how the signal (such as absorbance or scattering intensity) changes as a function of elution time or volume during a chromatography experiment. In SEC-SAXS, you often look at both UV absorbance and X-ray scattering elution curves.</p>
+<p>An <strong>elution curve</strong> shows how the signal (such as absorbance or scattering intensity) changes as a function of elution time or eluted volume during a chromatography experiment. In SEC-SAXS, you often look at both UV absorbance and X-ray scattering elution curves.</p>
 <p>Let’s extract and plot the elution curves for both X-ray scattering and UV absorbance.</p>
+<p>For X-ray data, elution curves are picked at Q=0.02 [Å⁻¹].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xr_icurve</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">get_icurve</span><span class="p">()</span>
@@ -466,6 +495,7 @@ document.write(`
 <img alt="../../_images/e088372886c0746d6dd1b8e8e866aaba6361d31f147cb66b9c056d8354d04322.png" src="../../_images/e088372886c0746d6dd1b8e8e866aaba6361d31f147cb66b9c056d8354d04322.png" />
 </div>
 </div>
+<p>For UV data, elution curves are picked at wavelength=280 [nm].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uv_icurve</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">uv</span><span class="o">.</span><span class="n">get_icurve</span><span class="p">()</span>
@@ -615,6 +645,13 @@ document.write(`
 <li><p><a class="reference external" href="https://nbviewer.org/urls/qutip.org/qutip-tutorials/tutorials-v5/python-introduction/001_Beginning_Python.ipynb">Introduction to Python - QuTiP Tutorial</a></p></li>
 <li><p><a class="reference external" href="https://nbviewer.org/urls/qutip.org/qutip-tutorials/tutorials-v5/python-introduction/002_NumPy_Array_Basics.ipynb">Introduction to NumPy Arrays - QuTiP Tutorial</a></p></li>
 </ul>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>For details on this mapping, see <a class="reference external" href="https://freesemt.github.io/molass-technical/chapters/30/mapping.html">Mapping between UV and X-ray Data</a>.</p>
+</aside>
+</aside>
 </section>
 </section>
 
