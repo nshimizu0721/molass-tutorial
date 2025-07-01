@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -419,8 +419,10 @@ document.write(`
 <p>The data set used here for explanation looks like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.0 or higher.&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.2&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.2 or higher.&quot;</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE2</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE2</span><span class="p">)</span>
@@ -429,7 +431,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/80c4588474c4e3fddfa54968f0f37fdb4ebb125278d029686367ecd962162d29.png" src="../../_images/80c4588474c4e3fddfa54968f0f37fdb4ebb125278d029686367ecd962162d29.png" />
+<img alt="../../_images/987bb84343e14e084a1450add45abcb4e7f90b1052f0c29c2d67d28a57126332.png" src="../../_images/987bb84343e14e084a1450add45abcb4e7f90b1052f0c29c2d67d28a57126332.png" />
 </div>
 </div>
 </section>
@@ -443,7 +445,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6a5d1ecc1e69592131ea45a12631c65062c339d686be11f088a512fbd393c5ed.png" src="../../_images/6a5d1ecc1e69592131ea45a12631c65062c339d686be11f088a512fbd393c5ed.png" />
+<img alt="../../_images/f70a0f906564e3042cf2a2fea5ee1f31d416b6265416bd0e8f0bf54e7451483d.png" src="../../_images/f70a0f906564e3042cf2a2fea5ee1f31d416b6265416bd0e8f0bf54e7451483d.png" />
 </div>
 </div>
 <p>The figures above show the trimming ranges in three distinct ways: on the left, as rectangles suggesting rows and columns in matrices; in the center, as vertical bands on elution curves; and on the right, as vertical bands on spectral curves (such as absorbance or scattering curves).</p>
@@ -459,7 +461,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6ba1ed53da652525761e3629a03cf910be6307e8259ad6158839f80e96392d04.png" src="../../_images/6ba1ed53da652525761e3629a03cf910be6307e8259ad6158839f80e96392d04.png" />
+<img alt="../../_images/269b5135853a5d7d9a871f3a6aed14ea5d1b4d51d681373db415aa9d743dc6bf.png" src="../../_images/269b5135853a5d7d9a871f3a6aed14ea5d1b4d51d681373db415aa9d743dc6bf.png" />
 </div>
 </div>
 <p>In this compact form, the mapping between UV and X-ray elution points becomes more apparent. How tThis “mapping” is determined is explained a separate book <a class="reference external" href="https://freesemt.github.io/molass-technical/">Molass Technical Report</a>.</p>
@@ -475,7 +477,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c5fc1d0f9c4f46c80b2eda13b71f6f2f7321b0f61c0a360c9575148f7bb61766.png" src="../../_images/c5fc1d0f9c4f46c80b2eda13b71f6f2f7321b0f61c0a360c9575148f7bb61766.png" />
+<img alt="../../_images/43e1b9fd0a2b7b40ba92b8ffdcf30e1a6aa62353c83cf5b09b527cc54644b8a4.png" src="../../_images/43e1b9fd0a2b7b40ba92b8ffdcf30e1a6aa62353c83cf5b09b527cc54644b8a4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -485,7 +487,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0a003d5a6a080a6ab534a787951a7299d64e07402e6898412eb3d9a3db9aa0c0.png" src="../../_images/0a003d5a6a080a6ab534a787951a7299d64e07402e6898412eb3d9a3db9aa0c0.png" />
+<img alt="../../_images/f660d004ee7c16c59983737da8a1a80ce5527c8af18ae7c5fde732d7cacfbbb6.png" src="../../_images/f660d004ee7c16c59983737da8a1a80ce5527c8af18ae7c5fde732d7cacfbbb6.png" />
 </div>
 </div>
 </section>
@@ -526,7 +528,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e827acc3e3a2a7dfe6e891cbb0aacbca7c169c63b41676699d6c42999e7dda13.png" src="../../_images/e827acc3e3a2a7dfe6e891cbb0aacbca7c169c63b41676699d6c42999e7dda13.png" />
+<img alt="../../_images/c8e2873f2c00953ea9b06afad37a2c3f4a57e9eae870909d48e73a4d249b3f6b.png" src="../../_images/c8e2873f2c00953ea9b06afad37a2c3f4a57e9eae870909d48e73a4d249b3f6b.png" />
 </div>
 </div>
 </section>
