@@ -401,6 +401,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="rank-estimation">
 <span id="id1"></span><h1><span class="section-number">6. </span>Rank Estimation<a class="headerlink" href="#rank-estimation" title="Link to this heading">#</a></h1>
+<p>If interparticle interaction effects can be ignored, the rank of the data set (as a matrix) can be considered equal to the number of components. In this sense, the rank of UV data is equal to the number of components while that of X-ray data can be greater.</p>
+<p>To be practical, we will first idetify the components by decomposition and then decide the rank of each component peak to be either 1 ro 2. For example, the ranks of component peaks would be [1, 1, 1], in the order of elution, for the “SAMPLE1” data since there observed are no significant signs of interparticle effects.</p>
+<p>We will explore briefly this rank estimation problem below.</p>
 <section id="human-observation">
 <h2><span class="section-number">6.1. </span>Human Observation<a class="headerlink" href="#human-observation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -447,7 +450,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4f720db55cdfc6adebe37da9bd5b473c319f071e77623e256fbeadab00a72d16.png" src="../../_images/4f720db55cdfc6adebe37da9bd5b473c319f071e77623e256fbeadab00a72d16.png" />
+<img alt="../../_images/e760edc8289e15fc0853dca2380d19d0dd5f6f9560ea5d76d0991deed7f123f3.png" src="../../_images/e760edc8289e15fc0853dca2380d19d0dd5f6f9560ea5d76d0991deed7f123f3.png" />
 </div>
 </div>
 </section>
@@ -519,9 +522,9 @@ SCD: 1.5212556670108408, Rank: 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;molass.LowRank.Component.XrComponent at 0x19e2c685730&gt;,
- &lt;molass.LowRank.Component.XrComponent at 0x19e2bfd03e0&gt;,
- &lt;molass.LowRank.Component.XrComponent at 0x19e2c633320&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;molass.LowRank.Component.XrComponent at 0x141328a6ff0&gt;,
+ &lt;molass.LowRank.Component.XrComponent at 0x141321e7c80&gt;,
+ &lt;molass.LowRank.Component.XrComponent at 0x1413229dc40&gt;]
 </pre></div>
 </div>
 </div>
@@ -535,10 +538,10 @@ SCD: 1.5212556670108408, Rank: 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x19e29a62c60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x14131937800&gt;
 </pre></div>
 </div>
-<img alt="../../_images/0c149b1120a57bec0f4f795953f78f92f0e216944e8ee3df52b7395869c97bed.png" src="../../_images/0c149b1120a57bec0f4f795953f78f92f0e216944e8ee3df52b7395869c97bed.png" />
+<img alt="../../_images/c8c584f5e65453edd00f8d6a75e6b6125836236c61731c0b5731c803619313c7.png" src="../../_images/c8c584f5e65453edd00f8d6a75e6b6125836236c61731c0b5731c803619313c7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -559,7 +562,9 @@ SCD: 1.5212556670108408, Rank: 1
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0] [[35.19829792 35.30132337]
  [33.7723204  33.41936602]] -0.0029227236447218613
 [0] [163, 196, 224]
-s[0:2]= [13.22854134  0.28325752]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s[0:2]= [13.22854134  0.28325752]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cds_list: [(196, 5.246897979988885)]
