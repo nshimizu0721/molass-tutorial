@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -387,7 +387,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="low-rank-factorization">
+  <div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This page is currently broken. It will be recovered on 2025-07-07.</p>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="low-rank-factorization">
 <h1><span class="section-number">5. </span>Low Rank Factorization<a class="headerlink" href="#low-rank-factorization" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -403,7 +407,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" src="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" />
+<img alt="../../_images/5f0dfd13f1d1547a3a1917fb93f8e9f31c366a27584052b118487cef3dfeb379.png" src="../../_images/5f0dfd13f1d1547a3a1917fb93f8e9f31c366a27584052b118487cef3dfeb379.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -416,51 +420,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plot1</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
-
-<span class="nn">File C:\Program Files\Python312\Lib\site-packages\molass\DataObjects\SecSaxsData.py:371,</span> in <span class="ni">SecSaxsData.corrected_copy</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">359</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;ssd.corrected_copy()</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">361</span><span class="sd"> Returns a deep copy of this object which has been corrected</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">366</span><span class="sd"> None</span>
-<span class="g g-Whitespace">    </span><span class="mi">367</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span> <span class="n">ssd_copy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">trimmed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trimmed</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">371</span> <span class="n">baseline</span> <span class="o">=</span> <span class="n">ssd_copy</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">get_baseline2d</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">372</span> <span class="n">ssd_copy</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">M</span> <span class="o">-=</span> <span class="n">baseline</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span> <span class="k">if</span> <span class="n">ssd_copy</span><span class="o">.</span><span class="n">uv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File C:\Program Files\Python312\Lib\site-packages\molass\DataObjects\SsMatrixData.py:68,</span> in <span class="ni">SsMatrixData.get_baseline2d</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">66</span> <span class="n">method_kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;method_kwargs&#39;</span><span class="p">,</span> <span class="n">default_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span> <span class="n">baseline_fitter</span> <span class="o">=</span> <span class="n">Baseline2D</span><span class="p">(</span><span class="n">moment</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">iv</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">68</span> <span class="n">baseline</span><span class="p">,</span> <span class="n">params_not_used</span> <span class="o">=</span> <span class="n">baseline_fitter</span><span class="o">.</span><span class="n">individual_axes</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">69</span>     <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">method_kwargs</span><span class="o">=</span><span class="n">method_kwargs</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span> <span class="k">return</span> <span class="n">baseline</span><span class="o">.</span><span class="n">T</span>
-
-<span class="nn">File C:\Program Files\Python312\Lib\site-packages\molass\Baseline\Baseline2D.py:25,</span> in <span class="ni">Baseline2D.individual_axes</span><span class="nt">(self, data, axes, method, method_kwargs, debug)</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="n">reload</span><span class="p">(</span><span class="n">molass</span><span class="o">.</span><span class="n">Baseline</span><span class="o">.</span><span class="n">LpmBaseline2D</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="kn">from</span> <span class="nn">molass.Baseline.LpmBaseline2D</span> <span class="kn">import</span> <span class="n">individual_axes_impl</span>
-<span class="ne">---&gt; </span><span class="mi">25</span>     <span class="k">return</span> <span class="n">individual_axes_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">method_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">individual_axes</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">method_kwargs</span><span class="p">)</span>
-
-<span class="nn">File C:\Program Files\Python312\Lib\site-packages\molass\Baseline\LpmBaseline2D.py:43,</span> in <span class="ni">individual_axes_impl</span><span class="nt">(self, data, axes, method, method_kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Method kwargs must have the same length as the input axes&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="n">keys</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;rows&#39;</span><span class="p">,</span> <span class="s1">&#39;columns&#39;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">43</span> <span class="n">baseline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_len</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">axis</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="p">):</span>
-
-<span class="ne">AttributeError</span>: &#39;Baseline2D&#39; object has no attribute &#39;_len&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
+<img alt="../../_images/05257ed00c987c11016d3845dad949ab5ea45b23a92d4c15d04f909ff114a3e3.png" src="../../_images/05257ed00c987c11016d3845dad949ab5ea45b23a92d4c15d04f909ff114a3e3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -474,7 +437,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" src="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" />
+<img alt="../../_images/6bd29bef8665b50a8864e00ca6fd5b5678e7906751d4a2f7c533bb42a86ff7ef.png" src="../../_images/6bd29bef8665b50a8864e00ca6fd5b5678e7906751d4a2f7c533bb42a86ff7ef.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -485,7 +448,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.59852696, 0.06986106, 0.33161198])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.60242073, 0.06567283, 0.33190644])
 </pre></div>
 </div>
 </div>
@@ -501,7 +464,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/0bf9164a1f5fa3af03bd080f05969629147883ef7979002a86b1e564daa8f36a.png" src="../../_images/0bf9164a1f5fa3af03bd080f05969629147883ef7979002a86b1e564daa8f36a.png" />
+<img alt="../../_images/b012029cb25133ed8b23acdfca8ebbcec5aa10d105620182de112b8df7dd7207.png" src="../../_images/b012029cb25133ed8b23acdfca8ebbcec5aa10d105620182de112b8df7dd7207.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -525,7 +488,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/ca54c7aa0afa93434fb34a278b4b563b4fcec9d79b3e9922bf0d01e7ff586809.png" src="../../_images/ca54c7aa0afa93434fb34a278b4b563b4fcec9d79b3e9922bf0d01e7ff586809.png" />
+<img alt="../../_images/caf7b2c2385d882f600b4f8ad7f187c8cbc346ef2e822daa8ded83e2656a3d85.png" src="../../_images/caf7b2c2385d882f600b4f8ad7f187c8cbc346ef2e822daa8ded83e2656a3d85.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -539,7 +502,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/acda7aabe48f334c06c1a09dfecf1f9b3a6a7dd6505dc1fb582c40e795d03507.png" src="../../_images/acda7aabe48f334c06c1a09dfecf1f9b3a6a7dd6505dc1fb582c40e795d03507.png" />
+<img alt="../../_images/b8f2cefb9e90462f78debc4e08d1869012a4ca52ab2deb26d74a6a735d9d55fe.png" src="../../_images/b8f2cefb9e90462f78debc4e08d1869012a4ca52ab2deb26d74a6a735d9d55fe.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -561,7 +524,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/22382d0aff91323f2c3b181d0a72f075ff43de026ea980546694fc4f975a7f0c.png" src="../../_images/22382d0aff91323f2c3b181d0a72f075ff43de026ea980546694fc4f975a7f0c.png" />
+<img alt="../../_images/09787ba04f540d79a352bcdeae789882a51b3767c0c8ea3db01076dde00d6358.png" src="../../_images/09787ba04f540d79a352bcdeae789882a51b3767c0c8ea3db01076dde00d6358.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -576,7 +539,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/b7a5acc7ac2af291c67ed539857416a1fa7a5831998d0bb1b2d9f5c46323bdbd.png" src="../../_images/b7a5acc7ac2af291c67ed539857416a1fa7a5831998d0bb1b2d9f5c46323bdbd.png" />
+<img alt="../../_images/22a250e230260242a62f8830b7cadbaead6416763d270e3b90dc42a28a02486f.png" src="../../_images/22a250e230260242a62f8830b7cadbaead6416763d270e3b90dc42a28a02486f.png" />
 </div>
 </div>
 </section>
