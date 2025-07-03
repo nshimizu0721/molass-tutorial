@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -386,6 +386,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">4.1. Learning Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-correction">4.2. Linear Correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-specific-correction">4.3. UV-specific Correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-correction">4.4. Integral Correction</a></li>
 </ul>
             </nav>
         </div>
@@ -399,16 +402,27 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="baseline-correction">
 <h1><span class="section-number">4. </span>Baseline Correction<a class="headerlink" href="#baseline-correction" title="Link to this heading">#</a></h1>
+<p>It is known that baseline correction is usually required for SEC-SAXS data. In this chapter, we will explain how to do it in Molass Library with one of the methods below.</p>
+<ul class="simple">
+<li><p>linear (default)</p></li>
+<li><p>uvdiff</p></li>
+<li><p>integral</p></li>
+</ul>
 <section id="learning-points">
 <h2><span class="section-number">4.1. </span>Learning Points<a class="headerlink" href="#learning-points" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>ssd.plot_compact(baseline=True)</p></li>
 <li><p>ssd.corrected_copy()</p></li>
 </ul>
+</section>
+<section id="linear-correction">
+<h2><span class="section-number">4.2. </span>Linear Correction<a class="headerlink" href="#linear-correction" title="Link to this heading">#</a></h2>
+<p>By default, linear baseline is assumed. Before correction, you can confirm how it is determined with basseline option as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-legacy&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
 <span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.2&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.2 or higher.&quot;</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
@@ -419,9 +433,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/321482367190e7dbbb0e9d292afedd717e93dc4dc6185f466d8abf2199cf64cf.png" src="../../_images/321482367190e7dbbb0e9d292afedd717e93dc4dc6185f466d8abf2199cf64cf.png" />
+<img alt="../../_images/e054bf0a29c078e6bcb0d67060e8c796632e5d5f6edb4921fc849ac486385329.png" src="../../_images/e054bf0a29c078e6bcb0d67060e8c796632e5d5f6edb4921fc849ac486385329.png" />
 </div>
 </div>
+<p>Actual correction is performed with the <code class="docutils literal notranslate"><span class="pre">corrected_copy</span></code> as shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
@@ -431,14 +446,101 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e9bdc4f1d3a03bb3f330468f2a1c81ac758323f14c66953e76917139a4c634ac.png" src="../../_images/e9bdc4f1d3a03bb3f330468f2a1c81ac758323f14c66953e76917139a4c634ac.png" />
+<img alt="../../_images/33b6235d5d8b735aa110ff41a68dbff9f62fe6e5c9d3bd3cf63d995aa744f8a9.png" src="../../_images/33b6235d5d8b735aa110ff41a68dbff9f62fe6e5c9d3bd3cf63d995aa744f8a9.png" />
+</div>
+</div>
+<p>To change the correction method, you can use <code class="docutils literal notranslate"><span class="pre">set_baseline_method</span></code> with one of the following specification.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">set_baseline_method</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>    <span class="c1"># default setting</span>
+<span class="n">ssd</span><span class="o">.</span><span class="n">set_baseline_method</span><span class="p">((</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;uvdiff&#39;</span><span class="p">))</span>
+<span class="n">ssd</span><span class="o">.</span><span class="n">set_baseline_method</span><span class="p">(</span><span class="s1">&#39;integral&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="uv-specific-correction">
+<h2><span class="section-number">4.3. </span>UV-specific Correction<a class="headerlink" href="#uv-specific-correction" title="Link to this heading">#</a></h2>
+<p>From our experience, it is known that baselines for UV data are often not linear. To address this peculiarity, you can change the method for UV data only as follows.</p>
+<p><code class="docutils literal notranslate"><span class="pre">set_baseline_method</span></code> interprets the first element of the tuple as the method for X-ray data and the second as the method for UV data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We won’t explain the details of this UV-specific baseline in this tutorial. It is planned to be described in <a class="reference external" href="https://freesemt.github.io/molass-technical/">Molass Technical Report</a>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">set_baseline_method</span><span class="p">((</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;uvdiff&#39;</span><span class="p">))</span>
+<span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/633e133a2c9acb4412dcf60611d3308f7f5d6f38bbd29aca11fcbe24114460b6.png" src="../../_images/633e133a2c9acb4412dcf60611d3308f7f5d6f38bbd29aca11fcbe24114460b6.png" />
+</div>
+</div>
+<p>The baseline method setting is retained with copies so that the following standard code sequence work as expected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/0407161f1acefa3aa58be49bd3bd48887fa8389277793729751ac18ebd841367.png" src="../../_images/0407161f1acefa3aa58be49bd3bd48887fa8389277793729751ac18ebd841367.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot.fig.savefig(&#39;corrected_ssd_3d.png&#39;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span><span class="o">.</span><span class="n">get_baseline_method</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;linear&#39;, &#39;uvdiff&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="integral-correction">
+<h2><span class="section-number">4.4. </span>Integral Correction<a class="headerlink" href="#integral-correction" title="Link to this heading">#</a></h2>
+<p>There is another established method which deals with the baseline drift due to the accumulation of fouling. The integral method can be activated by specifying <code class="docutils literal notranslate"><span class="pre">integral</span></code>.</p>
+<p>To contrast the difference, compare the following plots resulted from <code class="docutils literal notranslate"><span class="pre">linear</span></code> and <code class="docutils literal notranslate"><span class="pre">integral</span></code> methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE2</span>
+<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
+<span class="n">ssd2</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE2</span><span class="p">)</span>
+<span class="n">ssd2</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cc85b1925e41140ca0f004ce3d47f1205020b493d0b4e0a8444d92d3f8d4103c.png" src="../../_images/cc85b1925e41140ca0f004ce3d47f1205020b493d0b4e0a8444d92d3f8d4103c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd2</span><span class="o">.</span><span class="n">set_baseline_method</span><span class="p">(</span><span class="s1">&#39;integral&#39;</span><span class="p">)</span>
+<span class="n">ssd2</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/644bc1429b3d822f453fee5e652ce6def48ede3937bb900c74fea0604f3086f6.png" src="../../_images/644bc1429b3d822f453fee5e652ce6def48ede3937bb900c74fea0604f3086f6.png" />
+</div>
+</div>
+<p>In this case, difference is apparant only in UV baseline probably because the estimated fouling accumulation in X-ray data may have been ignorable.</p>
+<p>Actual stardard correction procedure will be as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd2</span> <span class="o">=</span> <span class="n">ssd2</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd2</span> <span class="o">=</span> <span class="n">trimmed_ssd2</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd2</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/0a01e0b5875c155563cf4f82f6378db63f1a36cfdb5e422b7d112bbb542f5900.png" src="../../_images/0a01e0b5875c155563cf4f82f6378db63f1a36cfdb5e422b7d112bbb542f5900.png" />
 </div>
 </div>
 </section>
@@ -509,6 +611,9 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">4.1. Learning Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-correction">4.2. Linear Correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-specific-correction">4.3. UV-specific Correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-correction">4.4. Integral Correction</a></li>
 </ul>
   </nav></div>
 

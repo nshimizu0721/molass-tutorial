@@ -451,8 +451,10 @@ However, life is not so easy and that is why the hard part exists, which we will
 <p>We can plot the data set as follows. The format of this data set is specified in the chapter 4 of <a class="reference external" href="https://pfwww.kek.jp/saxs/software/MOLASS-UsersGuide-1_0_13.pdf">MOLASS User’s Guide</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.0 or higher.&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.2&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.2 or higher.&quot;</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
@@ -461,7 +463,7 @@ However, life is not so easy and that is why the hard part exists, which we will
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" src="../../_images/bc5256d41af9903ab932dd7045da5f2f51dbba3af22a0ecf9911e61371ab4a7b.png" />
+<img alt="../../_images/5f0dfd13f1d1547a3a1917fb93f8e9f31c366a27584052b118487cef3dfeb379.png" src="../../_images/5f0dfd13f1d1547a3a1917fb93f8e9f31c366a27584052b118487cef3dfeb379.png" />
 </div>
 </div>
 </section>
@@ -511,10 +513,10 @@ Number of calculated Shannon channels: 32
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   1.34e-02  59.39        1201784            
+  620   8.72e-03  58.89        1201784            
 switched to shrinkwrap by density threshold = 0.2000
-  999   1.55e-05  36.37        367716          EC: 1 -&gt; 1 
- 2371   1.40e-05  36.30        307584          
+  999   3.91e-05  36.00        391942          EC: 1 -&gt; 1 
+ 4709   1.23e-05  36.21        333324          
 </pre></div>
 </div>
 </div>
@@ -534,7 +536,7 @@ switched to shrinkwrap by density threshold = 0.2000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/90deea3f5ed9b95af2f6a04aa63d6b68c4b6b41bb4952f831e62abafe7dcb6c6.png" src="../../_images/90deea3f5ed9b95af2f6a04aa63d6b68c4b6b41bb4952f831e62abafe7dcb6c6.png" />
+<img alt="../../_images/b046889ad7f0b84ee7daa9d78246dbfdc7d5caecfa842e9e985815c328387625.png" src="../../_images/b046889ad7f0b84ee7daa9d78246dbfdc7d5caecfa842e9e985815c328387625.png" />
 </div>
 </div>
 </section>
