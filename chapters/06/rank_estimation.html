@@ -387,7 +387,12 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-observation">6.1. Human Observation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-scattering-ratio">6.2. Absorbance / Scattering Ratio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">6.3. Concentration Dependence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">6.3. Concentration Dependence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relation-between-scd-and-rank">6.3.1. Relation between SCD and Rank</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample1-case-of-no-concentration-dependence">6.3.2. SAMPLE1 - Case of no concentration dependence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample3-case-of-significant-concentration-dependence">6.3.3. SAMPLE3 - Case of significant concentration dependence</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -426,7 +431,8 @@ document.write(`
 <p>We will explore briefly about this rank estimation problem below.</p>
 <section id="human-observation">
 <h2><span class="section-number">6.1. </span>Human Observation<a class="headerlink" href="#human-observation" title="Link to this heading">#</a></h2>
-<p>As can be speculated from the examples shown so far, human observation plays a key role in the rank estimation.</p>
+<p>As can be speculated from the examples shown so far, human observation plays a key role in the rank estimation. Roughly speaking, the rank of data is at least the number of visible peaks.</p>
+<p>By observig the elution curves, humans can guess the number of components. For example as in the case of SAMPLE1 data, like decomposing into three seems better than two due to the bump in the right side of the first visible peak. See the difference in the following ddecompositons: the first one with two components (from default rough recongnition) and the second one with explictily specified three components.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
@@ -440,18 +446,22 @@ document.write(`
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
-<span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_trimming_info</span><span class="p">();</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">();</span>
+<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3935a2b0ae033b3ea74cfece93542283216102bd5ca99484e3ad6eb44d558cb7.png" src="../../_images/3935a2b0ae033b3ea74cfece93542283216102bd5ca99484e3ad6eb44d558cb7.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+</pre></div>
+</div>
+<img alt="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" src="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition_nc3</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">decomposition_nc3</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -465,6 +475,7 @@ document.write(`
 </section>
 <section id="absorbance-scattering-ratio">
 <h2><span class="section-number">6.2. </span>Absorbance / Scattering Ratio<a class="headerlink" href="#absorbance-scattering-ratio" title="Link to this heading">#</a></h2>
+<p>Sometimes, it can be useful if we observe the curve of the ratio variation between the absorbance and the scattering. We can plot it with the ratio_curve option as shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">ratio_curve</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tutorial Data - Compact Plot with Ratio Curve&quot;</span><span class="p">);</span>
@@ -478,9 +489,35 @@ document.write(`
 </section>
 <section id="concentration-dependence">
 <h2><span class="section-number">6.3. </span>Concentration Dependence<a class="headerlink" href="#concentration-dependence" title="Link to this heading">#</a></h2>
+<section id="relation-between-scd-and-rank">
+<h3><span class="section-number">6.3.1. </span>Relation between SCD and Rank<a class="headerlink" href="#relation-between-scd-and-rank" title="Link to this heading">#</a></h3>
+<p>Another method of rank estimastion is to compute the SCD - Score of Concentration Dependence - of each component peak. Using SCD’s, you can roughly distinguish the rank of a component peak according the the table below.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>SCD value range</p></th>
+<th class="head"><p>Rank distinction</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>less than 2</p></td>
+<td><p>probably  1</p></td>
+</tr>
+<tr class="row-odd"><td><p>between 2 and 5</p></td>
+<td><p>uncertain</p></td>
+</tr>
+<tr class="row-even"><td><p>greater than 5</p></td>
+<td><p>probably  2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We will give some examples of SCD computation below.</p>
+</section>
+<section id="sample1-case-of-no-concentration-dependence">
+<h3><span class="section-number">6.3.2. </span>SAMPLE1 - Case of no concentration dependence<a class="headerlink" href="#sample1-case-of-no-concentration-dependence" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scds</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">compute_scds</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scds</span> <span class="o">=</span> <span class="n">decomposition_nc3</span><span class="o">.</span><span class="n">compute_scds</span><span class="p">()</span>
 <span class="n">scds</span>
 </pre></div>
 </div>
@@ -508,39 +545,14 @@ SCD: 1.5212556670108408, Rank: 1
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition</span><span class="o">.</span><span class="n">update_xr_ranks</span><span class="p">(</span><span class="n">ranks</span><span class="p">)</span>
-<span class="n">decomposition</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;molass.LowRank.Component.XrComponent at 0x2cfd6649880&gt;,
- &lt;molass.LowRank.Component.XrComponent at 0x2cfd842acf0&gt;,
- &lt;molass.LowRank.Component.XrComponent at 0x2cfd6973e60&gt;]
-</pre></div>
-</div>
-</div>
-</div>
+</section>
+<section id="sample3-case-of-significant-concentration-dependence">
+<h3><span class="section-number">6.3.3. </span>SAMPLE3 - Case of significant concentration dependence<a class="headerlink" href="#sample3-case-of-significant-concentration-dependence" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE3</span>
 <span class="n">ssd3</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE3</span><span class="p">)</span>
-<span class="n">ssd3</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x2cfd67e2570&gt;
-</pre></div>
-</div>
-<img alt="../../_images/c8c584f5e65453edd00f8d6a75e6b6125836236c61731c0b5731c803619313c7.png" src="../../_images/c8c584f5e65453edd00f8d6a75e6b6125836236c61731c0b5731c803619313c7.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition3</span> <span class="o">=</span> <span class="n">ssd3</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
+<span class="n">decomposition3</span> <span class="o">=</span> <span class="n">ssd3</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
 <span class="n">scds</span> <span class="o">=</span> <span class="n">decomposition3</span><span class="o">.</span><span class="n">compute_scds</span><span class="p">()</span>
 <span class="n">scds</span>
 </pre></div>
@@ -569,6 +581,7 @@ SCD: 1.5212556670108408, Rank: 1
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -638,7 +651,12 @@ SCD: 1.5212556670108408, Rank: 1
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-observation">6.1. Human Observation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-scattering-ratio">6.2. Absorbance / Scattering Ratio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">6.3. Concentration Dependence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-dependence">6.3. Concentration Dependence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relation-between-scd-and-rank">6.3.1. Relation between SCD and Rank</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample1-case-of-no-concentration-dependence">6.3.2. SAMPLE1 - Case of no concentration dependence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample3-case-of-significant-concentration-dependence">6.3.3. SAMPLE3 - Case of significant concentration dependence</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
