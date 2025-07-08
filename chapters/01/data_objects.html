@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -477,22 +477,22 @@ document.write(`
 </section>
 <section id="elution-curves">
 <h2><span class="section-number">2.3. </span>Elution Curves<a class="headerlink" href="#elution-curves" title="Link to this heading">#</a></h2>
-<p>An <strong>elution curve</strong> shows how the signal (such as absorbance or scattering intensity) changes as a function of elution time or eluted volume during a chromatography experiment. In SEC-SAXS, you often look at both UV absorbance and X-ray scattering elution curves.</p>
+<p>An <strong>elution curve</strong> shows how the signal (such as absorbance or scattering intensity) changes as a function of elution time or eluted volume during a chromatography experiment. In SEC-SAXS, both UV absorbance and X-ray intensity elution curves are observed.</p>
 <p>Let’s extract and plot the elution curves for both X-ray scattering and UV absorbance.</p>
 <p>For X-ray data, elution curves are picked, by default, at Q=0.02 [Å⁻¹].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xr_icurve</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">get_icurve</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr_icurve</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">xr_icurve</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;X-ray Scattering Elution Curve&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;X-ray Intensity Elution Curve&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Elution Time (or Volume)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Scattering Intensity&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e088372886c0746d6dd1b8e8e866aaba6361d31f147cb66b9c056d8354d04322.png" src="../../_images/e088372886c0746d6dd1b8e8e866aaba6361d31f147cb66b9c056d8354d04322.png" />
+<img alt="../../_images/214532b0e9dafeb175907584b8e4decd1991dfe222a5283104e5578967f2a43e.png" src="../../_images/214532b0e9dafeb175907584b8e4decd1991dfe222a5283104e5578967f2a43e.png" />
 </div>
 </div>
 <p>For UV data, elution curves are picked, by default, at wavelength=280 [nm].</p>
@@ -518,13 +518,13 @@ document.write(`
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">uv_icurve</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">uv_icurve</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;UV Absorbance&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr_icurve</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">xr_icurve</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;X-ray Scattering&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;X-ray Intensity&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/65bc1e80af08c452a1f1f17a29d30d95d257cd87c5aeeb112222e0ee63829e33.png" src="../../_images/65bc1e80af08c452a1f1f17a29d30d95d257cd87c5aeeb112222e0ee63829e33.png" />
+<img alt="../../_images/003224dec88376f4c5fadb702f9b92ecec6c1f8137b12dc810653f3456e8c433.png" src="../../_images/003224dec88376f4c5fadb702f9b92ecec6c1f8137b12dc810653f3456e8c433.png" />
 </div>
 </div>
 </section>
@@ -554,13 +554,13 @@ document.write(`
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;UV Absorbance&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr_icurve</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">xr_icurve</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr_icurve</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">xr_peaks</span><span class="p">],</span> <span class="n">xr_icurve</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">xr_peaks</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Peaks&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;X-ray Scattering&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;X-ray Intensity&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d5b4220f77f3a0205452da49f9d387a6786f16c86a3efba47f0917bd3e6b2928.png" src="../../_images/d5b4220f77f3a0205452da49f9d387a6786f16c86a3efba47f0917bd3e6b2928.png" />
+<img alt="../../_images/865374169f7669c2511516d867c4e66be17f6beac1725bb4d2a6d3894f90325c.png" src="../../_images/865374169f7669c2511516d867c4e66be17f6beac1725bb4d2a6d3894f90325c.png" />
 </div>
 </div>
 <p>The circles on the plots indicate the detected peak positions.</p>
@@ -604,13 +604,13 @@ document.write(`
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr_jcurve</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">xr_jcurve</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scattering Curves at Peak Positions&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;q (or other x-axis label)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Scattering Intensity&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fad35f3a1401062c51629b9beade2e7d311ff2a53e7cd9c48e3e91cc68af8917.png" src="../../_images/fad35f3a1401062c51629b9beade2e7d311ff2a53e7cd9c48e3e91cc68af8917.png" />
+<img alt="../../_images/ae41fce70493f879b8d39c9190d924739237868e248e0a2822cfc3e52541d880.png" src="../../_images/ae41fce70493f879b8d39c9190d924739237868e248e0a2822cfc3e52541d880.png" />
 </div>
 </div>
 <div class="admonition note">
