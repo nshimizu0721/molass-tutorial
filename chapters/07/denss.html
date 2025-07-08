@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -389,16 +389,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="electron-density-retrieval">
 <h1><span class="section-number">7. </span>Electron Density Retrieval<a class="headerlink" href="#electron-density-retrieval" title="Link to this heading">#</a></h1>
+<p>There are several tools for shape determination in SAXS, among which <a class="reference external" href="https://www.embl-hamburg.de/biosaxs/dammin.html">DAMMIN</a> in the ATSAS program suite stands out as standard.
+In the open source sofware, DENSS is the most popular, for which Molass has a simple wrapper as shown below.</p>
+<p>First, get a better scattering curve by decomposition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.0 or higher.&quot;</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.3&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.3 or higher.&quot;</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
-<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
 </pre></div>
 </div>
@@ -407,15 +410,17 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x11b437879e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x1c6a8869070&gt;
 </pre></div>
 </div>
-<img alt="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" src="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" />
+<img alt="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" src="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" />
 </div>
 </div>
+<p>Then, selecting one of the components, run DENSS as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.SAXS.DenssTools</span> <span class="kn">import</span> <span class="n">run_denss</span>
+<span class="c1"># Get, for example, the first component&#39;s scattering curve as an array</span>
 <span class="n">jcurve_array</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">get_xr_components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_jcurve_array</span><span class="p">()</span>
 <span class="n">output_folder</span> <span class="o">=</span> <span class="s2">&quot;temp&quot;</span>
 <span class="n">run_denss</span><span class="p">(</span><span class="n">jcurve_array</span><span class="p">,</span> <span class="n">output_folder</span><span class="o">=</span><span class="n">output_folder</span><span class="p">)</span>    
@@ -425,21 +430,22 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
 WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
-Dmax = 128.06
+Dmax = 127.79
 Number of experimental Shannon channels: 10
 Number of calculated Shannon channels: 32
 
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   4.54e-02  76.17        1201784            
+  620   7.99e-03  56.21        1194198            
 switched to shrinkwrap by density threshold = 0.2000
-  999   1.79e-03  48.75        410977          EC: 2 -&gt; 1 
- 9999   2.85e-05  36.14        307151          
+  999   3.98e-05  36.05        380441          EC: 1 -&gt; 1 
+ 7895   6.54e-06  36.34        319613          
 </pre></div>
 </div>
 </div>
 </div>
+<p>The result can be visualized as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -451,7 +457,7 @@ switched to shrinkwrap by density threshold = 0.2000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f83320378ac373ad3d5ba544f8d09212cf79bbc02da22073e0b3159d451900e8.png" src="../../_images/f83320378ac373ad3d5ba544f8d09212cf79bbc02da22073e0b3159d451900e8.png" />
+<img alt="../../_images/21210f7d41eac2cf51d279c2a4d2202e5a08466c0557fdf5494ee3a8af7a4fa2.png" src="../../_images/21210f7d41eac2cf51d279c2a4d2202e5a08466c0557fdf5494ee3a8af7a4fa2.png" />
 </div>
 </div>
 </section>
