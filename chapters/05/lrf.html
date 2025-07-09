@@ -412,7 +412,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="low-rank-factorization">
 <h1><span class="section-number">5. </span>Low Rank Factorization<a class="headerlink" href="#low-rank-factorization" title="Link to this heading">#</a></h1>
-<p>In this chapter, we discuss decomposition of sample into components. The first step in decompostion procedure is performed physically by the chromatography device and it achieves that purpose to a certain extent. However, that is not enough especially in cases where the peaks do not separate from each other. In general, including such inconvenient cases, we can further decompose programatically. Mathematically, this decomposition corresponds to the low rank factorizaion of matrices. We will show here how you can achieve this with Molas Library.</p>
+<p>In this chapter, we discuss decomposition of the sample into components. The first step in decompostion procedure is performed physically by the chromatography device and it achieves that purpose to a certain extent. However, that is not enough especially in cases where the peaks do not separate from each other. In general, including such inconvenient cases, we can further decompose programmatically. Mathematically, this decomposition corresponds to the low rank factorizaion of matrices. We will show here how you can achieve this with Molas Library.</p>
 <section id="learning-points">
 <h2><span class="section-number">5.1. </span>Learning Points<a class="headerlink" href="#learning-points" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -548,11 +548,11 @@ document.write(`
 <img alt="../../_images/89bee929d90ca978936b8787f696c494ad2e20f5de209ded6495798dce8b805b.png" src="../../_images/89bee929d90ca978936b8787f696c494ad2e20f5de209ded6495798dce8b805b.png" />
 </div>
 </div>
-<p>This decomposition does fit the data, but peak widths can not vary irregularly like this according to the classical theory of chromatography.</p>
+<p>This decomposition does fit the data, but peak widths should not vary irregularly like this according to the classical theory of chromatography.</p>
 </section>
 <section id="theoretical-number-of-plates-plate-number">
 <h2><span class="section-number">5.6. </span>Theoretical Number of Plates (Plate Number)<a class="headerlink" href="#theoretical-number-of-plates-plate-number" title="Link to this heading">#</a></h2>
-<p>The theory states that the peak widths should increase regularly as the fucntion of retention time (see the note below).
+<p>The classical theory states that the peak widths should increase regularly as the fucntion of retention time (see the note below).
 To take into account this regularity, we can specify the plate number as follow.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -580,7 +580,7 @@ To take into account this regularity, we can specify the plate number as follow.
 <img alt="../../_images/5f750f34c6da90cdcbcb2777a4b6d1e630375dabdda8f3cadecec8a94baca85e.png" src="../../_images/5f750f34c6da90cdcbcb2777a4b6d1e630375dabdda8f3cadecec8a94baca85e.png" />
 </div>
 </div>
-<p>In this revised decomposition plot, the component curves are more realistic than before (in the sense of classical plate theory) while they do not fit the data well. This bad fit indicates that this result is not satisfactory either, but it leads to an advanced understanding that this sample can not be decomposed so easily as shown previously (as unrealistic one).</p>
+<p>In this revised decomposition plot, the component curves are more realistic than before (in the sense of classical plate theory) while they do not fit the data well. This worsened fit indicates that this result is not satisfactory either, but it leads to an advanced understanding that this sample can not be decomposed so easily as shown previously (as unrealistic one).</p>
 </section>
 <section id="component-ranks-interparticle-interaction-effects">
 <h2><span class="section-number">5.7. </span>Component Ranks (Interparticle Interaction Effects)<a class="headerlink" href="#component-ranks-interparticle-interaction-effects" title="Link to this heading">#</a></h2>
@@ -617,7 +617,7 @@ To take into account this regularity, we can specify the plate number as follow.
 </section>
 <section id="as-rank-2-component">
 <h3><span class="section-number">5.7.2. </span>As Rank 2 Component<a class="headerlink" href="#as-rank-2-component" title="Link to this heading">#</a></h3>
-<p>The above failure can be considered as a result of the false assumption that the rank is one. To fix this, specify the rank as two. This will result in the expected Guinier plot shown below.</p>
+<p>The above failure can be considered as a result of the false assumption that the rank of the component peak is one. To fix this, specify the rank as two. This will result in the expected Guinier plot shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decomposition31</span> <span class="o">=</span> <span class="n">ssd3</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>

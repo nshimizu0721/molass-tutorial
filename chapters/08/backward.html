@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -362,7 +362,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -378,6 +380,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">8.1. Learning Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-for-the-report">8.2. Preparation for the Report</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-excel-report">8.3. Making the Excel Report</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -389,6 +401,24 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="backward-compatibility">
 <span id="id1"></span><h1><span class="section-number">8. </span>Backward Compatibility<a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h1>
+<p>The legacy MOLASS program produces its analysis results in Excel books. We will explain here how to do the same in Molass Library.</p>
+<section id="learning-points">
+<h2><span class="section-number">8.1. </span>Learning Points<a class="headerlink" href="#learning-points" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>rgcurve = ssd.xr.compute_rgcurve()</p></li>
+<li><p>ranges = decomposition.get_paired_ranges()</p></li>
+<li><p>decomposition.plot_components(rgcurve=rgcurve, ranges=ranges)</p></li>
+<li><p>rgcurve_atsas = ssd.xr.compute_rgcurve_atsas()</p></li>
+<li><p>mapping = ssd.estimate_mapping()</p></li>
+<li><p>conc_info = ssd.make_conc_info(mapping)</p></li>
+<li><p>rg_info = rgcurve, rgcurve_atsas</p></li>
+<li><p>make_v1report(ssd, conc_info=conc_info, rg_info=rg_info, lr_info=decomposition, ranges=ranges)</p></li>
+</ul>
+</section>
+<section id="preparation-for-the-report">
+<h2><span class="section-number">8.2. </span>Preparation for the Report<a class="headerlink" href="#preparation-for-the-report" title="Link to this heading">#</a></h2>
+<p>Although it is possible to do it as well without any preparation (that is, implicitly all by default), we will show explicitly what to prepare in the hope that it will better serve as explanation and can be easy to modify.</p>
+<p>First, we will prepare rg curves and analysis ranges.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
@@ -407,7 +437,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" src="../../_images/a454f6e35bb0fe8f75ece7001a080b9414d1644f679e978ac12e13af76ab44c9.png" />
+<img alt="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" src="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -418,10 +448,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [01:27&lt;00:00,  3.28it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [01:03&lt;00:00,  4.51it/s]
 </pre></div>
 </div>
-<img alt="../../_images/3c7b1eb1a59aae491f3b28d75853b6ad2c5221dce65dbf01672e249f00503227.png" src="../../_images/3c7b1eb1a59aae491f3b28d75853b6ad2c5221dce65dbf01672e249f00503227.png" />
+<img alt="../../_images/83d981e4a6720e272a9c0cf7251f68a2e48e4bd9b2ef546d1ea09a9d2af59af9.png" src="../../_images/83d981e4a6720e272a9c0cf7251f68a2e48e4bd9b2ef546d1ea09a9d2af59af9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -432,7 +462,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3a467624154d1d570e6de5e7d5cf72ada674f5dbd2980a4fa441b4714754ac5d.png" src="../../_images/3a467624154d1d570e6de5e7d5cf72ada674f5dbd2980a4fa441b4714754ac5d.png" />
+<img alt="../../_images/fecead9b0627c5dea1f054d3648bd2708f56e5d6cb5ed2914104701a33ee9e4e.png" src="../../_images/fecead9b0627c5dea1f054d3648bd2708f56e5d6cb5ed2914104701a33ee9e4e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -442,14 +472,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/286 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [01:18&lt;00:00,  3.62it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 286/286 [01:17&lt;00:00,  3.69it/s]
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="making-the-excel-report">
+<h2><span class="section-number">8.3. </span>Making the Excel Report<a class="headerlink" href="#making-the-excel-report" title="Link to this heading">#</a></h2>
+<p>To make the erport, we also need the concentration information which can be prepared as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">molass.Reports.ReportUtils</span>
@@ -465,29 +496,27 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/10 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/10 [00:00&lt;?, ?it/s]developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make_v1report_impl: ranges= [(104, 118), (118, 134), (138, 166), (226, 243), (243, 258)]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([8], (1, 9, False)):  90%|█████████ | 9/10 [00:29&lt;00:03,  3.24s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([8], (1, 9, False)):  90%|█████████ | 9/10 [00:29&lt;00:03,  3.33s/it]
 excessive step_done call!
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saving Guinier Analysis Report to d:\Github\molass-tutorial\chapters\07\book1.xlsx
-add_guinier_annonations: sheet_path= d:\Github\molass-tutorial\chapters\07\book1.xlsx(Guinier Analysis)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saving Guinier Analysis Report to d:\Github\molass-tutorial\chapters\08\book1.xlsx
+add_guinier_annonations: sheet_path= d:\Github\molass-tutorial\chapters\08\book1.xlsx(Guinier Analysis)
 add_guinier_annonations: ranges= [(104, 118), (118, 134), (138, 166), (226, 243), (243, 258)]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Killed the remaining process pid=26116
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Killed the remaining process pid=30248
 </pre></div>
 </div>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -544,6 +573,23 @@ add_guinier_annonations: ranges= [(104, 118), (118, 134), (138, 166), (226, 243)
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-points">8.1. Learning Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-for-the-report">8.2. Preparation for the Report</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-excel-report">8.3. Making the Excel Report</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
