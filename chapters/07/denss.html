@@ -403,7 +403,7 @@ document.write(`
 <h1><span class="section-number">7. </span>Electron Density Retrieval<a class="headerlink" href="#electron-density-retrieval" title="Link to this heading">#</a></h1>
 <p>SAXS Theory explaines how the X-ray beam is scattered by the sample particles.
 Our final analysis step is to solve the inverse problem of determining the particle shape or its electron density from a scattering curve which has been so far computed to be a good representation of the scattered X-ray intensities.</p>
-<p>For this purpose, <a class="reference external" href="https://tdgrant.com/">DENSS</a> is now the most excelent program in the open source software, for which Molass has a simple wrapper as shown below.</p>
+<p>For this purpose, <a class="reference external" href="https://tdgrant.com/">DENSS</a> is now the most trusted program in the open source software, for which Molass has a simple wrapper as shown below.</p>
 <section id="learning-points">
 <h2><span class="section-number">7.1. </span>Learning Points<a class="headerlink" href="#learning-points" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -427,7 +427,7 @@ Our final analysis step is to solve the inverse problem of determining the parti
 <span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
 <span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span> 
+<span class="n">replot_result</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decomposition of Sample1 (ALD_OA002)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -436,10 +436,14 @@ Our final analysis step is to solve the inverse problem of determining the parti
 developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;molass.PlotUtils.PlotResult.PlotResult at 0x1897204fb00&gt;
+<img alt="../../_images/de8a7aa3e9d430e8e1db79656d6d557122520f87827b3c8d70742891d51447e4.png" src="../../_images/de8a7aa3e9d430e8e1db79656d6d557122520f87827b3c8d70742891d51447e4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">replot_result</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;decomposition_sample1.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../../_images/9db745d9f95ff63addc107f25747f77a70a2f7c5a517969c4f1755ee48a46134.png" src="../../_images/9db745d9f95ff63addc107f25747f77a70a2f7c5a517969c4f1755ee48a46134.png" />
 </div>
 </div>
 <p>Then, selecting one of the components, run DENSS as follows.</p>
