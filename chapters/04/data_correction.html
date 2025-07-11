@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -430,31 +430,30 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-legacy&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.2&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.2 or higher.&quot;</span>
-<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.2.0 or higher.&quot;</span>
+<span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE2</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
-<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
-<span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE2</span><span class="p">)</span>
+<span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
+<span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/33166beb02aa8901fff93e7428a4a7a07ad04cf01e7f95c0b34f4f78d6af17d8.png" src="../../_images/33166beb02aa8901fff93e7428a4a7a07ad04cf01e7f95c0b34f4f78d6af17d8.png" />
+<img alt="../../_images/63bd4eb2c0d3a2f49c382a556642526f948203857c0658705f8c9e1df94593c5.png" src="../../_images/63bd4eb2c0d3a2f49c382a556642526f948203857c0658705f8c9e1df94593c5.png" />
 </div>
 </div>
 <p>Note that just plotting does not change the data set. Actual correction is performed by making a corrected copy of the object with the <code class="docutils literal notranslate"><span class="pre">corrected_copy</span></code> as shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
-<span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d65c5338bc928862d5e84debc175cec0396b556a8737c7a3d145592dd069f94d.png" src="../../_images/d65c5338bc928862d5e84debc175cec0396b556a8737c7a3d145592dd069f94d.png" />
+<img alt="../../_images/3c7bc3c4ccbda6b8028736bbe2d47694a6a0b3626d0bc1d69fe29119d836ba31.png" src="../../_images/3c7bc3c4ccbda6b8028736bbe2d47694a6a0b3626d0bc1d69fe29119d836ba31.png" />
 </div>
 </div>
 <p>To change the correction method, you can use <code class="docutils literal notranslate"><span class="pre">set_baseline_method</span></code> with one of the following specifications.</p>
@@ -470,26 +469,25 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">set_baseline_method</span></code> interprets the first element of the tuple as the method for X-ray data and the second as the method for UV data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">set_baseline_method</span><span class="p">((</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;uvdiff&#39;</span><span class="p">))</span>
-<span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">set_baseline_method</span><span class="p">((</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;uvdiff&#39;</span><span class="p">))</span>
+<span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/416f6c45f8d4fb002d6ced9ec82d1b003701b8d390793466bf639b8bcb22366f.png" src="../../_images/416f6c45f8d4fb002d6ced9ec82d1b003701b8d390793466bf639b8bcb22366f.png" />
+<img alt="../../_images/b900507e8cf192b5fcbaf6257134f90cbe2a6dac8cc43a4eb0041bfe15a29757.png" src="../../_images/b900507e8cf192b5fcbaf6257134f90cbe2a6dac8cc43a4eb0041bfe15a29757.png" />
 </div>
 </div>
 <p>This baseline method setting is retained with copies so that the following standard coding sequence works as expected.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
-<span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7f5766753bbceb0dfb57f151ab231414e604553fa303925b6aeb86a22c41e7a5.png" src="../../_images/7f5766753bbceb0dfb57f151ab231414e604553fa303925b6aeb86a22c41e7a5.png" />
+<img alt="../../_images/c37a41a4afc4e07a5b1b0c30437dac5590fd4551b0211dd9363e72a7069cbf12.png" src="../../_images/c37a41a4afc4e07a5b1b0c30437dac5590fd4551b0211dd9363e72a7069cbf12.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -511,34 +509,20 @@ document.write(`
 <p>To contrast the difference, compare the following plots resulted from <code class="docutils literal notranslate"><span class="pre">linear</span></code> and <code class="docutils literal notranslate"><span class="pre">integral</span></code> methods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE2</span>
-<span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
-<span class="n">ssd2</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE2</span><span class="p">)</span>
-<span class="n">ssd2</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">set_baseline_method</span><span class="p">(</span><span class="s1">&#39;integral&#39;</span><span class="p">)</span>
+<span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/67e58d1a4278a1e904048697c41cf3e13fd2ce19c1077baf7537e23a1833cf83.png" src="../../_images/67e58d1a4278a1e904048697c41cf3e13fd2ce19c1077baf7537e23a1833cf83.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd2</span><span class="o">.</span><span class="n">set_baseline_method</span><span class="p">(</span><span class="s1">&#39;integral&#39;</span><span class="p">)</span>
-<span class="n">ssd2</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/3f7ee5444c09c67c03ee25e05c33af2ff17bd1a49f0c0d75442d52cb2ef5248c.png" src="../../_images/3f7ee5444c09c67c03ee25e05c33af2ff17bd1a49f0c0d75442d52cb2ef5248c.png" />
+<img alt="../../_images/647b42de5656e6635906f4cbba44a48235d6f4eaa3be7da60132d1ccdab8ab0f.png" src="../../_images/647b42de5656e6635906f4cbba44a48235d6f4eaa3be7da60132d1ccdab8ab0f.png" />
 </div>
 </div>
 <p>The actual stardard correction procedure will be as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd2</span> <span class="o">=</span> <span class="n">ssd2</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
-<span class="n">corrected_ssd2</span> <span class="o">=</span> <span class="n">trimmed_ssd2</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
-<span class="n">corrected_ssd2</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
+<span class="n">corrected_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -546,10 +530,10 @@ document.write(`
 <img alt="../../_images/ec821e6cd0a671d0b714f00dfc1a42f9955ce06e4982ec90b914e32cbdc56b85.png" src="../../_images/ec821e6cd0a671d0b714f00dfc1a42f9955ce06e4982ec90b914e32cbdc56b85.png" />
 </div>
 </div>
-<p>Note that the last specified (in ssd2) and retained (in trimmed_ssd2) method has been valid, which can be shown as follows (not default ‘linear’ in this case).</p>
+<p>Note that the last specified (with ssd2) and retained (in trimmed_ssd2) method has been valid, which can be shown as follows (not default ‘linear’ in this case).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd2</span><span class="o">.</span><span class="n">get_baseline_method</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_ssd</span><span class="o">.</span><span class="n">get_baseline_method</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

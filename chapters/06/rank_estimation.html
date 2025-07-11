@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -450,7 +450,7 @@ document.write(`
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
 <span class="c1"># molass 0.1.2 is not uploaded to PyPI yet. Donwload it from GitHub.</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.2&#39;</span><span class="p">,</span> <span class="s2">&quot;This script requires molass version 0.1.2 or higher.&quot;</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This script requires molass version 0.2.0 or higher.&quot;</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
@@ -462,10 +462,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" src="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" />
+<img alt="../../_images/404141ff3d929536d456f4ea26326bf6dc23b942cdf26d91372e4fa50d9bc4bd.png" src="../../_images/404141ff3d929536d456f4ea26326bf6dc23b942cdf26d91372e4fa50d9bc4bd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -479,7 +482,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" src="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" />
+<img alt="../../_images/9db745d9f95ff63addc107f25747f77a70a2f7c5a517969c4f1755ee48a46134.png" src="../../_images/9db745d9f95ff63addc107f25747f77a70a2f7c5a517969c4f1755ee48a46134.png" />
 </div>
 </div>
 </section>
@@ -493,7 +496,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e760edc8289e15fc0853dca2380d19d0dd5f6f9560ea5d76d0991deed7f123f3.png" src="../../_images/e760edc8289e15fc0853dca2380d19d0dd5f6f9560ea5d76d0991deed7f123f3.png" />
+<img alt="../../_images/aabbce0381679665841f962d8a785ea51226f9b43138ff07a6ec888e2a31f624.png" src="../../_images/aabbce0381679665841f962d8a785ea51226f9b43138ff07a6ec888e2a31f624.png" />
 </div>
 </div>
 </section>
@@ -533,7 +536,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.237627986382854, 4.642764861594007, 1.5212556670108408]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.2424828137263804, 4.293914414786344, 3]
 </pre></div>
 </div>
 </div>
@@ -548,9 +551,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SCD: 0.237627986382854, Rank: 1
-SCD: 4.642764861594007, Rank: 1
-SCD: 1.5212556670108408, Rank: 1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SCD: 1.2424828137263804, Rank: 1
+SCD: 4.293914414786344, Rank: 1
+SCD: 3, Rank: 1
 </pre></div>
 </div>
 </div>

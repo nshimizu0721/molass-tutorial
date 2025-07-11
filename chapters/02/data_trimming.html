@@ -422,16 +422,16 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.2&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.2 or higher.&quot;</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.2.0 or higher.&quot;</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE2</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE2</span><span class="p">)</span>
-<span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
+<span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;3D Plot of Sample2&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/987bb84343e14e084a1450add45abcb4e7f90b1052f0c29c2d67d28a57126332.png" src="../../_images/987bb84343e14e084a1450add45abcb4e7f90b1052f0c29c2d67d28a57126332.png" />
+<img alt="../../_images/883048133ad6f4dd7a4b7cc48287edbc503a85f3453386c975706ffb51cfbf0c.png" src="../../_images/883048133ad6f4dd7a4b7cc48287edbc503a85f3453386c975706ffb51cfbf0c.png" />
 </div>
 </div>
 </section>
@@ -440,12 +440,12 @@ document.write(`
 <p>You can plot the default trimming ranges as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_trimming_info</span><span class="p">();</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_trimming</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Trimming Ranges of Sample2&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f70a0f906564e3042cf2a2fea5ee1f31d416b6265416bd0e8f0bf54e7451483d.png" src="../../_images/f70a0f906564e3042cf2a2fea5ee1f31d416b6265416bd0e8f0bf54e7451483d.png" />
+<img alt="../../_images/530352c93159c31913656223b4f0ed085e43e554c4cea3555709405b8734f93f.png" src="../../_images/530352c93159c31913656223b4f0ed085e43e554c4cea3555709405b8734f93f.png" />
 </div>
 </div>
 <p>The figures above show the trimming ranges in three distinct ways: on the left, as rectangles suggesting rows and columns in matrices; in the center, as vertical bands on elution curves; and on the right, as vertical bands on spectral curves (such as absorbance or scattering curves).</p>
@@ -456,15 +456,15 @@ document.write(`
 <p>More compact plots are available below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;SAMPLE2&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Compact Plot of Sample2&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ef35038d8c53f4043b16926a9471def8ad9402dd181c1bfdbd58d88621edf5fc.png" src="../../_images/ef35038d8c53f4043b16926a9471def8ad9402dd181c1bfdbd58d88621edf5fc.png" />
+<img alt="../../_images/012a6f0db507deab331d82ec6c7c1184816d3c60ee8a8e94375fc501264249ac.png" src="../../_images/012a6f0db507deab331d82ec6c7c1184816d3c60ee8a8e94375fc501264249ac.png" />
 </div>
 </div>
-<p>In this compact form, the mapping between UV and X-ray elution points becomes more apparent. How tThis “mapping” is determined is explained a separate book <a class="reference external" href="https://freesemt.github.io/molass-technical/">Molass Technical Report</a>.</p>
+<p>In this compact form, the mapping between UV and X-ray elution points becomes more apparent. How this “mapping” is determined is explained a separate book <a class="reference external" href="https://freesemt.github.io/molass-technical/">Molass Technical Report</a>.</p>
 </section>
 <section id="trimmed-copy">
 <h2><span class="section-number">3.4. </span>Trimmed Copy<a class="headerlink" href="#trimmed-copy" title="Link to this heading">#</a></h2>
@@ -472,22 +472,22 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
-<span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_trimming_info</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;SAMPLE2 - Trimmed&quot;</span><span class="p">);</span>
+<span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_trimming</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sample2 - Trimmed&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/43e1b9fd0a2b7b40ba92b8ffdcf30e1a6aa62353c83cf5b09b527cc54644b8a4.png" src="../../_images/43e1b9fd0a2b7b40ba92b8ffdcf30e1a6aa62353c83cf5b09b527cc54644b8a4.png" />
+<img alt="../../_images/24cfaab19bc8eaa92d404bcd4b1adc70f9e54e860db3e40b488c277d6d97a1af.png" src="../../_images/24cfaab19bc8eaa92d404bcd4b1adc70f9e54e860db3e40b488c277d6d97a1af.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;SAMPLE2 - Trimmed&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sample2 - Trimmed&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/65799d4130aef736cfc346598e7b040a9a04e2a38c2527179411b3c363bb41ba.png" src="../../_images/65799d4130aef736cfc346598e7b040a9a04e2a38c2527179411b3c363bb41ba.png" />
+<img alt="../../_images/8bbd53fcbb060d910bb1fe1c29ec5c515b0302ac71306c0e4bcc6e55c74d472c.png" src="../../_images/8bbd53fcbb060d910bb1fe1c29ec5c515b0302ac71306c0e4bcc6e55c74d472c.png" />
 </div>
 </div>
 </section>
@@ -498,13 +498,13 @@ document.write(`
 <p>First, print the default trimming info.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trim</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">get_trimming_info</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trimming info:&quot;</span><span class="p">,</span> <span class="n">trim</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimming</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">make_trimming</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trimming:&quot;</span><span class="p">,</span> <span class="n">trimming</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trimming info: TrimmingInfo(xr_slices=(slice(12, 765), slice(235, 643)), uv_slices=(slice(62, None), slice(218, 663)), mapping=MappingInfo(slope=1.09, intercept=-39.1, xr_peaks=..., uv_peaks=..., xr_moment=..., uv_moment=...))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trimming: TrimmingInfo(xr_slices=(slice(12, 765), slice(235, 643)), uv_slices=(slice(62, None), slice(218, 663)), mapping=MappingInfo(slope=1.09, intercept=-39.1, xr_peaks=..., uv_peaks=..., xr_moment=..., uv_moment=...))
 </pre></div>
 </div>
 </div>
@@ -512,10 +512,10 @@ document.write(`
 <p>Then, using and modifying the printed slices, make a new TrimmingInfo object as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">manual_trim</span> <span class="o">=</span> <span class="n">trim</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xr_slices</span><span class="o">=</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">765</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">235</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">643</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span>
-                        <span class="n">uv_slices</span><span class="o">=</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">62</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">218</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">668</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span> <span class="kc">None</span><span class="p">)),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">manually_trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xr_slices</span><span class="o">=</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">765</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">235</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">643</span><span class="o">+</span><span class="mi">100</span><span class="p">)),</span>
+                        <span class="n">uv_slices</span><span class="o">=</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">62</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">218</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">668</span><span class="o">+</span><span class="mi">100</span><span class="p">)),</span>
+                        <span class="n">trimmed</span><span class="o">=</span><span class="kc">False</span>  <span class="c1"># to plot the original trimming ranges in the next plot </span>
                         <span class="p">)</span>
-<span class="n">manually_trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">(</span><span class="n">trim</span><span class="o">=</span><span class="n">manual_trim</span><span class="p">,</span> <span class="n">trimmed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -454,16 +454,16 @@ However, life is not so easy and that is why the hard part exists, which we will
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.2&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.2 or higher.&quot;</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.2.0 or higher.&quot;</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
 <span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
-<span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
+<span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;3D Plot of Sample1&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5f0dfd13f1d1547a3a1917fb93f8e9f31c366a27584052b118487cef3dfeb379.png" src="../../_images/5f0dfd13f1d1547a3a1917fb93f8e9f31c366a27584052b118487cef3dfeb379.png" />
+<img alt="../../_images/42985012ff4b648fec8d0d747fc88fe5791153cca30c22e9005e56cf45b9f6bf.png" src="../../_images/42985012ff4b648fec8d0d747fc88fe5791153cca30c22e9005e56cf45b9f6bf.png" />
 </div>
 </div>
 </section>
@@ -477,15 +477,18 @@ We can execute these steps and show the results as follows. The details of each 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trimmed_ssd</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">trimmed_copy</span><span class="p">()</span>
 <span class="n">corrected_ssd</span> <span class="o">=</span> <span class="n">trimmed_ssd</span><span class="o">.</span><span class="n">corrected_copy</span><span class="p">()</span>
 <span class="n">decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">()</span>
-<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
+<span class="n">decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decomposition of Sample1&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" src="../../_images/ddd58f2953172e25d0e5e20e0be16ac7f7474c3511c7a651c4220d544af91ab2.png" />
+<img alt="../../_images/212ccf6d034042586f782512f713e8d532eb6991a1f35560fc79a9bb3363b666.png" src="../../_images/212ccf6d034042586f782512f713e8d532eb6991a1f35560fc79a9bb3363b666.png" />
 </div>
 </div>
 </section>
@@ -507,17 +510,17 @@ In Molass Library, you can use <a class="reference external" href="https://tdgra
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Only 2 columns given. Data should have 3 columns: q, I, errors.
 WARNING: Setting error bars to 1.0 (i.e., ignoring error bars)
-Dmax = 128.06
-Number of experimental Shannon channels: 10
-Number of calculated Shannon channels: 32
+Dmax = 142.50
+Number of experimental Shannon channels: 19
+Number of calculated Shannon channels: 58
 
 
  Step     Chi2     Rg    Support Volume
  ----- --------- ------- --------------
-  620   8.72e-03  58.89        1201784            
+  620   5.20e-02  85.60        1655886            
 switched to shrinkwrap by density threshold = 0.2000
-  999   3.91e-05  36.00        391942          EC: 1 -&gt; 1 
- 4709   1.23e-05  36.21        333324          
+  999   1.11e-03  49.38        407116          EC: 2 -&gt; 1 
+ 2318   7.75e-06  35.91        326051          
 </pre></div>
 </div>
 </div>
@@ -537,7 +540,7 @@ switched to shrinkwrap by density threshold = 0.2000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b046889ad7f0b84ee7daa9d78246dbfdc7d5caecfa842e9e985815c328387625.png" src="../../_images/b046889ad7f0b84ee7daa9d78246dbfdc7d5caecfa842e9e985815c328387625.png" />
+<img alt="../../_images/8ec2022d6d5eaea82d1ed518f83baa55221e287061b00ccdc7c338920c268ce4.png" src="../../_images/8ec2022d6d5eaea82d1ed518f83baa55221e287061b00ccdc7c338920c268ce4.png" />
 </div>
 </div>
 </section>
@@ -556,7 +559,7 @@ switched to shrinkwrap by density threshold = 0.2000
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simply_refined_decomposition</span> <span class="o">=</span> <span class="n">corrected_ssd</span><span class="o">.</span><span class="n">quick_decomposition</span><span class="p">(</span><span class="n">num_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">simply_refined_decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">();</span>
+<span class="n">simply_refined_decomposition</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Simply Refined Decomposition of Sample1&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -564,7 +567,7 @@ switched to shrinkwrap by density threshold = 0.2000
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>developer memo: remember that &quot;LowRank.CoupledAdjuster.select_components&quot; is not implemented yet.
 </pre></div>
 </div>
-<img alt="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" src="../../_images/33f7e8c8fd5cbfcbf822340a5010e16416d72d3b6eb64f4ad8d1c9dfb49f9955.png" />
+<img alt="../../_images/a14ba3f2f013e467126d902e080eaf9ab8c2e3007e4b273c1c153c204c8c6639.png" src="../../_images/a14ba3f2f013e467126d902e080eaf9ab8c2e3007e4b273c1c153c204c8c6639.png" />
 </div>
 </div>
 <p>Molass Library provides several other options and methods for better estimation of scattering curves which we will discuss one by one in later chapters.</p>

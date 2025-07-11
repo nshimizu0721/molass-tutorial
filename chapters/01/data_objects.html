@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -390,7 +390,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elution-curves">2.3. Elution Curves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-positions">2.4. Peak Positions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-curves">2.5. Spectral Curves</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-curves">2.5.1. Absorbance Curves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-spectra">2.5.1. Absorbance Spectra</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scattering-curves">2.5.2. Scattering Curves</a></li>
 </ul>
 </li>
@@ -418,7 +418,7 @@ document.write(`
 <li><p>SEC-SAXS data objects</p></li>
 <li><p>How to plot data</p></li>
 <li><p>Elution curves</p></li>
-<li><p>Scattering curves</p></li>
+<li><p>Spectral curves</p></li>
 </ul>
 </section>
 <section id="sec-saxs-data">
@@ -428,7 +428,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../../molass-library&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">molass</span> <span class="kn">import</span> <span class="n">get_version</span>
-<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.1.2&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.1.2 or higher.&quot;</span>
+<span class="k">assert</span> <span class="n">get_version</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="s1">&#39;0.2.0&#39;</span><span class="p">,</span> <span class="s2">&quot;This tutorial requires molass version 0.2.0 or higher.&quot;</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">molass_data</span> <span class="kn">import</span> <span class="n">SAMPLE1</span>
 </pre></div>
@@ -440,24 +440,27 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molass.DataObjects</span> <span class="kn">import</span> <span class="n">SecSaxsData</span> <span class="k">as</span> <span class="n">SSD</span>
 <span class="n">ssd</span> <span class="o">=</span> <span class="n">SSD</span><span class="p">(</span><span class="n">SAMPLE1</span><span class="p">)</span>
-<span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">();</span>
+<span class="n">ssd</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;3D Plot of Sample1&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5f0dfd13f1d1547a3a1917fb93f8e9f31c366a27584052b118487cef3dfeb379.png" src="../../_images/5f0dfd13f1d1547a3a1917fb93f8e9f31c366a27584052b118487cef3dfeb379.png" />
+<img alt="../../_images/42985012ff4b648fec8d0d747fc88fe5791153cca30c22e9005e56cf45b9f6bf.png" src="../../_images/42985012ff4b648fec8d0d747fc88fe5791153cca30c22e9005e56cf45b9f6bf.png" />
 </div>
 </div>
 <p>In the 3D plot, you understand the whole structure of the data set and how it changes over time. Note that <code class="docutils literal notranslate"><span class="pre">SAMPLE1</span></code> variable has the folder path where the tutorial data set is located.</p>
 <p>It is often more handy if you see it in a compact 2D plot as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">();</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssd</span><span class="o">.</span><span class="n">plot_compact</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Compact Plot of Sample1&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6408c2a6194c0dc351dcb98103da65a26f9f5def63fa72d0b1b669c5fb570a00.png" src="../../_images/6408c2a6194c0dc351dcb98103da65a26f9f5def63fa72d0b1b669c5fb570a00.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros at the angular ends of error data have been replaced with the adjacent values.
+</pre></div>
+</div>
+<img alt="../../_images/961b76572c20b80830e178da14e7fcbad98c92db7ffba87ffb24d7658cc1fece.png" src="../../_images/961b76572c20b80830e178da14e7fcbad98c92db7ffba87ffb24d7658cc1fece.png" />
 </div>
 </div>
 <p>Note that the yellow vertical lines indicate the positions where other 2D plots have picked the data to draw.</p>
@@ -470,7 +473,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cb9242d5ed10da72365948f6028584d4b49ffd3eb3c1d747bb10e26151137c9d.png" src="../../_images/cb9242d5ed10da72365948f6028584d4b49ffd3eb3c1d747bb10e26151137c9d.png" />
+<img alt="../../_images/fe9fbfca2e8dbb3012796b61001e315d5413b93804a3b356cfad9a4f9f3b74c1.png" src="../../_images/fe9fbfca2e8dbb3012796b61001e315d5413b93804a3b356cfad9a4f9f3b74c1.png" />
 </div>
 </div>
 <p>To summarize, SSD (SEC-SAXS Data Set) objects provide basic utilities to grasp the data set as a whole and serve as the starting point of your analysis, from where you can derive subsequent objects required for further analysis. We will explore some of such derivations and basic matplotlib usages for them in the following sections.</p>
@@ -492,7 +495,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/214532b0e9dafeb175907584b8e4decd1991dfe222a5283104e5578967f2a43e.png" src="../../_images/214532b0e9dafeb175907584b8e4decd1991dfe222a5283104e5578967f2a43e.png" />
+<img alt="../../_images/98d073d316d9481420f42d896d77239a880f9489622925ffd2cfeb1dc6a70e6f.png" src="../../_images/98d073d316d9481420f42d896d77239a880f9489622925ffd2cfeb1dc6a70e6f.png" />
 </div>
 </div>
 <p>For UV data, elution curves are picked, by default, at wavelength=280 [nm].</p>
@@ -508,7 +511,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e76c1d97dd8a1fa4c8be2d2c9e94d5f13c2075241848e54b30b05007c51b62a4.png" src="../../_images/e76c1d97dd8a1fa4c8be2d2c9e94d5f13c2075241848e54b30b05007c51b62a4.png" />
+<img alt="../../_images/c3bb64693f885a3267fef086a14837c19a85f0da9661a2e559818ba159d7b7cd.png" src="../../_images/c3bb64693f885a3267fef086a14837c19a85f0da9661a2e559818ba159d7b7cd.png" />
 </div>
 </div>
 <p>Another plot example with two subplots: one for the X-ray scattering elution curve and one for the UV absorbance elution curve.</p>
@@ -524,7 +527,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/003224dec88376f4c5fadb702f9b92ecec6c1f8137b12dc810653f3456e8c433.png" src="../../_images/003224dec88376f4c5fadb702f9b92ecec6c1f8137b12dc810653f3456e8c433.png" />
+<img alt="../../_images/a3990612c663bfb6f7b117329436846e30658ae67a20bc6908fab0d11f251993.png" src="../../_images/a3990612c663bfb6f7b117329436846e30658ae67a20bc6908fab0d11f251993.png" />
 </div>
 </div>
 </section>
@@ -540,7 +543,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([239, 486], [120, 243])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([131, 231], [88, 157])
 </pre></div>
 </div>
 </div>
@@ -560,7 +563,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/865374169f7669c2511516d867c4e66be17f6beac1725bb4d2a6d3894f90325c.png" src="../../_images/865374169f7669c2511516d867c4e66be17f6beac1725bb4d2a6d3894f90325c.png" />
+<img alt="../../_images/cf7b01855ff386a37f7d8032d6ff23e6bfd8defcfee5a3ee6dea9b3af37683bf.png" src="../../_images/cf7b01855ff386a37f7d8032d6ff23e6bfd8defcfee5a3ee6dea9b3af37683bf.png" />
 </div>
 </div>
 <p>The circles on the plots indicate the detected peak positions.</p>
@@ -574,15 +577,15 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>Here, we use “spectral” to mean either of the following two types of curves, for simplicity.</p>
 </div>
-<section id="absorbance-curves">
-<h3><span class="section-number">2.5.1. </span>Absorbance Curves<a class="headerlink" href="#absorbance-curves" title="Link to this heading">#</a></h3>
-<p>For each detected peak in the UV absorbance elution curve, let’s plot the corresponding absorbance curve.</p>
+<section id="absorbance-spectra">
+<h3><span class="section-number">2.5.1. </span>Absorbance Spectra<a class="headerlink" href="#absorbance-spectra" title="Link to this heading">#</a></h3>
+<p>For each detected peak in the UV absorbance elution curve, let’s plot the corresponding absorbance spectrum.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">uv_peaks</span><span class="p">:</span>
     <span class="n">uv_jcurve</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">uv</span><span class="o">.</span><span class="n">get_jcurve</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">j</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">uv_jcurve</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">uv_jcurve</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Absorbance Curves at Peak Positions&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Absorbance Spectra at Peak Positions&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (or other x-axis label)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Absorbance&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -590,7 +593,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c70526373522460885fced5947928b5fe61f87e49fea023c6ce064d8dce5c6b5.png" src="../../_images/c70526373522460885fced5947928b5fe61f87e49fea023c6ce064d8dce5c6b5.png" />
+<img alt="../../_images/fe35e0600083e5f159299cb662ff87c7bd861a6918f90430d45104c1f12e6ad3.png" src="../../_images/fe35e0600083e5f159299cb662ff87c7bd861a6918f90430d45104c1f12e6ad3.png" />
 </div>
 </div>
 </section>
@@ -610,7 +613,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ae41fce70493f879b8d39c9190d924739237868e248e0a2822cfc3e52541d880.png" src="../../_images/ae41fce70493f879b8d39c9190d924739237868e248e0a2822cfc3e52541d880.png" />
+<img alt="../../_images/27943c3efe2b16e941ce6898de4bd33a6b3755c960b3e442fee541f294eea859.png" src="../../_images/27943c3efe2b16e941ce6898de4bd33a6b3755c960b3e442fee541f294eea859.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -633,7 +636,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/747a3780dfcebe2fa34777569377948678f8d5ede2a8ab5d85497ecb37b1c36d.png" src="../../_images/747a3780dfcebe2fa34777569377948678f8d5ede2a8ab5d85497ecb37b1c36d.png" />
+<img alt="../../_images/a92cf32a99c5742a1003ae994b6417a9ea744d6fa1073df707c2ab17b0216501.png" src="../../_images/a92cf32a99c5742a1003ae994b6417a9ea744d6fa1073df707c2ab17b0216501.png" />
 </div>
 </div>
 </section>
@@ -724,7 +727,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elution-curves">2.3. Elution Curves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-positions">2.4. Peak Positions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-curves">2.5. Spectral Curves</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-curves">2.5.1. Absorbance Curves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbance-spectra">2.5.1. Absorbance Spectra</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scattering-curves">2.5.2. Scattering Curves</a></li>
 </ul>
 </li>
